@@ -1,3 +1,14 @@
 node_modules/
 .wrangler/
 *.log
+.env
+.env.production
+
+# ビルド出力・生成物 (web/)
+dist/
+.astro/
+.vercel/
+
+# OS/エディタ
+.DS_Store
+.idea/

@@ -1,0 +1,43 @@
+{
+  "name": "astro-simple-blog",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro",
+    "deploy": "astro build && wrangler deploy"
+  },
+  "engines": {
+    "node": ">=24.x"
+  },
+  "packageManager": "pnpm@10.33.0",
+  "dependencies": {
+    "@astrojs/cloudflare": "^13.7.0",
+    "@fontsource/noto-sans-jp": "^5.2.5",
+    "@tailwindcss/typography": "^0.5.16",
+    "@tailwindcss/vite": "^4.2.2",
+    "astro": "^6.0.6",
+    "dayjs": "^1.11.13",
+    "microcms-js-sdk": "^3.2.0",
+    "microcms-rich-editor-handler": "^1.0.1",
+    "shiki": "^1.29.2",
+    "tailwindcss": "^4.2.2"
+  },
+  "devDependencies": {
+    "prettier": "^3.5.3",
+    "prettier-plugin-astro": "^0.14.1",
+    "wrangler": "^4.118.0"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "esbuild",
+      "sharp",
+      "workerd"
+    ],
+    "overrides": {
+      "vite": "7.3.6"
+    }
+  }
+}

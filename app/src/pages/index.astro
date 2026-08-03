@@ -1,0 +1,33 @@
+---
+import { getBlogList, getCategoryList } from "@libs/microcms.ts";
+import Layout from "@layouts/Layout.astro";
+import BlogList from "@components/BlogList.astro";
+import Pagination from "@components/Pagination.astro";
+import CategoryList from "@components/CategoryList.astro";
+import { LIMIT } from "@constants/index.ts";
+import { getSettings } from "@libs/microcms.ts";
+export const prerender = true;
+
+const settings = await getSettings();
+
+const { contents: blogs, totalCount } = await getBlogList({
+  limit: LIMIT,
+});
+
+const { contents: categories } = await getCategoryList();
+
+const Meta = {
+  title: settings?.title || "Set Your Title Here",
+};
+---
+
+<Layout Meta={Meta}>
+  <div class="space-y-8">
+    <BlogList blogs={blogs} />
+    <Pagination totalCount={totalCount} />
+  </div>
+
+  <div class="space-y-8">
+    <CategoryList categories={categories} />
+  </div>
+</Layout>

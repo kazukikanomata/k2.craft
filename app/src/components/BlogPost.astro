@@ -1,0 +1,107 @@
+---
+// src/components/BlogPost.astro
+import {
+  microCMSRichEditorHandler,
+  responsiveImageTransformer,
+  codeBlockFileNameTransformer,
+  tocExtractor,
+} from "microcms-rich-editor-handler";
+import Date from "@components/Date.astro";
+import type { Category } from "@libs/microcms";
+
+const { blog } = Astro.props;
+
+type TocItem = {
+  id: string;
+  text: string;
+  level: number;
+};
+
+let html = "";
+let toc: TocItem[] = [];
+
+if (blog.content) {
+  const { html: transformedHtml, data } = await microCMSRichEditorHandler(
+    blog.content,
+    {
+      transformers: [
+        responsiveImageTransformer(),
+        codeBlockFileNameTransformer({
+          attributes: {
+            class: "fileName",
+          },
+        }),
+      ],
+      extractors: {
+        toc: [
+          tocExtractor({
+            ignoreLevels: [4, 5],
+          }),
+        ],
+      },
+    }
+  );
+
+  html = transformedHtml;
+  toc = data.toc;
+}
+
+blog.content = html;
+---
+
+<article class="prose max-w-none">
+  <h1 class="text-3xl font-medium mb-3 leading-normal">{blog.title}</h1>
+
+  <p class="mb-4">
+    <Date date={blog.publishedAt || blog.createdAt} />
+  </p>
+
+  <div class="flex flex-wrap gap-2 mb-8">
+    {
+      blog.category?.length > 0 ? (
+        blog.category.map((cat: Category) => (
+          <a
+            href={`/category/${cat.id}`}
+            class="category bg-gray-600 text-white px-3 py-1 rounded-full text-xs hover:bg-gray-700 no-underline transition"
+          >
+            {cat.name}
+          </a>
+        ))
+      ) : (
+        <span class="text-gray-400 text-xs">No Category</span>
+      )
+    }
+  </div>
+
+  {
+    toc.length > 0 && (
+      <aside class="mb-8 p-4 border border-gray-200 bg-gray-50 rounded-md shadow-sm">
+        <h2 class="text-lg font-semibold text-gray-700 mb-2 mt-0">目次</h2>
+        <ul class="space-y-1 text-sm text-gray-600 mb-0 pl-0">
+          {toc.map((item) => {
+            const levelClass =
+              {
+                2: "ml-3",
+                3: "ml-6",
+              }[item.level] ?? "";
+
+            return (
+              <li
+                class={`pl-4 list-none border-l-2 border-gray-300 ${levelClass}`}
+              >
+                <a
+                  href={`#${item.id}`}
+                  class="block font-normal no-underline hover:text-blue-500 transition"
+                >
+                  {item.text}
+                </a>
+              </li>
+            );
+          })}
+        </ul>
+      </aside>
+    )
+  }
+
+  <div set:html={blog.content} class="entry-content prose max-w-none" />
+</article>
