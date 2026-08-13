@@ -12,3 +12,14 @@ dist/
 # OS/エディタ
 .DS_Store
 .idea/
+
+# Terraform (infra/)
+.terraform/
+*.tfstate
+*.tfstate.*
+*.tfplan
+backend.hcl
+*.tfvars
+*.tfvars.json
+!*.tfvars.example
+
