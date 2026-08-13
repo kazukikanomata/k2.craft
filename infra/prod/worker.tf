@@ -19,8 +19,23 @@ resource "cloudflare_workers_script" "site" {
     directory = var.worker_assets_directory
     config = {
       not_found_handling = "404-page"
+      # run_worker_firstが未設定だと、静的ファイルに一致しないリクエスト(/blog/[id]など
+      # prerender=falseの動的ルート)がWorkerに届く前にnot_found_handlingの404ページで
+      # 止められてしまう(ブラウザのAccept: text/htmlリクエストだけ再現する)。
+      # 動的ルートを正しくSSRさせるため、常にWorkerを先に実行させる。
+      run_worker_first = true
     }
   }
+
+  # run_worker_first = true にすると静的アセットへのフォールバック(env.ASSETS.fetch)も
+  # Worker経由になるため、ASSETS bindingを明示しておく必要がある
+  # (assetsブロックの設定だけでは自動生成されない)。
+  bindings = [
+    {
+      name = "ASSETS"
+      type = "assets"
+    }
+  ]
 
   observability = {
     enabled = true
