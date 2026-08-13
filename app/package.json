@@ -7,7 +7,7 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "deploy": "astro build && wrangler deploy"
+    "deploy": "astro build && node scripts/bundle-worker.mjs"
   },
   "engines": {
     "node": ">=24.x"
@@ -26,6 +26,7 @@
     "tailwindcss": "^4.2.2"
   },
   "devDependencies": {
+    "esbuild": "^0.28.1",
     "prettier": "^3.5.3",
     "prettier-plugin-astro": "^0.14.1",
     "wrangler": "^4.118.0"

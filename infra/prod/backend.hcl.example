@@ -1,0 +1,6 @@
+# cp backend.hcl.example backend.hcl として実際の値を入れる(backend.hclはgit管理外なので
+# access_key/secret_keyを直接書いてよい)。
+bucket     = "blog-tfstate"
+endpoints  = { s3 = "https://<ACCOUNT_ID>.r2.cloudflarestorage.com" }
+access_key = "R2トークンのAccess Key ID"
+secret_key = "R2トークンのSecret Access Key"
