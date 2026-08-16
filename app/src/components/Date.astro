@@ -9,6 +9,6 @@ interface Props {
 const { date } = Astro.props as Props;
 ---
 
-<time class="text-sm text-gray-500 italic">
+<time class="text-sm text-muted font-mono">
   {dayjs(date).format("MMMM D, YYYY")}
 </time>

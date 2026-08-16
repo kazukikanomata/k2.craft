@@ -3,6 +3,7 @@ import { getBlogList, getCategoryList } from "@libs/microcms.ts";
 import Layout from "@layouts/Layout.astro";
 import BlogList from "@components/BlogList.astro";
 import Pagination from "@components/Pagination.astro";
+import Breadcrumbs from "@components/Breadcrumbs.astro";
 import { LIMIT } from "@constants/index.ts";
 export const prerender = true;
 
@@ -46,6 +47,17 @@ const Meta = {
 ---
 
 <Layout Meta={Meta}>
+  {
+    category && (
+      <Breadcrumbs
+        slot="breadcrumbs"
+        items={[
+          { label: category.name, href: `/category/${id}` },
+          { label: `Page ${currentPage}` },
+        ]}
+      />
+    )
+  }
   <div class="space-y-8">
     {
       category ? (

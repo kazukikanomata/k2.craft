@@ -2,39 +2,56 @@
 
 @theme {
   --font-body: "Noto Sans JP", sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  --font-dot: "DotGothic16", "JetBrains Mono", monospace;
+  --color-ink: #171717;
+  --color-muted: #6b7280;
+  --color-line: #e5e7eb;
+  --color-line-strong: #9ca3af;
+  --color-accent: #2563eb;
+  --color-accent-hover: #1d4ed8;
 }
 
 @plugin "@tailwindcss/typography";
 
 @layer base {
   .border {
-    border-color: #e5e7eb;
+    border-color: var(--color-line);
   }
   .border-b {
-    border-bottom-color: #e5e7eb;
+    border-bottom-color: var(--color-line);
   }
   .border-t {
-    border-top-color: #e5e7eb;
+    border-top-color: var(--color-line);
   }
   .border-l {
-    border-left-color: #e5e7eb;
+    border-left-color: var(--color-line);
   }
   .border-r {
-    border-right-color: #e5e7eb;
+    border-right-color: var(--color-line);
   }
   .border-s {
-    border-inline-start-color: #e5e7eb;
+    border-inline-start-color: var(--color-line);
   }
   .border-e {
-    border-inline-end-color: #e5e7eb;
+    border-inline-end-color: var(--color-line);
   }
   .border-x {
-    border-left-color: #e5e7eb;
-    border-right-color: #e5e7eb;
+    border-left-color: var(--color-line);
+    border-right-color: var(--color-line);
   }
   .border-y {
-    border-top-color: #e5e7eb;
-    border-bottom-color: #e5e7eb;
+    border-top-color: var(--color-line);
+    border-bottom-color: var(--color-line);
+  }
+}
+
+@layer components {
+  .tag {
+    @apply inline-flex items-center border border-line px-3 py-1 text-xs font-mono text-ink no-underline transition;
+  }
+  .tag:hover {
+    @apply border-accent text-accent;
   }
 }
 
@@ -56,10 +73,43 @@ body {
 }
 
 /* リンク（a の text-decoration: none は @layer base で全局に適用） */
-.entry-content a {
-  @apply underline text-blue-600 hover:underline hover:text-blue-800 transition font-normal;
+.entry-content a:not(.link-card) {
+  @apply underline text-accent hover:underline hover:text-accent-hover transition font-normal;
   text-decoration-color: currentColor;
   text-decoration-thickness: 1px;
+}
+
+/* リンクプレビューカード（WordPress風のURL埋め込み） */
+.link-card {
+  @apply flex items-stretch gap-4 border border-line no-underline transition my-6 overflow-hidden;
+}
+
+.link-card:hover {
+  @apply border-accent;
+}
+
+.link-card-thumb {
+  @apply w-28 sm:w-40 shrink-0 bg-gray-100 overflow-hidden;
+}
+
+.link-card-thumb img {
+  @apply w-full h-full object-cover;
+}
+
+.link-card-body {
+  @apply flex flex-col justify-center gap-1 py-3 pr-4 min-w-0;
+}
+
+.link-card-title {
+  @apply text-sm sm:text-base font-medium text-ink line-clamp-2;
+}
+
+.link-card-desc {
+  @apply text-xs text-muted line-clamp-2;
+}
+
+.link-card-domain {
+  @apply text-xs font-mono text-muted mt-1;
 }
 
 /* 画像とキャプション */
@@ -81,7 +131,7 @@ body {
 }
 
 .entry-content h2 {
-  @apply text-2xl font-semibold mt-6 mb-3 pt-2 text-gray-800;
+  @apply text-2xl font-semibold mt-8 mb-4 py-1 pl-4 text-ink border-l-4 border-accent;
 }
 
 .entry-content h3 {
@@ -144,17 +194,34 @@ body {
 
 /* コードブロック（fileName, pre, code） */
 .entry-content span.fileName {
-  @apply inline-block bg-gray-600 text-white text-xs px-3 py-1 font-mono rounded-t-md;
+  @apply inline-block bg-gray-600 text-white text-xs px-3 py-1 font-mono;
 }
 
 .entry-content pre {
-  @apply p-4 overflow-x-auto rounded-none m-0;
+  @apply p-4 overflow-x-auto m-0;
 }
 
 .entry-content code {
-  @apply bg-gray-200 text-gray-800 px-1 py-0.5 rounded text-sm font-mono;
+  @apply bg-gray-200 text-gray-800 px-1 py-0.5 text-sm font-mono;
 }
 
 .entry-content pre code {
   @apply bg-transparent text-inherit p-0;
+}
+
+/* ヒーロー演出（トップページのみ） */
+.hero {
+  @apply text-center py-16 md:py-20;
+}
+
+.hero-title {
+  @apply text-3xl md:text-4xl font-normal text-ink tracking-[0.18em];
+  font-family: var(--font-dot);
+}
+
+.hero-cube {
+  display: block;
+  width: clamp(220px, 46vw, 320px);
+  aspect-ratio: 1 / 1;
+  margin: 0 auto 24px;
 }
