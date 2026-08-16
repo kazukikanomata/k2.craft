@@ -16,7 +16,7 @@ const { blogs }: Props = Astro.props;
       {blogs.map((blog) => (
         <a
           href={`/blog/${blog.id}`}
-          class="block border p-4 rounded-md hover:bg-gray-100 transition"
+          class="block border border-line p-4 hover:border-accent transition no-underline"
         >
           <figure>
             <img
@@ -26,14 +26,14 @@ const { blogs }: Props = Astro.props;
                   : "/assets/images/noimg.png"
               }
               alt={blog.title}
-              class="w-full h-48 object-cover rounded-md mb-4"
+              class="w-full h-48 object-cover mb-4"
             />
           </figure>
-          <h3 class="text-xl font-medium mb-1">{blog.title}</h3>
+          <h3 class="text-xl font-medium mb-1 text-ink">{blog.title}</h3>
           <p class="mb-2">
             <Date date={blog.publishedAt || blog.createdAt} />
           </p>
-          {blog.description && <p class="text-sm">{blog.description}</p>}
+          {blog.description && <p class="text-sm text-muted">{blog.description}</p>}
         </a>
       ))}
     </div>

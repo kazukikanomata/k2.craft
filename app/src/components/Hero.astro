@@ -1,0 +1,16 @@
+---
+// src/components/Hero.astro
+interface Props {
+  title: string;
+}
+
+const { title }: Props = Astro.props;
+const cubes = Array.from({ length: 7 });
+---
+
+<section class="hero">
+  <div class="hero-cubes" aria-hidden="true">
+    {cubes.map((_, i) => <span class="hero-cube" style={`--i:${i}`} />)}
+  </div>
+  <h1 class="hero-title">{title}</h1>
+</section>

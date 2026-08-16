@@ -2,39 +2,55 @@
 
 @theme {
   --font-body: "Noto Sans JP", sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  --color-ink: #171717;
+  --color-muted: #6b7280;
+  --color-line: #e5e7eb;
+  --color-line-strong: #9ca3af;
+  --color-accent: #2563eb;
+  --color-accent-hover: #1d4ed8;
 }
 
 @plugin "@tailwindcss/typography";
 
 @layer base {
   .border {
-    border-color: #e5e7eb;
+    border-color: var(--color-line);
   }
   .border-b {
-    border-bottom-color: #e5e7eb;
+    border-bottom-color: var(--color-line);
   }
   .border-t {
-    border-top-color: #e5e7eb;
+    border-top-color: var(--color-line);
   }
   .border-l {
-    border-left-color: #e5e7eb;
+    border-left-color: var(--color-line);
   }
   .border-r {
-    border-right-color: #e5e7eb;
+    border-right-color: var(--color-line);
   }
   .border-s {
-    border-inline-start-color: #e5e7eb;
+    border-inline-start-color: var(--color-line);
   }
   .border-e {
-    border-inline-end-color: #e5e7eb;
+    border-inline-end-color: var(--color-line);
   }
   .border-x {
-    border-left-color: #e5e7eb;
-    border-right-color: #e5e7eb;
+    border-left-color: var(--color-line);
+    border-right-color: var(--color-line);
   }
   .border-y {
-    border-top-color: #e5e7eb;
-    border-bottom-color: #e5e7eb;
+    border-top-color: var(--color-line);
+    border-bottom-color: var(--color-line);
+  }
+}
+
+@layer components {
+  .tag {
+    @apply inline-flex items-center border border-line px-3 py-1 text-xs font-mono text-ink no-underline transition;
+  }
+  .tag:hover {
+    @apply border-accent text-accent;
   }
 }
 
@@ -81,7 +97,7 @@ body {
 }
 
 .entry-content h2 {
-  @apply text-2xl font-semibold mt-6 mb-3 pt-2 text-gray-800;
+  @apply text-2xl font-semibold mt-8 mb-4 py-1 pl-4 text-ink border-l-4 border-accent;
 }
 
 .entry-content h3 {
@@ -144,17 +160,98 @@ body {
 
 /* コードブロック（fileName, pre, code） */
 .entry-content span.fileName {
-  @apply inline-block bg-gray-600 text-white text-xs px-3 py-1 font-mono rounded-t-md;
+  @apply inline-block bg-gray-600 text-white text-xs px-3 py-1 font-mono;
 }
 
 .entry-content pre {
-  @apply p-4 overflow-x-auto rounded-none m-0;
+  @apply p-4 overflow-x-auto m-0;
 }
 
 .entry-content code {
-  @apply bg-gray-200 text-gray-800 px-1 py-0.5 rounded text-sm font-mono;
+  @apply bg-gray-200 text-gray-800 px-1 py-0.5 text-sm font-mono;
 }
 
 .entry-content pre code {
   @apply bg-transparent text-inherit p-0;
+}
+
+/* ヒーロー演出（トップページのみ） */
+.hero {
+  @apply text-center py-16 md:py-20;
+}
+
+.hero-title {
+  @apply text-2xl md:text-3xl font-bold text-ink tracking-wide;
+}
+
+.hero-cubes {
+  @apply flex items-end justify-center gap-2 mb-6;
+  height: 20px;
+}
+
+.hero-cube {
+  @apply bg-accent;
+  width: 14px;
+  height: 14px;
+  opacity: 0;
+  animation: cube-tumble 900ms cubic-bezier(0.22, 0.8, 0.24, 1) forwards;
+  animation-delay: calc(var(--i) * 80ms);
+}
+
+.hero-cube:nth-child(even) {
+  animation-name: cube-tumble-reverse;
+}
+
+@keyframes cube-tumble {
+  0% {
+    opacity: 0;
+    transform: translate(calc(var(--i) * -18px - 40px), -60px) rotate(-140deg)
+      scale(0.6);
+  }
+  45% {
+    opacity: 1;
+    transform: translate(calc(var(--i) * 6px - 10px), 10px) rotate(180deg)
+      scale(1.05);
+  }
+  75% {
+    transform: translate(calc(var(--i) * -2px), -6px) rotate(300deg) scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(0, 0) rotate(360deg) scale(1);
+  }
+}
+
+@keyframes cube-tumble-reverse {
+  0% {
+    opacity: 0;
+    transform: translate(calc(var(--i) * 18px + 40px), -60px) rotate(140deg)
+      scale(0.6);
+  }
+  45% {
+    opacity: 1;
+    transform: translate(calc(var(--i) * -6px + 10px), 10px) rotate(-180deg)
+      scale(1.05);
+  }
+  75% {
+    transform: translate(calc(var(--i) * 2px), -6px) rotate(-300deg) scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(0, 0) rotate(-360deg) scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-cube {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .hero-cube:nth-child(n + 6) {
+    display: none;
+  }
 }

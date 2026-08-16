@@ -2,6 +2,7 @@
 // src/layouts/Layout.astro
 import Header from "@components/Header.astro";
 import Footer from "@components/Footer.astro";
+import Hero from "@components/Hero.astro";
 import { getSettings } from "@libs/microcms.ts";
 import "@styles/global.css";
 const settings = await getSettings();
@@ -30,7 +31,7 @@ const ogType = Meta.ogType ? Meta.ogType : "blog";
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&family=JetBrains+Mono:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
     <!-- OG settings -->
@@ -46,8 +47,9 @@ const ogType = Meta.ogType ? Meta.ogType : "blog";
   </head>
   <body>
     <Header title={siteTitle} />
+    {isHome && <Hero title={siteTitle} />}
     <main
-      class="flex-1 container mx-auto px-4 md:px-6 py-12 grid grid-cols-1 md:grid-cols-[3fr_1fr] gap-8"
+      class="flex-1 max-w-[1600px] w-full mx-auto px-4 md:px-6 xl:px-10 py-12 grid grid-cols-1 md:grid-cols-[3fr_1fr] gap-8"
     >
       <slot />
     </main>
