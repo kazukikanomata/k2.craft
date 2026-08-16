@@ -3,6 +3,7 @@
 @theme {
   --font-body: "Noto Sans JP", sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  --font-dot: "DotGothic16", "JetBrains Mono", monospace;
   --color-ink: #171717;
   --color-muted: #6b7280;
   --color-line: #e5e7eb;
@@ -72,10 +73,43 @@ body {
 }
 
 /* リンク（a の text-decoration: none は @layer base で全局に適用） */
-.entry-content a {
-  @apply underline text-blue-600 hover:underline hover:text-blue-800 transition font-normal;
+.entry-content a:not(.link-card) {
+  @apply underline text-accent hover:underline hover:text-accent-hover transition font-normal;
   text-decoration-color: currentColor;
   text-decoration-thickness: 1px;
+}
+
+/* リンクプレビューカード（WordPress風のURL埋め込み） */
+.link-card {
+  @apply flex items-stretch gap-4 border border-line no-underline transition my-6 overflow-hidden;
+}
+
+.link-card:hover {
+  @apply border-accent;
+}
+
+.link-card-thumb {
+  @apply w-28 sm:w-40 shrink-0 bg-gray-100 overflow-hidden;
+}
+
+.link-card-thumb img {
+  @apply w-full h-full object-cover;
+}
+
+.link-card-body {
+  @apply flex flex-col justify-center gap-1 py-3 pr-4 min-w-0;
+}
+
+.link-card-title {
+  @apply text-sm sm:text-base font-medium text-ink line-clamp-2;
+}
+
+.link-card-desc {
+  @apply text-xs text-muted line-clamp-2;
+}
+
+.link-card-domain {
+  @apply text-xs font-mono text-muted mt-1;
 }
 
 /* 画像とキャプション */
@@ -181,77 +215,13 @@ body {
 }
 
 .hero-title {
-  @apply text-2xl md:text-3xl font-bold text-ink tracking-wide;
-}
-
-.hero-cubes {
-  @apply flex items-end justify-center gap-2 mb-6;
-  height: 20px;
+  @apply text-3xl md:text-4xl font-normal text-ink tracking-[0.18em];
+  font-family: var(--font-dot);
 }
 
 .hero-cube {
-  @apply bg-accent;
-  width: 14px;
-  height: 14px;
-  opacity: 0;
-  animation: cube-tumble 900ms cubic-bezier(0.22, 0.8, 0.24, 1) forwards;
-  animation-delay: calc(var(--i) * 80ms);
-}
-
-.hero-cube:nth-child(even) {
-  animation-name: cube-tumble-reverse;
-}
-
-@keyframes cube-tumble {
-  0% {
-    opacity: 0;
-    transform: translate(calc(var(--i) * -18px - 40px), -60px) rotate(-140deg)
-      scale(0.6);
-  }
-  45% {
-    opacity: 1;
-    transform: translate(calc(var(--i) * 6px - 10px), 10px) rotate(180deg)
-      scale(1.05);
-  }
-  75% {
-    transform: translate(calc(var(--i) * -2px), -6px) rotate(300deg) scale(0.95);
-  }
-  100% {
-    opacity: 1;
-    transform: translate(0, 0) rotate(360deg) scale(1);
-  }
-}
-
-@keyframes cube-tumble-reverse {
-  0% {
-    opacity: 0;
-    transform: translate(calc(var(--i) * 18px + 40px), -60px) rotate(140deg)
-      scale(0.6);
-  }
-  45% {
-    opacity: 1;
-    transform: translate(calc(var(--i) * -6px + 10px), 10px) rotate(-180deg)
-      scale(1.05);
-  }
-  75% {
-    transform: translate(calc(var(--i) * 2px), -6px) rotate(-300deg) scale(0.95);
-  }
-  100% {
-    opacity: 1;
-    transform: translate(0, 0) rotate(-360deg) scale(1);
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .hero-cube {
-    animation: none;
-    opacity: 1;
-    transform: none;
-  }
-}
-
-@media (max-width: 640px) {
-  .hero-cube:nth-child(n + 6) {
-    display: none;
-  }
+  display: block;
+  width: clamp(220px, 46vw, 320px);
+  aspect-ratio: 1 / 1;
+  margin: 0 auto 24px;
 }

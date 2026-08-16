@@ -3,6 +3,7 @@ import { getBlogDetail, getCategoryList } from "@libs/microcms.ts";
 import Layout from "@layouts/Layout.astro";
 import BlogPost from "@components/BlogPost.astro";
 import CategoryList from "@components/CategoryList.astro";
+import Breadcrumbs from "@components/Breadcrumbs.astro";
 export const prerender = false;
 
 const { id } = Astro.params;
@@ -35,6 +36,21 @@ const Meta = {
 ---
 
 <Layout Meta={Meta}>
+  {
+    blog && (
+      <Breadcrumbs
+        slot="breadcrumbs"
+        items={
+          blog.category?.length > 0
+            ? [
+                { label: blog.category[0].name, href: `/category/${blog.category[0].id}` },
+                { label: blog.title },
+              ]
+            : [{ label: blog.title }]
+        }
+      />
+    )
+  }
   <div class="space-y-8">
     {
       blog ? (

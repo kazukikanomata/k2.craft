@@ -7,6 +7,7 @@ import {
   tocExtractor,
 } from "microcms-rich-editor-handler";
 import Date from "@components/Date.astro";
+import { linkPreviewTransformer } from "@libs/linkPreview";
 import type { Category } from "@libs/microcms";
 
 const { blog } = Astro.props;
@@ -31,6 +32,7 @@ if (blog.content) {
             class: "fileName",
           },
         }),
+        linkPreviewTransformer(),
       ],
       extractors: {
         toc: [

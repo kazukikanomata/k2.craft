@@ -1,5 +1,6 @@
 ---
 import Layout from "@layouts/Layout.astro";
+import Breadcrumbs from "@components/Breadcrumbs.astro";
 import { getSettings } from "@libs/microcms.ts";
 export const prerender = true;
 const settings = await getSettings();
@@ -11,6 +12,7 @@ const Meta = {
 ---
 
 <Layout Meta={Meta}>
+  <Breadcrumbs slot="breadcrumbs" items={[{ label: "About" }]} />
   <article class="prose max-w-none">
     <h1 class="text-3xl font-medium mb-3 leading-normal">About</h1>
     <div set:html={settings.about} class="entry-content" />
