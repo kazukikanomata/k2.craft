@@ -76,11 +76,14 @@ jobs:
         working-directory: infra/prod
         run: terraform init -backend-config=backend.hcl
 
+      # cloudflare_workers_scriptのassetsはapply時にAPIから都度セッション値を取得する
+      # センシティブ属性なので、ここで保存したplanをapply時にそのまま使うと
+      # "Provider produced inconsistent final plan"エラーになる。
+      # そのためここではplanは承認前の確認表示専用とし、-outでの保存はしない
+      # (実際の適用はapplyジョブでplanしなおして行う)
       - name: Terraform plan
         working-directory: infra/prod
-        run: |
-          terraform plan -out=tfplan
-          terraform show -no-color tfplan > plan.txt
+        run: terraform plan -no-color -input=false | tee plan.txt
 
       - name: Show plan in job summary
         working-directory: infra/prod
@@ -91,14 +94,6 @@ jobs:
             cat plan.txt
             echo '```'
           } >> "$GITHUB_STEP_SUMMARY"
-
-      # applyは"この計画のまま"実行したいので、planではなくtfplanバイナリごと渡す
-      - name: Upload plan
-        uses: actions/upload-artifact@v4
-        with:
-          name: tfplan
-          path: infra/prod/tfplan
-          retention-days: 1
 
   apply:
     needs: plan
@@ -114,22 +109,18 @@ jobs:
           name: worker-build
           path: app/dist
 
-      - name: Download plan
-        uses: actions/download-artifact@v4
-        with:
-          name: tfplan
-          path: infra/prod
-
       - uses: hashicorp/setup-terraform@v3
         with:
           terraform_version: "1.9.8"
 
-      # apply時はplanファイルに値が埋め込み済みなのでterraform.tfvarsは不要。
-      # backend(state保存先)への接続情報だけ用意する
-      - name: Write Terraform backend config
+      # assetsのセンシティブ属性がapply時に確定する都合上、保存planは使わずここで
+      # plan/applyを一括実行する。そのためbackend.hclに加えてterraform.tfvarsも必要
+      - name: Write Terraform config
         working-directory: infra/prod
         env:
           ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          CF_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          COMPATIBILITY_DATE: ${{ vars.TF_COMPATIBILITY_DATE }}
           R2_ACCESS_KEY_ID: ${{ secrets.CLOUDFLARE_R2_ACCESS_KEY_ID }}
           R2_SECRET_ACCESS_KEY: ${{ secrets.CLOUDFLARE_R2_SECRET_ACCESS_KEY }}
         run: |
@@ -140,10 +131,16 @@ jobs:
           secret_key = "${R2_SECRET_ACCESS_KEY}"
           EOF
 
+          cat > terraform.tfvars <<EOF
+          account_id                   = "${ACCOUNT_ID}"
+          cloudflare_account_api_token = "${CF_API_TOKEN}"
+          compatibility_date           = "${COMPATIBILITY_DATE}"
+          EOF
+
       - name: Terraform init
         working-directory: infra/prod
         run: terraform init -backend-config=backend.hcl
 
       - name: Terraform apply
         working-directory: infra/prod
-        run: terraform apply tfplan
+        run: terraform apply -auto-approve
