@@ -1,0 +1,149 @@
+name: Deploy
+
+on:
+  push:
+    branches: [main]
+
+concurrency:
+  group: deploy-prod
+  cancel-in-progress: false
+
+jobs:
+  plan:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+        with:
+          package_json_file: app/package.json
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: pnpm
+          cache-dependency-path: app/pnpm-lock.yaml
+
+      - name: Install dependencies
+        working-directory: app
+        run: pnpm install --frozen-lockfile
+
+      - name: Build & bundle worker
+        working-directory: app
+        env:
+          MICROCMS_API_KEY: ${{ secrets.MICROCMS_API_KEY }}
+          MICROCMS_SERVICE_DOMAIN: ${{ secrets.MICROCMS_SERVICE_DOMAIN }}
+        run: pnpm run deploy
+
+      # apply側でも同じビルド成果物を使う(ビルドし直すとcontent_sha256がズレるリスクがあるため)
+      - name: Upload worker build
+        uses: actions/upload-artifact@v4
+        with:
+          name: worker-build
+          path: |
+            app/dist/worker-bundle.mjs
+            app/dist/client
+          retention-days: 1
+
+      - uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: "1.9.8"
+
+      # backend.hcl / terraform.tfvars はgit管理外(READMEの運用と同じ)なのでCI上で都度生成する
+      - name: Write Terraform config
+        working-directory: infra/prod
+        env:
+          ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          CF_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          COMPATIBILITY_DATE: ${{ vars.TF_COMPATIBILITY_DATE }}
+          R2_ACCESS_KEY_ID: ${{ secrets.CLOUDFLARE_R2_ACCESS_KEY_ID }}
+          R2_SECRET_ACCESS_KEY: ${{ secrets.CLOUDFLARE_R2_SECRET_ACCESS_KEY }}
+        run: |
+          cat > backend.hcl <<EOF
+          bucket     = "blog-tfstate"
+          endpoints  = { s3 = "https://${ACCOUNT_ID}.r2.cloudflarestorage.com" }
+          access_key = "${R2_ACCESS_KEY_ID}"
+          secret_key = "${R2_SECRET_ACCESS_KEY}"
+          EOF
+
+          cat > terraform.tfvars <<EOF
+          account_id                   = "${ACCOUNT_ID}"
+          cloudflare_account_api_token = "${CF_API_TOKEN}"
+          compatibility_date           = "${COMPATIBILITY_DATE}"
+          EOF
+
+      - name: Terraform init
+        working-directory: infra/prod
+        run: terraform init -backend-config=backend.hcl
+
+      - name: Terraform plan
+        working-directory: infra/prod
+        run: |
+          terraform plan -out=tfplan
+          terraform show -no-color tfplan > plan.txt
+
+      - name: Show plan in job summary
+        working-directory: infra/prod
+        run: |
+          {
+            echo "### Terraform Plan"
+            echo '```'
+            cat plan.txt
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      # applyは"この計画のまま"実行したいので、planではなくtfplanバイナリごと渡す
+      - name: Upload plan
+        uses: actions/upload-artifact@v4
+        with:
+          name: tfplan
+          path: infra/prod/tfplan
+          retention-days: 1
+
+  apply:
+    needs: plan
+    runs-on: ubuntu-latest
+    # このEnvironmentにRequired reviewersを設定しておくと、ここで承認待ちになる
+    environment: production
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Download worker build
+        uses: actions/download-artifact@v4
+        with:
+          name: worker-build
+          path: app/dist
+
+      - name: Download plan
+        uses: actions/download-artifact@v4
+        with:
+          name: tfplan
+          path: infra/prod
+
+      - uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: "1.9.8"
+
+      # apply時はplanファイルに値が埋め込み済みなのでterraform.tfvarsは不要。
+      # backend(state保存先)への接続情報だけ用意する
+      - name: Write Terraform backend config
+        working-directory: infra/prod
+        env:
+          ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          R2_ACCESS_KEY_ID: ${{ secrets.CLOUDFLARE_R2_ACCESS_KEY_ID }}
+          R2_SECRET_ACCESS_KEY: ${{ secrets.CLOUDFLARE_R2_SECRET_ACCESS_KEY }}
+        run: |
+          cat > backend.hcl <<EOF
+          bucket     = "blog-tfstate"
+          endpoints  = { s3 = "https://${ACCOUNT_ID}.r2.cloudflarestorage.com" }
+          access_key = "${R2_ACCESS_KEY_ID}"
+          secret_key = "${R2_SECRET_ACCESS_KEY}"
+          EOF
+
+      - name: Terraform init
+        working-directory: infra/prod
+        run: terraform init -backend-config=backend.hcl
+
+      - name: Terraform apply
+        working-directory: infra/prod
+        run: terraform apply tfplan
