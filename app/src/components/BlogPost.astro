@@ -9,6 +9,7 @@ import {
 import Date from "@components/Date.astro";
 import { linkPreviewTransformer } from "@libs/linkPreview";
 import type { Category } from "@libs/microcms";
+import ShareButton from "@components/ShareButton.astro";
 
 const { blog } = Astro.props;
 
@@ -113,4 +114,8 @@ blog.content = html;
   }
 
   <div set:html={blog.content} class="entry-content prose max-w-none" />
+
+  <div class="not-prose mt-8 border-t border-line pt-8">
+    <ShareButton title={blog.title} />
+  </div>
 </article>
