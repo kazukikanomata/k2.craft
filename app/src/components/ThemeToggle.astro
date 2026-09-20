@@ -1,0 +1,52 @@
+---
+// src/components/ThemeToggle.astro
+// ライト/ダークの切り替えボタン。現在の状態はhtmlの.darkクラスで判定し、
+// アイコンの出し分けはdark:バリアントのみで行うためJSでの判定は不要。
+// 初回表示の状態はLayout.astro側の同期スクリプト(FOUC対策)で先に確定させる。
+---
+
+<button
+  id="theme-toggle"
+  type="button"
+  class="flex w-11 h-11 items-center justify-center border border-line hover:border-accent transition-colors"
+  aria-label="ダークモードを切り替える"
+>
+  <svg
+    class="block h-5 w-5 dark:hidden"
+    xmlns="http://www.w3.org/2000/svg"
+    fill="none"
+    viewBox="0 0 24 24"
+    stroke="currentColor"
+    stroke-width="2"
+    aria-hidden="true"
+  >
+    <path
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      d="M12 3v1.5m0 15V21m9-9h-1.5m-15 0H3m15.364-6.364l-1.06 1.06M6.697 17.303l-1.06 1.06m0-12.727l1.06 1.06m10.607 10.607l1.06 1.06M16.5 12a4.5 4.5 0 11-9 0 4.5 4.5 0 019 0z"
+    ></path>
+  </svg>
+  <svg
+    class="hidden h-5 w-5 dark:block"
+    xmlns="http://www.w3.org/2000/svg"
+    fill="none"
+    viewBox="0 0 24 24"
+    stroke="currentColor"
+    stroke-width="2"
+    aria-hidden="true"
+  >
+    <path
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z"
+    ></path>
+  </svg>
+</button>
+
+<script>
+  const button = document.getElementById("theme-toggle");
+  button?.addEventListener("click", () => {
+    const isDark = document.documentElement.classList.toggle("dark");
+    localStorage.setItem("theme", isDark ? "dark" : "light");
+  });
+</script>

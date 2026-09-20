@@ -1,0 +1,132 @@
+---
+// src/components/TableOfContents.astro
+// 記事詳細ページの目次。同じpropsでmobile/desktopの2箇所にレンダリングされ、
+// CSS(global.cssの.toc-mobile/.toc-desktop)でどちらか一方だけを表示する。
+// 開閉状態はlocalStorageで両インスタンス間・ページ間で共有する。
+export type TocItem = {
+  id: string;
+  text: string;
+  level: number;
+};
+
+interface Props {
+  items: TocItem[];
+  variant: "mobile" | "desktop";
+}
+
+const { items, variant }: Props = Astro.props;
+
+const indent = (level: number): string => {
+  if (level <= 2) return "";
+  if (level === 3) return "pl-4";
+  return "pl-8";
+};
+---
+
+<div class:list={["toc-wrapper", variant === "mobile" ? "toc-mobile" : "toc-desktop"]}>
+  <button
+    type="button"
+    data-toc-toggle
+    class="toc-toggle"
+    aria-label="目次を開閉する"
+    aria-expanded="true"
+  >
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      class="h-4 w-4"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke="currentColor"
+      stroke-width="2"
+      aria-hidden="true"
+    >
+      <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h7"></path>
+    </svg>
+    <span class="text-sm font-medium">目次</span>
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      class="toc-toggle-chevron h-3 w-3 transition-transform duration-200"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke="currentColor"
+      stroke-width="2"
+      aria-hidden="true"
+    >
+      <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+    </svg>
+  </button>
+
+  <nav class="toc-nav" aria-label="目次" data-toc-highlight={variant === "desktop" ? "true" : "false"}>
+    <ol class="toc-list">
+      {
+        items.map((item) => (
+          <li class={indent(item.level)}>
+            <a href={`#${item.id}`} class="toc-link" data-toc-link data-toc-target={item.id}>
+              {item.text}
+            </a>
+          </li>
+        ))
+      }
+    </ol>
+  </nav>
+</div>
+
+<script>
+  const STORAGE_KEY = "toc-state";
+
+  const wrappers = document.querySelectorAll<HTMLElement>(".toc-wrapper");
+
+  const applyOpenState = (isOpen: boolean) => {
+    wrappers.forEach((wrapper) => {
+      const nav = wrapper.querySelector<HTMLElement>(".toc-nav");
+      const toggle = wrapper.querySelector<HTMLButtonElement>("[data-toc-toggle]");
+      const chevron = wrapper.querySelector<HTMLElement>(".toc-toggle-chevron");
+      if (!nav || !toggle) return;
+      nav.hidden = !isOpen;
+      toggle.setAttribute("aria-expanded", String(isOpen));
+      chevron?.classList.toggle("rotate-180", !isOpen);
+    });
+  };
+
+  const initialOpen = localStorage.getItem(STORAGE_KEY) !== "close";
+  applyOpenState(initialOpen);
+
+  wrappers.forEach((wrapper) => {
+    const toggle = wrapper.querySelector<HTMLButtonElement>("[data-toc-toggle]");
+    toggle?.addEventListener("click", () => {
+      const nowOpen = wrapper.querySelector<HTMLElement>(".toc-nav")?.hidden ?? false;
+      applyOpenState(nowOpen);
+      localStorage.setItem(STORAGE_KEY, nowOpen ? "open" : "close");
+    });
+  });
+
+  // デスクトップ版のみ、現在読んでいる見出しをハイライトする
+  const highlightNav = document.querySelector<HTMLElement>('[data-toc-highlight="true"]');
+  if (highlightNav) {
+    const links = highlightNav.querySelectorAll<HTMLAnchorElement>("[data-toc-target]");
+    const headings = Array.from(links)
+      .map((link) => document.getElementById(link.dataset.tocTarget ?? ""))
+      .filter((el): el is HTMLElement => el !== null);
+
+    if (headings.length > 0) {
+      const setActive = (id: string) => {
+        links.forEach((link) => {
+          link.classList.toggle("toc-link--active", link.dataset.tocTarget === id);
+        });
+      };
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          for (const entry of entries) {
+            if (entry.isIntersecting) {
+              setActive(entry.target.id);
+            }
+          }
+        },
+        { rootMargin: "0px 0px -80% 0px", threshold: 0 }
+      );
+
+      headings.forEach((heading) => observer.observe(heading));
+    }
+  }
+</script>
