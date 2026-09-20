@@ -1,85 +1,39 @@
 ---
 // src/components/BlogPost.astro
-import {
-  microCMSRichEditorHandler,
-  responsiveImageTransformer,
-  codeBlockFileNameTransformer,
-  tocExtractor,
-} from "microcms-rich-editor-handler";
 import Date from "@components/Date.astro";
-import { linkPreviewTransformer } from "@libs/linkPreview";
-import type { Category } from "@libs/microcms";
 import ShareButton from "@components/ShareButton.astro";
 import MarkdownCopyButton from "@components/MarkdownCopyButton.astro";
 import TableOfContents, { type TocItem } from "@components/TableOfContents.astro";
-import TurndownService from "turndown";
+import { CATEGORIES } from "@constants/index.ts";
+import type { Post } from "@libs/blog.ts";
 
-const { blog } = Astro.props;
-
-let html = "";
-let toc: TocItem[] = [];
-
-if (blog.content) {
-  const { html: transformedHtml, data } = await microCMSRichEditorHandler(
-    blog.content,
-    {
-      transformers: [
-        responsiveImageTransformer(),
-        codeBlockFileNameTransformer({
-          attributes: {
-            class: "fileName",
-          },
-        }),
-        linkPreviewTransformer(),
-      ],
-      extractors: {
-        toc: [
-          tocExtractor({
-            ignoreLevels: [4, 5],
-          }),
-        ],
-      },
-    }
-  );
-
-  html = transformedHtml;
-  toc = data.toc;
+interface Props {
+  post: Post;
+  toc: TocItem[];
 }
 
-blog.content = html;
+const { post, toc } = Astro.props;
+const { title, icon, publishedAt, category } = post.data;
 
-// microCMSのリッチエディタはHTMLで記事を保持しているため(Markdownソースが無い)、
-// コピー用にレンダリング後のHTMLからMarkdownへ変換する。
-const turndownService = new TurndownService({
-  headingStyle: "atx",
-  codeBlockStyle: "fenced",
-});
-const markdown = html ? `# ${blog.title}\n\n${turndownService.turndown(html)}` : "";
+// 記事のMarkdownソースをそのままコピー用に渡す
+const markdown = `# ${title}\n\n${post.body ?? ""}`;
 ---
 
 <article class="prose dark:prose-invert max-w-none">
-  {
-    blog.thumbnail?.url && (
-      <img
-        src={`${blog.thumbnail.url}?q=70&w=1200`}
-        alt={blog.title}
-        class="w-full aspect-video object-cover mb-8 not-prose"
-      />
-    )
-  }
+  <div class="not-prose mb-6 text-6xl leading-none" aria-hidden="true">{icon}</div>
 
-  <h1 class="text-3xl font-medium mb-3 leading-normal text-ink">{blog.title}</h1>
+  <h1 class="text-3xl font-medium mb-3 leading-normal text-ink">{title}</h1>
 
   <p class="mb-4">
-    <Date date={blog.publishedAt || blog.createdAt} />
+    <Date date={publishedAt} />
   </p>
 
   <div class="flex flex-wrap gap-2 mb-8">
     {
-      blog.category?.length > 0 ? (
-        blog.category.map((cat: Category) => (
-          <a href={`/category/${cat.id}`} class="tag">
-            {cat.name}
+      category.length > 0 ? (
+        category.map((name) => (
+          <a href={`/category/${CATEGORIES[name]}`} class="tag">
+            {name}
           </a>
         ))
       ) : (
@@ -90,13 +44,12 @@ const markdown = html ? `# ${blog.title}\n\n${turndownService.turndown(html)}` :
 
   {toc.length > 0 && <TableOfContents items={toc} variant="mobile" />}
 
-  <div class="not-prose lg:grid lg:grid-cols-[minmax(0,1fr)_220px] lg:items-start lg:gap-8">
-    <div set:html={blog.content} class="entry-content prose dark:prose-invert max-w-none" />
-    {toc.length > 0 && <TableOfContents items={toc} variant="desktop" />}
+  <div class="entry-content prose dark:prose-invert max-w-none">
+    <slot />
   </div>
 
   <div class="not-prose mt-8 flex flex-wrap items-center justify-between gap-4 border-t border-line pt-8">
-    <ShareButton title={blog.title} />
+    <ShareButton title={title} />
     <MarkdownCopyButton markdown={markdown} />
   </div>
 </article>

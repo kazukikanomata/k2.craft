@@ -1,63 +1,46 @@
 ---
-import { getCategoryList, getBlogList } from "@libs/microcms.ts";
+import { categories, getPostsByCategory, paginate } from "@libs/blog.ts";
 import Layout from "@layouts/Layout.astro";
 import BlogList from "@components/BlogList.astro";
 import Pagination from "@components/Pagination.astro";
 import CategoryList from "@components/CategoryList.astro";
 import Breadcrumbs from "@components/Breadcrumbs.astro";
-import { LIMIT } from "@constants/index.ts";
 export const prerender = true;
 
 export async function getStaticPaths() {
-  const { contents: categories } = await getCategoryList();
-  return categories.map((category) => ({
-    params: { id: category.id },
-  }));
+  return Promise.all(
+    categories.map(async (category) => {
+      const posts = await getPostsByCategory(category.slug);
+      return {
+        params: { id: category.slug },
+        props: { category, posts: paginate(posts, 1), totalCount: posts.length },
+      };
+    })
+  );
 }
 
-const { id } = Astro.params;
-
-const { contents: categories } = await getCategoryList();
-
-const category = categories.find((cat) => cat.id === id);
-
-const { contents: blogs, totalCount } = category
-  ? await getBlogList({
-      limit: LIMIT,
-      filters: `category[contains]${category.id}`,
-    })
-  : { contents: [], totalCount: 0 };
+const { category, posts, totalCount } = Astro.props;
 
 const Meta = {
-  title: category ? `${category.name} の記事一覧` : "カテゴリが見つかりません",
+  title: `${category.name} の記事一覧`,
 };
 ---
 
 <Layout Meta={Meta}>
-  {category && <Breadcrumbs slot="breadcrumbs" items={[{ label: category.name }]} />}
+  <Breadcrumbs slot="breadcrumbs" items={[{ label: category.name }]} />
   <div class="space-y-8">
-    <h1 class="text-xl font-medium mb-6">
-      {category ? `${category.name} の記事一覧` : "カテゴリが見つかりません"}
-    </h1>
+    <h1 class="text-xl font-medium mb-6">{category.name} の記事一覧</h1>
 
-    {
-      category ? (
-        <>
-          <BlogList blogs={blogs} />
-          <Pagination
-            totalCount={totalCount}
-            current={1}
-            basePath={`/category/${id}`}
-            category={id}
-          />
-        </>
-      ) : (
-        <p>このカテゴリは存在しません。</p>
-      )
-    }
+    <BlogList posts={posts} />
+    <Pagination
+      totalCount={totalCount}
+      current={1}
+      basePath={`/category/${category.slug}`}
+      category={category.slug}
+    />
   </div>
 
   <div class="space-y-8">
-    <CategoryList categories={categories} />
+    <CategoryList />
   </div>
 </Layout>

@@ -1,6 +1,6 @@
 # 概要
 
-WordPressサイト (https://www.voyage-to-the-new-world.com/) を、microCMS + Astro + Cloudflare Workers構成にモダン化するプロジェクト。
+WordPressサイト (https://www.voyage-to-the-new-world.com/) を、Markdown(Git管理) + Astro + Cloudflare Workers構成にモダン化するプロジェクト。
 
 技術選定の背景は [ADR/0001-tech-stack.md](./ADR/0001-tech-stack.md) を参照。
 
@@ -11,7 +11,8 @@ WordPressサイト (https://www.voyage-to-the-new-world.com/) を、microCMS + A
 ```mermaid
 flowchart LR
     subgraph Build["ビルド時"]
-        microCMS[(microCMS)] -- 記事取得 --> Astro[Astro build]
+        Markdown[(記事 Markdown\nsrc/content/blog)] -- 読み込み --> Astro[Astro build]
+        microCMS[(microCMS\nサイト設定のみ)] -- 取得 --> Astro
         Astro --> Assets[dist/client\n静的アセット]
         Astro --> Bundle[dist/worker-bundle.mjs\nSSRコード]
     end
@@ -31,16 +32,16 @@ flowchart LR
     end
 ```
 
-- **記事コンテンツ**: microCMSで管理。Astroがビルド時にAPI経由で取得し、ページとして焼き込む(実行時にmicroCMSへは問い合わせない)
+- **記事コンテンツ**: `app/src/content/blog/`のMarkdownファイルをGitで管理する。Astro Content Collectionsがビルド時に読み込み、すべてのページ(記事・一覧・カテゴリ)を静的HTMLとして焼き込む。サイト設定(タイトル・ABOUT)のみmicroCMSから取得する。実行時にmicroCMSへは問い合わせない
 - **アプリ本体**: Astro(`app/`)。`pnpm run deploy`でビルド後、esbuildで単一ファイルのWorkerコード(`dist/worker-bundle.mjs`)と静的アセット(`dist/client`)を生成する
-- **配信**: Cloudflare Worker(`astro-simple-blog`)がSSRと静的アセット配信を両方担う。カスタムドメイン(`k2-craft.com`)経由でリクエストを受ける
+- **配信**: Cloudflare Worker(`astro-simple-blog`)が静的アセットを配信する(`output: "server"`のままだが、全ページを`prerender`しているため実行時のSSRは発生しない)。カスタムドメイン(`k2-craft.com`)経由でリクエストを受ける
 - **インフラのコード管理**: Cloudflareの Zone / DNS / Worker はすべて`infra/prod/`のTerraformで管理し、`wrangler deploy`は使わない。stateは`infra/bootstrap`で作成したR2バケットに保存する
 
 ## 構成
 
-- **記事の管理・編集**: [microCMS](https://microcms.io/)（管理画面はmicroCMS側のものをそのまま使用）
-- **サイト本体**: `app/` — Astro製。microCMSから記事を取得してビルド・配信する
-- **移行ツール**: `scripts/` — WordPressの記事をmicroCMSへ一度だけ移すためのスクリプト群
+- **記事の管理・編集**: Markdownファイル(`app/src/content/blog/`)。サイト設定のみ[microCMS](https://microcms.io/)
+- **サイト本体**: `app/` — Astro製。Markdownの記事をビルドして配信する
+- **移行ツール**: `scripts/` — WordPressの記事をmicroCMSへ一度だけ移したスクリプト群。`app/scripts/migrate-microcms-to-markdown.mjs`はmicroCMSの記事をMarkdownへ移した一度きりのスクリプト
 - **インフラ**: `infra/` — Cloudflareリソース(Zone/DNS/Worker/KV)をTerraformで管理する
 
 ## セットアップ
