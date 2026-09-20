@@ -1,3 +1,7 @@
+// サイトのタイトルと説明(ヘッダー・<title>・meta descriptionに使う)
+export const SITE_TITLE = "k2.craft";
+export const SITE_DESCRIPTION = "設計思想とか作ったものの紹介とかを提供する";
+
 // 1ページの表示件数
 export const LIMIT = 10;
 

@@ -3,16 +3,13 @@
 import Header from "@components/Header.astro";
 import Footer from "@components/Footer.astro";
 import Hero from "@components/Hero.astro";
-import { getSettings } from "@libs/microcms.ts";
+import { SITE_TITLE, SITE_DESCRIPTION } from "@constants/index.ts";
 import "@styles/global.css";
-const settings = await getSettings();
-const siteTitle = settings.title;
-const siteDescription = settings.description;
 const url = new URL(Astro.url.pathname, Astro.site);
 const isHome = Astro.url.pathname === "/";
 const { Meta } = Astro.props;
-const pageTitle = isHome ? siteTitle : `${Meta.title} | ${siteTitle}`;
-const pageDescription = Meta.description ? Meta.description : siteDescription;
+const pageTitle = isHome ? SITE_TITLE : `${Meta.title} | ${SITE_TITLE}`;
+const pageDescription = Meta.description ? Meta.description : SITE_DESCRIPTION;
 const ogImage = Meta.image
   ? Meta.image
   : new URL("/assets/images/og.png", Astro.site);
@@ -53,7 +50,7 @@ const ogType = Meta.ogType ? Meta.ogType : "blog";
       rel="stylesheet"
     />
     <!-- OG settings -->
-    <meta property="og:site_name" content={siteTitle} />
+    <meta property="og:site_name" content={SITE_TITLE} />
     <meta property="og:title" content={pageTitle} />
     <meta property="og:image" content={ogImage} />
     <meta property="og:description" content={pageDescription} />
@@ -64,14 +61,14 @@ const ogType = Meta.ogType ? Meta.ogType : "blog";
     <link rel="canonical" href={url} />
   </head>
   <body>
-    {!isHome && <Header title={siteTitle} />}
-    {isHome && <Hero title={siteTitle} />}
+    {!isHome && <Header title={SITE_TITLE} />}
+    {isHome && <Hero title={SITE_TITLE} />}
     <slot name="breadcrumbs" />
     <main
       class="flex-1 max-w-[1600px] w-full mx-auto px-4 md:px-6 xl:px-10 py-12 grid grid-cols-1 md:grid-cols-[3fr_1fr] gap-8"
     >
       <slot />
     </main>
-    <Footer title={siteTitle} />
+    <Footer title={SITE_TITLE} />
   </body>
 </html>

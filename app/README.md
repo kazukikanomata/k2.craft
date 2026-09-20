@@ -8,21 +8,6 @@ Astroを使用したシンプルなブログのテンプレートです。
 
 Node.js 24 以上
 
-## 環境変数の設定
-
-ルート直下に`.env`ファイルを作成し、下記の情報を入力してください。
-
-```
-MICROCMS_API_KEY=xxxxxxxxxx
-MICROCMS_SERVICE_DOMAIN=xxxxxxxxxx
-```
-
-`MICROCMS_API_KEY`  
-microCMS 管理画面の「サービス設定 > API キー」から確認することができます。
-
-`MICROCMS_SERVICE_DOMAIN`  
-microCMS 管理画面の URL（https://xxxxxxxx.microcms.io）の xxxxxxxx の部分です。
-
 ## 開発の仕方
 
 1. パッケージのインストール
@@ -42,4 +27,4 @@ pnpm dev
 
 ## 記事の書き方
 
-記事は `app/src/content/blog/<slug>.md` のMarkdownファイルで管理します(ファイル名がそのまま `/blog/<slug>` のURLになります)。`pnpm new:article <slug>` でひな形(下書き)を作れます。書き方の詳細は [docs/WRITING_GUIDE.md](docs/WRITING_GUIDE.md) を参照してください。microCMSはサイト設定(タイトル・ABOUT)の取得にのみ使います。
+記事は `app/src/content/blog/<slug>.md` のMarkdownファイルで管理します(ファイル名がそのまま `/blog/<slug>` のURLになります)。`pnpm new:article <slug>` でひな形(下書き)を作れます。書き方の詳細は [docs/WRITING_GUIDE.md](docs/WRITING_GUIDE.md) を参照してください。

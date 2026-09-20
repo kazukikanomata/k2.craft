@@ -1,8 +1,7 @@
 ---
 // src/components/MarkdownCopyButton.astro
 // 記事本文をMarkdownとしてクリップボードにコピーするボタン。
-// k2-craft(microCMS)はリッチテキストHTMLで記事を保持しているため、
-// 呼び出し元(BlogPost.astro)でHTML→Markdown変換した結果を受け取る。
+// 呼び出し元(BlogPost.astro)から記事のMarkdownソースを受け取る。
 interface Props {
   markdown: string;
 }
