@@ -30,7 +30,7 @@ sapper-blog-app-mainは「Gitに保存したMarkdown下書き ⇔ Contentful(本
 - [x] frontmatterスキーマを設計する(zod) → 「frontmatterスキーマ」参照。**`slug`は現行の`/blog/[id]`のURLと一致させ、既存URLを壊さない**
 - [x] ディレクトリ構成を決定する: `src/content/blog/<microCMSのid>.md`(Astro Content Collectionsの規約に合わせる)
 - [x] Markdown処理パイプラインの構成を決める → 「新パイプラインの構成」参照
-- [x] 画像の扱いを決める: microCMSを画像CDNとして残す(理由は「Phase A 調査結果」参照)
+- [x] 画像の扱いを決める: サムネイルは廃止して絵文字アイコンに置き換え、本文中の画像はリポジトリ内に移行する(「画像の扱い」参照。Phase Cで対応)
 
 ## Phase A 調査結果
 
@@ -40,27 +40,27 @@ sapper-blog-app-mainは「Gitに保存したMarkdown下書き ⇔ Contentful(本
 
 - 記事は **43件**、カテゴリは8件(生成AI / IT tech / 学び / 心理 / エンタメ / 本 / ニュース / 就活)
 - 複数カテゴリを持つ記事は4件(いずれも「IT tech」+ 別カテゴリ)。現行の関連記事は`category[0]`のみ使用している
-- サムネイル未設定の記事が1件(`dn7_nib0c`)。現行の`noimg.png`フォールバックを引き続き使う
+- サムネイルを設定している記事は42件、未設定が1件(`dn7_nib0c`)。サムネイルは廃止して絵文字アイコンに置き換えるため、`noimg.png`のフォールバックはPhase Dで不要になる
 - 記事のidは全件 `[a-z0-9_-]` のみで、そのままファイル名・URLに使える(例: `fh8ik9_vzsx`)
 - 現行URL `/blog/[id]` の `id` は**microCMSのcontent id**であり、WordPress時代のslug(`backup/import-map.json`の`slug`)ではない。したがって`slug`にはmicroCMSのidを使う
 - `createdAt`は移行実施日(2026-08-03)で、元記事の投稿日は`publishedAt`(2021〜)に入っている。表示は既に`publishedAt || createdAt`なので、frontmatterの日付は`publishedAt`のみでよい
-- `updatedAt`と`revisedAt`は全件同値のため、`updatedAt`のみ引き継ぐ
+- `updatedAt`と`revisedAt`は全件同値。ただし移行・編集作業の日付で意味を持たないため、引き継がないことにした(Phase C)
 
 ### 本文HTMLの使用状況(移行スクリプトの複雑さ)
 
-| 要素 | 状況 | 移行への影響 |
-| --- | --- | --- |
-| 動画・iframe埋め込み | **0件** | 対応不要 |
-| インラインstyle・class | **0件** | turndownの標準ルールでほぼ変換できる |
-| 画像 | 174枚、すべて`images.microcms-assets.io` | URLをそのまま保持できる(下記の画像方針) |
-| `<figure>`内の画像 | 174件のうち19件が`<a>`で包まれた画像リンク、`figcaption`付きは2件 | 画像リンクは`[![](src)](href)`に変換 |
-| コードブロック | 17記事・66ブロック(47ブロックが複数行)。**`<pre><code>`のみで言語クラス・ファイル名が無い** | シンタックスハイライトには言語が必要。ファイル名タブ用の情報は既存データに存在しない(`data-filename`は0件) |
-| リンクカード | 12記事。`<p><a>`(タイトル/抜粋/ドメイン)が同一hrefで2〜3個連続する形。最大は`dn7_nib0c`の8個 | 専用のturndownルールが必要(下記) |
-| アフィリエイトリンク | 1記事(もしもアフィリエイト) | 同じカード構造で混在。通常リンクとして残す |
-| テーブル | 6個。`<th>`なし、`colspan`/`rowspan`は全て`1` | GFMテーブルにはヘッダー行が必須。先頭行をヘッダー扱いにする |
-| `<h1>`を含む記事 | 3件(`8vpu92mzr` / `e48k7w9oskd` / `yg2-76a7dmif`) | 記事タイトルが`h1`のため、`h2`へ降格する |
-| ネストしたリスト | 28記事 | turndownは対応。変換後に目視確認 |
-| 見出しの`id` | `hd92040d0df`のようなランダム値 | `rehype-slug`で再生成されるため、既存の見出しアンカーURLは変わる(個人ブログのため許容) |
+| 要素                   | 状況                                                                                         | 移行への影響                                                                                               |
+| ---------------------- | -------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- |
+| 動画・iframe埋め込み   | **0件**                                                                                      | 対応不要                                                                                                   |
+| インラインstyle・class | **0件**                                                                                      | turndownの標準ルールでほぼ変換できる                                                                       |
+| 本文中の画像           | 174枚(サムネイル42枚は別)、すべて`images.microcms-assets.io`                                 | ダウンロードしてリポジトリ内に移す(下記の画像方針)                                                         |
+| `<figure>`内の画像     | 174件のうち19件が`<a>`で包まれた画像リンク、`figcaption`付きは2件                            | 画像リンクは`[![](src)](href)`に変換                                                                       |
+| コードブロック         | 17記事・66ブロック(47ブロックが複数行)。**`<pre><code>`のみで言語クラス・ファイル名が無い**  | シンタックスハイライトには言語が必要。ファイル名タブ用の情報は既存データに存在しない(`data-filename`は0件) |
+| リンクカード           | 12記事。`<p><a>`(タイトル/抜粋/ドメイン)が同一hrefで2〜3個連続する形。最大は`dn7_nib0c`の8個 | 専用のturndownルールが必要(下記)                                                                           |
+| アフィリエイトリンク   | 1記事(もしもアフィリエイト)                                                                  | 同じカード構造で混在。通常リンクとして残す                                                                 |
+| テーブル               | 6個。`<th>`なし、`colspan`/`rowspan`は全て`1`                                                | GFMテーブルにはヘッダー行が必須。先頭行をヘッダー扱いにする                                                |
+| `<h1>`を含む記事       | 3件(`8vpu92mzr` / `e48k7w9oskd` / `yg2-76a7dmif`)                                            | 記事タイトルが`h1`のため、`h2`へ降格する                                                                   |
+| ネストしたリスト       | 28記事                                                                                       | turndownは対応。変換後に目視確認                                                                           |
+| 見出しの`id`           | `hd92040d0df`のようなランダム値                                                              | `rehype-slug`で再生成されるため、既存の見出しアンカーURLは変わる(個人ブログのため許容)                     |
 
 ### 現行コードで置き換えが必要な箇所
 
@@ -72,7 +72,7 @@ sapper-blog-app-mainは「Gitに保存したMarkdown下書き ⇔ Contentful(本
 
 ### frontmatterスキーマ
 
-`src/content.config.ts`(Phase Bで作成。Phase Aでは未使用コードを残さないためファイルは作らない)。
+`src/content.config.ts`。**以下はPhase Aでの設計時点の案で、実装は`src/content.config.ts`を正とする**(`thumbnail`→`icon`、`category`は名前のenum、`updatedAt`は削除)。
 
 ```ts
 import { defineCollection, z } from "astro:content";
@@ -84,9 +84,7 @@ const blog = defineCollection({
     title: z.string(),
     description: z.string().max(120), // 現行のmicroCMS側の上限と同じ
     category: z.array(z.string()).default([]),
-    thumbnail: z
-      .object({ url: z.string().url(), width: z.number(), height: z.number() })
-      .optional(),
+    icon: z.emoji(),
     publishedAt: z.coerce.date(),
     updatedAt: z.coerce.date().optional(),
     published: z.boolean().default(true),
@@ -120,46 +118,71 @@ Markdown → remark-gfm → (リンクカード/アラートのremarkプラグ�
 - リンクカード: 移行スクリプトが、連続する同一href段落を「単独行のURL」に変換する。表示時はremarkプラグインがOGPを取得する。`prerender`にする場合はビルド時取得になるため、現行の`linkPreview.ts`にある`cf`キャッシュオプションは不要になる
 - コードブロックの言語: 既存の66ブロックには言語情報が無いため、Phase Cで内容から推定した言語を付与する(または`text`のままにする)。推定結果はレビュー対象にする
 
-### 画像の扱い: microCMSを画像CDNとして残す
+### 画像の扱い: サムネイルは絵文字アイコンに、本文の画像はリポジトリ内へ
 
-- 174枚すべてが`images.microcms-assets.io`にあり、frontmatterの`thumbnail`と本文の画像URLをそのまま保持すれば移行の手間がゼロ
-- `public/`や`astro:assets`への移行は174枚のダウンロード・リネーム・リンク書き換えが必要で、得られるのは外部依存の削減のみ
-- 現行のimageService(`cloudflare`)は、Cloudflare Imagesの最適化を引き続き使える
-- 将来microCMSを解約する場合は、その時点で別途移行する
+「外部サービス依存を減らしたい」という方針(検討事項へのコメント)と、「作品集は別アプリで表現する」という前提から、画像を次のように整理した。
+
+- **サムネイル(42枚)は廃止する**: 記事ごとにfrontmatterの`icon`(絵文字1つ)を持たせ、記事上部・一覧・関連記事にアイコンとして表示する。既存43記事にはPhase Cで内容に合った絵文字を割り当てる。OGP画像は既存の`og.png`を使う
+- **本文中の画像(174枚、うち19枚はリンク付き)は残す**: Phase Cの移行スクリプトでダウンロードして、Markdownの画像参照をローカルパスに書き換える。置き場所は`astro:assets`(`src/`配下)を第一候補とし、Cloudflare Images(`imageService: "cloudflare"`)による最適化は引き続き効く
+- 記事画像のみでリポジトリサイズは数十MB程度の想定(ダウンロード後に実測する)
+- `getSettings`は引き続きmicroCMSに残るため、microCMS自体の解約はこの計画の範囲外
+- `z.emoji()`は絵文字の連続(`🚀🚀`)も通すため、1つだけという制約はスキーマでは保証しない
+- 絵文字は彩度を持つ表示物になるため、Phase Dの実装時にDESIGN.mdの色の例外として追記する
 
 ### 未決定(要判断)
 
-- アラート記法: GitHub式(`> [!WARNING]`)を推奨。理由はエディタ・GitHubのプレビューでも読めるため。Phase Bの着手時に確定する
+- ~~アラート記法~~: GitHub式(`> [!WARNING]`)に確定(Phase Bで実装済み)
 - `output: "server"`維持か静的化か: 記事はビルド時に確定するため静的化を推奨。ただしCloudflare Worker + Terraform構成への影響(`bundle-worker.mjs`など)の確認が必要で、Phase Dで判断する
 - カテゴリー管理: 8件のみのため、frontmatterの文字列配列で十分と考える。説明文が必要になったら別途検討する
 
-### Phase B: 新パイプラインの実装(未着手)
+### Phase B: 新パイプラインの実装(完了)
 
 sapperの`markdownToHtml.ts`相当を、Astro Content Collectionsの`render()`と組み合わせて構築する。
 
-- [ ] `remark-gfm`: テーブル・打ち消し線・タスクリストなどのGFM記法対応
-- [ ] `rehype-pretty-code`(shiki): シンタックスハイライト。ダーク/ライト両対応のテーマを選定する
-- [ ] `rehype-slug` + `rehype-autolink-headings`: 見出しへのアンカーリンク自動付与
-- [ ] 独自のアラート(Warning/Note等)remark/rehypeプラグイン、またはgithub-style admonitionに対応した既存パッケージの導入
-- [ ] リンクカード変換: 既存の`linkPreviewTransformer`をremarkプラグインとして書き直す
-- [ ] TOC抽出: 既存の`tocExtractor`相当をremark/rehypeベースで再実装(見出しリストを`render()`の戻り値から取得する形にする)
-- [ ] コードブロックのファイル名タブ表示(既存の`codeBlockFileNameTransformer`相当)
+- [x] `remark-gfm`: テーブル・打ち消し線・タスクリストなどのGFM記法対応 → Astroの既定でGFMが有効なため追加パッケージは不要。表・打ち消し線・タスクリスト・URL自動リンクの出力を確認済み
+- [x] `rehype-pretty-code`(shiki): シンタックスハイライト。`github-light` / `github-dark`のCSS変数によるデュアルテーマ。言語指定なしのブロックは`plaintext`として処理する
+- [x] `rehype-slug` + `rehype-autolink-headings`: 見出しへのアンカーリンク自動付与。`#`はCSSの疑似要素で描画する(本文テキストにするとTOCの見出し名に混入するため)
+- [x] アラート: `remark-github-blockquote-alert`を導入。DESIGN.mdの方針に合わせて無彩色で表示する
+- [x] リンクカード変換: `src/libs/remarkLinkCard.ts`。単独行のURLをビルド時にOGP取得してカード化する(OGP取得とカードHTMLは既存の`linkPreview.ts`を共用。旧`linkPreviewTransformer`はPhase Dで削除する)
+- [x] TOC抽出: `render()`の戻り値`headings`(`{ depth, slug, text }`)をそのまま使える。`TableOfContents`の`TocItem`(`{ id, text, level }`)への変換と`depth <= 3`の絞り込みはPhase Dで配線する
+- [x] コードブロックのファイル名タブ表示: ` ```ts title="hello.ts" `の記法で表示する(rehype-pretty-codeの標準機能)
 
-### Phase C: 移行スクリプトの作成(未着手)
+### Phase C: 移行スクリプトの作成(完了)
 
-- [ ] microCMSから全記事を取得するスクリプト(既存の`getBlogList()`を利用、ページング対応)
-- [ ] 記事本文のHTML→Markdown変換(`turndown`。Phase 3で導入済み)
-  - [ ] リンクカード・ファイル名付きコードブロックなど、microCMS特有のHTML構造に対するカスタムturndownルールを用意する
-- [ ] frontmatter生成(`category`は参照型からシンプルな文字列配列に変換、`thumbnail`はmicroCMSの画像URLをそのまま保持)
-- [ ] `src/content/blog/<slug>.md`への書き出し
-- [ ] 変換結果のレビュー(全件 or サンプル)。特にリンクカード・コードブロック・表の崩れを確認する
+`app/scripts/migrate-microcms-to-markdown.mjs`(`cd app && node scripts/migrate-microcms-to-markdown.mjs`)。microCMSからGETで全件取得し、`src/content/blog/<id>.md`と`src/assets/blog/<id>/`を書き出す。何度実行しても同じ結果になる(ダウンロード済みの画像は再取得しない)。実行済みで、43記事・174個の画像参照(ダウンロードした画像ファイルは98個・8.4MB。同じ記事内で同じ画像を繰り返し使っているため)が出力されている。
 
-### Phase D: ルーティングの切り替え(未着手)
+- [x] microCMSから全記事を取得(ページング対応。`getBlogList()`はViteの`import.meta.env`に依存しNodeスクリプトから使えないため、fetchで直接取得)
+- [x] 記事本文のHTML→Markdown変換(`turndown`)
+  - [x] リンクカード: 同じhrefの段落が連続するもの(12記事・20件)を単独行のURLに変換する。表示時に`remarkLinkCard`がカード化する
+  - [x] 画像リンク(`<figure><a><img>`)は`[![](画像)](リンク)`、`figcaption`は斜体の1行に変換する
+  - [x] テーブル6個: `<th>`が無いため先頭行をヘッダー行にする。セル内の複数段落・リストは`<br>`でつなぐ
+  - [x] コードブロック: 言語を内容から推定して付与する(sh 12 / php 10 / java 10 / jsonc 4 / sql 4 / js 3 / ruby 2 / go 1 / html 1 / xml 1 / text 18)。ChatGPTのプロンプト例・コミットメッセージなど推定できないものは`text`。**ファイル名タブ用の情報は元データに無いため付与していない**
+  - [x] 本文に`<h1>`がある3記事は、見出し階層を1段下げる(h1→h2, h2→h3…)
+- [x] frontmatter生成(`category`は名前の文字列配列、`icon`は記事ごとに割り当てた絵文字、`publishedAt`)。`updatedAt`は移行・編集作業の日付で記事の更新日として意味がないため引き継いでいない
+- [x] 本文中の画像をダウンロードして`src/assets/blog/<id>/<n>.<ext>`に配置し、Markdownの参照を相対パスに書き換える。`astro:assets`で処理され、Cloudflare Imagesの経路で配信されることをビルドで確認済み
+- [x] `src/content/blog/<id>.md`への書き出し(43件)
+- [x] 変換結果の確認: 43記事すべてを新パイプラインでレンダリングして確認した(HTMLの取り残しなし、画像174枚がすべてローカル、テーブル6個、コードブロック78個)。**個々の記事の見た目・文章の目視レビューは未実施**
 
-- [ ] `src/pages/blog/[id].astro`を、microCMS APIではなくContent Collectionsのクエリに置き換える
-- [ ] `getRelatedBlogs`(Phase 2で実装)をContent Collectionsのタグ/カテゴリで再実装する
-- [ ] 一覧ページ・カテゴリページ・ページネーションも同様に切り替える
-- [ ] `output: "server"`のままにするか、記事ページを`prerender = true`の静的生成に変えるか判断する(Markdownファイルはビルド時に確定するため、静的化するとより高速・低コストになる)
+#### 変換結果で気づいたこと
+
+- **重複記事**: `zaft3p8g9d`と`zxk6leqo0`はタイトル・本文が同一(公開日のみ異なる)。片方は不要な可能性が高いが、削除はしていない
+- **リンクカードにならないURL**: OGPを取得できない3種(`kantei.go.jp`のPDF・404の`forge.laravel.com`・例示のURL`example.com`)は通常のリンクのまま表示される。もともとカードだったPDFは、タイトル・抜粋を失う
+- **カード化の対象が広がった**: 旧実装は「同じリンクが2個以上連続する場合のみ」カード化していたが、新実装は「URLだけの行」を全てカード化する。元記事に単独で書かれていたURL行も、OGPが取れればカードになる
+- 元データにある全角スペースのインデント(`　`)がコードブロック内にそのまま残っている
+
+### Phase D: ルーティングの切り替え(完了)
+
+記事・一覧・カテゴリ・関連記事のすべてをContent Collectionsに切り替えた。全ページが`prerender = true`(静的HTML)になり、実行時にmicroCMSへ問い合わせるページはなくなった。
+
+- [x] `src/pages/blog/[id].astro`をContent Collectionsに置き換え、`getStaticPaths`で43記事すべてを静的生成する(`/blog/<id>`のURLは変わらない)
+- [x] 関連記事: 最初のカテゴリが同じ記事を新着順に(`src/libs/blog.ts`の`getRelatedPosts`)
+- [x] 一覧・カテゴリ・ページネーションを切り替え。カテゴリのURLは`/category/<microCMS時代のid>`のまま(`src/constants/index.ts`の`CATEGORIES`に、カテゴリ名→slugを定義)。frontmatterの`category`はこの一覧のenumで検証されるため、名前の打ち間違いはビルドで検出できる
+- [x] `output: "server"`のまま、全ページを静的生成にした。`infra/prod`のTerraformはWorker + `app/dist/client`の静的アセットをデプロイする構成で、`prerender`したページはそのまま配信される(`bundle-worker.mjs`・Terraformの変更は不要)
+- [x] 絵文字アイコンの表示(記事上部・一覧・関連記事)。TOCは`render()`の`headings`(`depth <= 3`)から生成し、記事ページのサイドバーにカテゴリー一覧の代わりに表示する
+- [x] 不要になったコードの削除: `microcms.ts`の記事・カテゴリ取得、`microcms-rich-editor-handler`(依存ごと)、旧`linkPreviewTransformer`とWorkers用の`cf`オプション、`blogContent.ts`、`noimg.png`、旧コードブロックのCSS。`turndown`は移行スクリプトでのみ使うため`devDependencies`に移した
+- 記事の「Markdownをコピー」ボタンは、HTMLから変換せずMarkdownのソースをそのまま渡す(ソースの画像は相対パスのまま)
+- `draftKey`によるmicroCMSプレビューは使えなくなった。下書きの扱いはPhase E
+- frontmatterの`updatedAt`は表示にも使わないためスキーマから外した
 
 ### Phase E: 新規記事作成フローの整備(未着手)
 
@@ -170,13 +193,17 @@ sapperの`markdownToHtml.ts`相当を、Astro Content Collectionsの`render()`�
 ## 検討事項(実装前に決めること)
 
 - **Astro Content Collectionsを採用するか**: 本計画は採用を前提に書いているが、既存コードとの親和性を含めて最終確認する
-- **アラート記法の構文**: GitHub式(`> [!WARNING]`)にするか、独自の絵文字プレフィックス等にするか
+- **アラート記法の構文**: GitHub式(`> [!WARNING]`)にするか、独自の絵文字プレフィックス等にするか。
+  - Github形式でいいかも
 - **画像の置き場所**: microCMSを画像CDNとして残すか、Astroの`astro:assets`によるローカル最適化に完全移行するか(後者は移行の手間が増えるが、外部サービス依存が減る)
+  - 外部サービス依存を減らしたい
 - **カテゴリー管理**: frontmatterの文字列配列だけで十分か、カテゴリー一覧・説明文を別途持つ仕組み(sapperのContentfulの`Tag`相当)が必要か
+- あんまり必要性がわからない
 - **`output: "server"`を維持するか、静的生成に寄せるか**: Cloudflare Worker + Terraformの現行インフラ構成([README.md](README.md)参照)への影響も含めて判断する
+- 現行の構成を意識したい
 
 ## 対応しないこと(今回のスコープ外)
 
 - sapperのようなGit×Contentfulのハイブリッド運用(k2-craftの規模では過剰)
 - 記事の理解度チェック(選択式クイズ)機能(別件、plan.md Phase 3で見送り済み)
-- microCMSの完全廃止(画像CDNとしての利用は残す想定)
+- microCMSの完全廃止(設定情報`settings`の取得は残す想定)
