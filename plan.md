@@ -77,6 +77,7 @@ PR #5とPR #6がマージされた後の`main`で、[BlogPost.astro](app/src/com
 - Phase 1で`TableOfContents.astro`に置き換えたはずの旧TOC実装(`<aside>`ブロック)の残骸が、閉じタグや`return (`などの断片として本文中に残存しており、未定義の`item`/`levelClass`を参照していた
 - **影響**: `pnpm run build`は`/blog/[id]`が`prerender = false`のSSRルートのため検知できず、実際にページを開いたときのみ500エラーになる状態だった
 - **再発防止**: `pnpm run typecheck`(`astro check`)を新規追加した。今回のバグはビルドでは検知できずtypecheckでのみ検知できるため、CI等に組み込むことを推奨する
+- **CI組み込み**: [.github/workflows/ci.yml](.github/workflows/ci.yml)を新規追加(PR #8)。PR作成・更新時に`lint` → `typecheck` → `build`を実行する。これまで`deploy.yml`はmainへのpush時のみでPRを検証する仕組みが無く、今回の不具合が検知されずにマージされてしまった根本原因だった
 
 ## ダークモード対応(サイト全体・記事詳細ページのスコープ外だが対応済み)
 
