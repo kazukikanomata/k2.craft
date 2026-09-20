@@ -55,11 +55,13 @@ sapper-blog-app-mainから「盗みたい」と判断した3つの技術を、�
   - 実装中に発見した不具合: ボタンを`pre.insertAdjacentElement("afterend", ...)`で兄弟要素として挿入すると、`pre`自身の`position: relative`が効かずページ右上(テーマ切り替えボタンの上)に張り付く不具合があったため、`pre.appendChild(...)`で子要素として追加するよう修正済み
 - [x] 本文中の画像をクリックしたときに拡大表示するモーダルを実装する(リンク内画像は除外、Escapeキーでも閉じられることを確認済み)
 
-### Phase 2: 記事の見つけやすさ・書きやすさ
+### Phase 2: 記事の見つけやすさ・書きやすさ(完了)
 
-- [ ] 関連記事セクションを追加する(microCMSのカテゴリ/タグから関連記事を取得するロジックが必要)
-- [ ] 記事下部にSNSシェアボタン(X、可能ならWeb Share API)を追加する
-- [ ] GitHubで修正を提案するボタンを追加する(k2-craftはmicroCMS管理のため、リンク先は要検討 → 下記「検討事項」参照)
+- [x] 関連記事セクションを追加する: **同一カテゴリから新着順**で取得(自身を除外、上限4件)
+  - 実装: [microcms.ts](app/src/libs/microcms.ts)に`getRelatedBlogs(categoryId, excludeId)`を追加(`category[contains]...[and]id[not_equals]...`、`orders: "-publishedAt"`)。[RelatedArticles.astro](app/src/components/RelatedArticles.astro)を新規作成し既存の`BlogList`を再利用、`[id].astro`から呼び出し
+- [x] 記事下部にSNSシェアボタン(X、可能ならWeb Share API)を追加する
+  - 実装: [ShareButton.astro](app/src/components/ShareButton.astro)。Xの共有リンクは常時表示、Web Share API対応環境(`"share" in navigator`)でのみネイティブ共有ボタンを表示。devサーバーで両方の生成URL・表示切り替えを確認済み
+- ~~GitHubで修正を提案するボタン~~: **見送り**。k2-craftはmicroCMS管理で記事ソースがGitHubに無く、sapper版と前提が異なるため対象外とする
 
 ### Phase 3: 発展的な機能(任意)
 
@@ -76,6 +78,10 @@ sapper-blog-app-mainから「盗みたい」と判断した3つの技術を、�
 - [x] `.entry-content`や`prose`など、トークン化していない`gray-*`直書き箇所に`dark:`バリアントを追加
 - [x] 実機確認: devサーバーでライト⇔ダーク切り替え、記事詳細ページの背景色・見出し色・アクセント色・`dark:prose-invert`の反映をブラウザの算出スタイルで確認済み
   - 副次的な発見: `BlogPost.astro`は現時点で`syntaxHighlightingByShikiTransformer`を使っておらず、コードブロックはシンタックスハイライトされていない(無色のグレー背景のみ)。そのためshikiのトークン単位インライン色とダークモードの衝突は今回は発生しない。将来的にシンタックスハイライトを追加する際は、ダーク/ライト両対応のshikiテーマ選定が別途必要になる
+
+## 対応しないこと(今回のスコープ外)
+
+- # Contributors(共同編集者表示): k2-craftは個人ブログでGitHubでの複数人編集フローも無いため対象外
 
 ### 検討事項(実装前に決めること)
 

@@ -1,9 +1,10 @@
 ---
-import { getBlogDetail, getCategoryList } from "@libs/microcms.ts";
+import { getBlogDetail, getCategoryList, getRelatedBlogs } from "@libs/microcms.ts";
 import Layout from "@layouts/Layout.astro";
 import BlogPost from "@components/BlogPost.astro";
 import CategoryList from "@components/CategoryList.astro";
 import Breadcrumbs from "@components/Breadcrumbs.astro";
+import RelatedArticles from "@components/RelatedArticles.astro";
 export const prerender = false;
 
 const { id } = Astro.params;
@@ -24,6 +25,12 @@ const blog = await getBlogDetail(id, draftKey ? { draftKey } : {});
 
 // カテゴリーリストを取得
 const { contents: categories } = await getCategoryList();
+
+// 関連記事(同一カテゴリから新着順)を取得
+const relatedBlogs =
+  blog && blog.category?.length > 0
+    ? (await getRelatedBlogs(blog.category[0].id, blog.id)).contents
+    : [];
 
 const Meta = {
   title: blog ? blog.title : "ブログ記事が見つかりません",
@@ -54,7 +61,10 @@ const Meta = {
   <div class="space-y-8">
     {
       blog ? (
-        <BlogPost blog={blog} />
+        <>
+          <BlogPost blog={blog} />
+          <RelatedArticles blogs={relatedBlogs} />
+        </>
       ) : (
         <p class="text-center text-lg">このブログ記事は存在しません。</p>
       )

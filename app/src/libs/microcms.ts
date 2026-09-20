@@ -53,6 +53,21 @@ export const getCategoryList = async (queries?: MicroCMSQueries) => {
   return client.getList<Category>({ endpoint: "categories", queries });
 };
 
+export const getRelatedBlogs = async (
+  categoryId: string,
+  excludeId: string,
+  limit = 4
+) => {
+  return await client.getList<Blog>({
+    endpoint: "blog",
+    queries: {
+      filters: `category[contains]${categoryId}[and]id[not_equals]${excludeId}`,
+      orders: "-publishedAt",
+      limit,
+    },
+  });
+};
+
 export const getSettings = async (): Promise<Settings> => {
   try {
     const data = await client.get({ endpoint: "settings" });
