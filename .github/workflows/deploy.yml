@@ -30,9 +30,6 @@ jobs:
 
       - name: Build & bundle worker
         working-directory: app
-        env:
-          MICROCMS_API_KEY: ${{ secrets.MICROCMS_API_KEY }}
-          MICROCMS_SERVICE_DOMAIN: ${{ secrets.MICROCMS_SERVICE_DOMAIN }}
         run: pnpm run deploy
 
       # apply側でも同じビルド成果物を使う(ビルドし直すとcontent_sha256がズレるリスクがあるため)
