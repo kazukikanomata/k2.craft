@@ -24,6 +24,7 @@ const { posts }: Props = Astro.props;
           >
             {data.icon}
           </div>
+          {!data.published && <span class="tag mb-2">Draft</span>}
           <h3 class="text-xl font-medium mb-1 text-ink">{data.title}</h3>
           <p class="mb-2">
             <Date date={data.publishedAt} />

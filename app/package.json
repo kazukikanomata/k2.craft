@@ -9,6 +9,7 @@
     "astro": "astro",
     "lint": "eslint .",
     "typecheck": "astro check",
+    "new:article": "node scripts/new-article.mjs",
     "deploy": "astro build && node scripts/bundle-worker.mjs"
   },
   "engines": {

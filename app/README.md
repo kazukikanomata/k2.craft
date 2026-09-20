@@ -42,4 +42,4 @@ pnpm dev
 
 ## 記事の書き方
 
-記事は `app/src/content/blog/<id>.md` のMarkdownファイルで管理します(ファイル名がそのまま `/blog/<id>` のURLになります)。frontmatterのスキーマは `app/src/content.config.ts` を参照してください。microCMSはサイト設定(タイトル・ABOUT)の取得にのみ使います。
+記事は `app/src/content/blog/<slug>.md` のMarkdownファイルで管理します(ファイル名がそのまま `/blog/<slug>` のURLになります)。`pnpm new:article <slug>` でひな形(下書き)を作れます。書き方の詳細は [docs/WRITING_GUIDE.md](docs/WRITING_GUIDE.md) を参照してください。microCMSはサイト設定(タイトル・ABOUT)の取得にのみ使います。

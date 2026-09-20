@@ -184,11 +184,11 @@ sapperの`markdownToHtml.ts`相当を、Astro Content Collectionsの`render()`�
 - `draftKey`によるmicroCMSプレビューは使えなくなった。下書きの扱いはPhase E
 - frontmatterの`updatedAt`は表示にも使わないためスキーマから外した
 
-### Phase E: 新規記事作成フローの整備(未着手)
+### Phase E: 新規記事作成フローの整備(完了)
 
-- [ ] 新規記事のスキャフォールディングスクリプト(sapperの`new:article`相当。frontmatterだけ埋まった空ファイルを生成)
-- [ ] 執筆ガイド文書(sapperの`BLOG_WRITING_GUIDE.md`/`writing-style.md`相当)を作成する
-- [ ] 下書き運用: `published: false`をfrontmatterに持たせ、一覧から除外しつつローカルでは確認できるようにする
+- [x] 新規記事のスキャフォールディングスクリプト: `pnpm new:article <slug>`(`app/scripts/new-article.mjs`)。下書き状態のひな形を`src/content/blog/<slug>.md`に作る。使えるカテゴリの一覧は`constants`の`CATEGORIES`から生成するため、二重管理にならない。既存ファイルの上書きと不正なslugは拒否する
+- [x] 執筆ガイド文書: `app/docs/WRITING_GUIDE.md`(frontmatter・対応するMarkdown記法・公開手順)。sapperの`writing-style.md`にあたる文体・トーンのルールは、書き手の方針が必要なため含めていない
+- [x] 下書き運用: `published: false`の記事は本番ビルドから除外し、`pnpm dev`のときだけ一覧・記事ページに「Draft」バッジ付きで表示する
 
 ## 検討事項(実装前に決めること)
 
