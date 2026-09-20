@@ -1,0 +1,48 @@
+name: CI
+
+on:
+  pull_request:
+
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+        with:
+          package_json_file: app/package.json
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: pnpm
+          cache-dependency-path: app/pnpm-lock.yaml
+
+      - name: Install dependencies
+        working-directory: app
+        run: pnpm install --frozen-lockfile
+
+      - name: Lint
+        working-directory: app
+        run: pnpm run lint
+
+      # astro checkはprerender=falseのページも含めて型チェックするため、
+      # buildでは検知できないランタイムエラー(未importの参照等)もここで検知できる
+      - name: Typecheck
+        working-directory: app
+        env:
+          MICROCMS_API_KEY: ${{ secrets.MICROCMS_API_KEY }}
+          MICROCMS_SERVICE_DOMAIN: ${{ secrets.MICROCMS_SERVICE_DOMAIN }}
+        run: pnpm run typecheck
+
+      - name: Build
+        working-directory: app
+        env:
+          MICROCMS_API_KEY: ${{ secrets.MICROCMS_API_KEY }}
+          MICROCMS_SERVICE_DOMAIN: ${{ secrets.MICROCMS_SERVICE_DOMAIN }}
+        run: pnpm run build
