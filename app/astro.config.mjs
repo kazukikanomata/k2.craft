@@ -11,7 +11,7 @@ export default defineConfig({
   site: "https://k2-craft.com/",
   output: "server",
   adapter: cloudflare({
-    imageService: "cloudflare",
+    imageService: "compile",
   }),
   markdown: {
     // GFM(テーブル・打ち消し線・タスクリスト・URL自動リンク)はAstroの既定で有効
