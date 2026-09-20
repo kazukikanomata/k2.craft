@@ -35,14 +35,8 @@ jobs:
       # buildでは検知できないランタイムエラー(未importの参照等)もここで検知できる
       - name: Typecheck
         working-directory: app
-        env:
-          MICROCMS_API_KEY: ${{ secrets.MICROCMS_API_KEY }}
-          MICROCMS_SERVICE_DOMAIN: ${{ secrets.MICROCMS_SERVICE_DOMAIN }}
         run: pnpm run typecheck
 
       - name: Build
         working-directory: app
-        env:
-          MICROCMS_API_KEY: ${{ secrets.MICROCMS_API_KEY }}
-          MICROCMS_SERVICE_DOMAIN: ${{ secrets.MICROCMS_SERVICE_DOMAIN }}
         run: pnpm run build
