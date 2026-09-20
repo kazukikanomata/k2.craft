@@ -29,6 +29,7 @@ const markdown = `# ${title}\n\n${post.body ?? ""}`;
   </p>
 
   <div class="flex flex-wrap gap-2 mb-8">
+    {!post.data.published && <span class="tag">Draft</span>}
     {
       category.length > 0 ? (
         category.map((name) => (

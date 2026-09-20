@@ -9,9 +9,9 @@ export const categories = Object.entries(CATEGORIES).map(([name, slug]) => ({
   slug,
 }));
 
-// 公開済みの記事を新しい順に返す
+// 公開済みの記事を新しい順に返す。下書き(published: false)はローカル開発(dev)のときだけ含める
 export const getPosts = async (): Promise<Post[]> => {
-  const posts = await getCollection("blog", ({ data }) => data.published);
+  const posts = await getCollection("blog", ({ data }) => import.meta.env.DEV || data.published);
   return posts.sort((a, b) => b.data.publishedAt.valueOf() - a.data.publishedAt.valueOf());
 };
 
