@@ -1,0 +1,53 @@
+---
+// src/components/MarkdownCopyButton.astro
+// 記事本文をMarkdownとしてクリップボードにコピーするボタン。
+// k2-craft(microCMS)はリッチテキストHTMLで記事を保持しているため、
+// 呼び出し元(BlogPost.astro)でHTML→Markdown変換した結果を受け取る。
+interface Props {
+  markdown: string;
+}
+
+const { markdown }: Props = Astro.props;
+---
+
+<button
+  type="button"
+  data-markdown-copy
+  data-markdown={markdown}
+  class="flex h-11 items-center gap-2 border border-line px-4 text-sm text-muted transition-colors hover:border-accent hover:text-accent"
+>
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    fill="none"
+    viewBox="0 0 24 24"
+    stroke="currentColor"
+    stroke-width="2"
+    class="h-4 w-4"
+    aria-hidden="true"
+  >
+    <path
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+    ></path>
+  </svg>
+  <span data-markdown-copy-label>Markdownをコピー</span>
+</button>
+
+<script>
+  const button = document.querySelector<HTMLButtonElement>("[data-markdown-copy]");
+  const label = button?.querySelector<HTMLElement>("[data-markdown-copy-label]");
+
+  button?.addEventListener("click", () => {
+    const markdown = button.dataset.markdown ?? "";
+    navigator.clipboard.writeText(markdown);
+
+    if (label) {
+      const original = label.textContent;
+      label.textContent = "コピーしました";
+      setTimeout(() => {
+        label.textContent = original;
+      }, 1500);
+    }
+  });
+</script>

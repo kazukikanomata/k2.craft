@@ -63,10 +63,20 @@ sapper-blog-app-mainから「盗みたい」と判断した3つの技術を、�
   - 実装: [ShareButton.astro](app/src/components/ShareButton.astro)。Xの共有リンクは常時表示、Web Share API対応環境(`"share" in navigator`)でのみネイティブ共有ボタンを表示。devサーバーで両方の生成URL・表示切り替えを確認済み
 - ~~GitHubで修正を提案するボタン~~: **見送り**。k2-craftはmicroCMS管理で記事ソースがGitHubに無く、sapper版と前提が異なるため対象外とする
 
-### Phase 3: 発展的な機能(任意)
+### Phase 3: 発展的な機能(完了)
 
-- [ ] Markdownコピー ボタン(記事本文を丸ごとMarkdownとしてコピー)
-- [ ] 記事の理解度チェック(選択式クイズ)は、記事データにクイズ項目を持たせる仕組みが必要なため、必要性を再検討してから着手する
+- [x] Markdownコピー ボタン(記事本文を丸ごとMarkdownとしてコピー)
+  - k2-craft(microCMS)は記事をリッチテキストHTMLで保持しておりMarkdownソースが無いため、`turndown`でレンダリング後のHTMLをMarkdownに変換してコピーする方式にした([MarkdownCopyButton.astro](app/src/components/MarkdownCopyButton.astro))
+- ~~記事の理解度チェック(選択式クイズ)~~: **今回は見送り**。microCMSのBlogスキーマにクイズ用フィールドの新規追加が必要になり、CMS運用側の対応も伴うため
+
+### 重大な不具合の修正(Phase 3着手時に発見)
+
+PR #5とPR #6がマージされた後の`main`で、[BlogPost.astro](app/src/components/BlogPost.astro)が壊れていることが判明したため、Phase 3の実装前に修正した。
+
+- `TableOfContents`コンポーネントの`import`文がマージで消失し、`ReferenceError`になる状態だった
+- Phase 1で`TableOfContents.astro`に置き換えたはずの旧TOC実装(`<aside>`ブロック)の残骸が、閉じタグや`return (`などの断片として本文中に残存しており、未定義の`item`/`levelClass`を参照していた
+- **影響**: `pnpm run build`は`/blog/[id]`が`prerender = false`のSSRルートのため検知できず、実際にページを開いたときのみ500エラーになる状態だった
+- **再発防止**: `pnpm run typecheck`(`astro check`)を新規追加した。今回のバグはビルドでは検知できずtypecheckでのみ検知できるため、CI等に組み込むことを推奨する
 
 ## ダークモード対応(サイト全体・記事詳細ページのスコープ外だが対応済み)
 
@@ -81,16 +91,8 @@ sapper-blog-app-mainから「盗みたい」と判断した3つの技術を、�
 
 ## 対応しないこと(今回のスコープ外)
 
-- # Contributors(共同編集者表示): k2-craftは個人ブログでGitHubでの複数人編集フローも無いため対象外
-
-### 検討事項(実装前に決めること)
-
-- k2-craftはmicroCMS管理のため「GitHubで修正を提案する」の導線が sapper 版(Gitでcontentを管理)とは前提が異なる。記事ソースがGitHubにないため、代替(お問い合わせリンク等)にするか、そもそも見送るか要検討。
-- 関連記事の抽出ロジック(タグ一致数・カテゴリ一致など)をどう設計するか。
-- Contributors(共同編集者表示)はk2-craftが個人ブログのため対象外でよいか。
-
-## 対応しないこと(今回のスコープ外)
-
+- Contributors(共同編集者表示): k2-craftは個人ブログでGitHubでの複数人編集フローも無いため対象外
+- GitHubで修正を提案するボタン: k2-craftはmicroCMS管理で記事ソースがGitHubに無いため対象外(Phase 2で決定済み)
 - フレームワーク自体の変更(Astro→SvelteKit等)
 - モノレポ化
 - 記事管理フロー自体の変更(microCMSの運用方法)

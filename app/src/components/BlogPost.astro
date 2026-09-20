@@ -10,6 +10,9 @@ import Date from "@components/Date.astro";
 import { linkPreviewTransformer } from "@libs/linkPreview";
 import type { Category } from "@libs/microcms";
 import ShareButton from "@components/ShareButton.astro";
+import MarkdownCopyButton from "@components/MarkdownCopyButton.astro";
+import TableOfContents, { type TocItem } from "@components/TableOfContents.astro";
+import TurndownService from "turndown";
 
 const { blog } = Astro.props;
 
@@ -44,6 +47,14 @@ if (blog.content) {
 }
 
 blog.content = html;
+
+// microCMSのリッチエディタはHTMLで記事を保持しているため(Markdownソースが無い)、
+// コピー用にレンダリング後のHTMLからMarkdownへ変換する。
+const turndownService = new TurndownService({
+  headingStyle: "atx",
+  codeBlockStyle: "fenced",
+});
+const markdown = html ? `# ${blog.title}\n\n${turndownService.turndown(html)}` : "";
 ---
 
 <article class="prose dark:prose-invert max-w-none">
@@ -79,28 +90,14 @@ blog.content = html;
 
   {toc.length > 0 && <TableOfContents items={toc} variant="mobile" />}
 
-            return (
-              <li
-                class={`pl-4 list-none border-l-2 border-line ${levelClass}`}
-              >
-                <a
-                  href={`#${item.id}`}
-                  class="block font-normal no-underline hover:text-accent transition"
-                >
-                  {item.text}
-                </a>
-              </li>
-            );
-          })}
-        </ul>
-      </aside>
-    )
-  }
+  <div class="not-prose lg:grid lg:grid-cols-[minmax(0,1fr)_220px] lg:items-start lg:gap-8">
+    <div set:html={blog.content} class="entry-content prose dark:prose-invert max-w-none" />
+    {toc.length > 0 && <TableOfContents items={toc} variant="desktop" />}
+  </div>
 
-  <div set:html={blog.content} class="entry-content prose max-w-none" />
-
-  <div class="not-prose mt-8 border-t border-line pt-8">
+  <div class="not-prose mt-8 flex flex-wrap items-center justify-between gap-4 border-t border-line pt-8">
     <ShareButton title={blog.title} />
+    <MarkdownCopyButton markdown={markdown} />
   </div>
 </article>
 

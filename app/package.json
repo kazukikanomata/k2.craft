@@ -8,6 +8,7 @@
     "preview": "astro preview",
     "astro": "astro",
     "lint": "eslint .",
+    "typecheck": "astro check",
     "deploy": "astro build && node scripts/bundle-worker.mjs"
   },
   "engines": {
@@ -24,15 +25,19 @@
     "microcms-js-sdk": "^3.2.0",
     "microcms-rich-editor-handler": "^1.0.1",
     "shiki": "^1.29.2",
-    "tailwindcss": "^4.2.2"
+    "tailwindcss": "^4.2.2",
+    "turndown": "^7.2.4"
   },
   "devDependencies": {
+    "@astrojs/check": "^0.9.10",
+    "@types/turndown": "^5.0.6",
     "esbuild": "^0.28.1",
     "eslint": "^10.11.0",
     "eslint-plugin-astro": "^3.2.1",
     "globals": "^17.12.0",
     "prettier": "^3.5.3",
     "prettier-plugin-astro": "^0.14.1",
+    "typescript": "^5.9.3",
     "typescript-eslint": "^8.70.0",
     "wrangler": "^4.118.0"
   },
