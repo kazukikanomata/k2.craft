@@ -288,11 +288,7 @@ body {
   @apply mb-2 leading-relaxed;
 }
 
-/* コードブロック（fileName, pre, code） */
-.entry-content span.fileName {
-  @apply inline-block bg-gray-600 text-white text-xs px-3 py-1 font-mono;
-}
-
+/* コードブロック（pre, code） */
 .entry-content pre {
   @apply relative p-4 overflow-x-auto m-0;
 }
@@ -303,6 +299,67 @@ body {
 
 .entry-content pre code {
   @apply bg-transparent text-inherit p-0;
+}
+
+/* Markdown記事のコードブロック(rehype-pretty-code。ライト/ダークはshikiのCSS変数で切り替える) */
+.entry-content [data-rehype-pretty-code-figure] {
+  @apply my-4;
+}
+
+.entry-content [data-rehype-pretty-code-figure] pre {
+  @apply rounded-none border border-line bg-gray-50 text-ink dark:bg-gray-900;
+}
+
+.entry-content [data-rehype-pretty-code-figure] code span {
+  color: var(--shiki-light);
+}
+
+.dark .entry-content [data-rehype-pretty-code-figure] code span {
+  color: var(--shiki-dark);
+}
+
+.entry-content [data-rehype-pretty-code-title] {
+  @apply border border-b-0 border-line bg-gray-100 dark:bg-gray-800 text-ink text-xs px-3 py-1 font-mono;
+}
+
+/* タスクリスト(GFM)はチェックボックスがマーカーの代わりになるため、リストの点を消す */
+.entry-content .contains-task-list {
+  @apply list-none pl-0;
+}
+
+/* 見出しのアンカーリンク(rehype-autolink-headings)。ホバー/フォーカス時のみ表示する */
+.entry-content .heading-anchor {
+  @apply ml-2 font-mono text-muted no-underline opacity-0 transition-opacity;
+}
+
+.entry-content .heading-anchor::after {
+  content: "#";
+}
+
+.entry-content :is(h2, h3, h4):hover .heading-anchor,
+.entry-content .heading-anchor:focus-visible {
+  @apply opacity-100;
+}
+
+/* アラート(remark-github-blockquote-alert)。DESIGN.mdの無彩色方針に従い、種類はタイトルで区別する */
+.entry-content .markdown-alert {
+  @apply my-6 border border-line border-l-4 border-l-line-strong px-4 py-3;
+}
+
+.entry-content .markdown-alert > :first-child {
+  @apply mt-0;
+}
+
+.entry-content .markdown-alert > :last-child {
+  @apply mb-0;
+}
+
+.entry-content .markdown-alert-title {
+  @apply mb-2 flex items-center gap-2 font-mono text-sm font-bold text-ink;
+}
+
+.entry-content .markdown-alert-title svg {
+  @apply fill-current;
 }
 
 /* コードブロックのコピー ボタン(Phase 1: JSで挿入する) */
@@ -354,21 +411,18 @@ body {
   margin: 0 auto 24px;
 }
 
-/* 目次(TOC): mobileは本文上に固定表示、lg以上はdesktop版を本文横にstickyで表示する */
+/* 目次(TOC): mobileは本文上に表示、md以上はdesktop版を右サイドバーにstickyで表示する(Layoutのmainグリッドが2カラムになる幅) */
 .toc-desktop {
   display: none;
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 768px) {
   .toc-mobile {
     display: none;
   }
 
   .toc-desktop {
     display: block;
-  }
-
-  .toc-desktop .toc-wrapper {
     position: sticky;
     top: 1.5rem;
   }

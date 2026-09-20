@@ -1,39 +1,34 @@
 ---
 // src/components/BlogList.astro
 import Date from "@components/Date.astro";
-import type { Blog } from "@libs/microcms.ts";
+import type { Post } from "@libs/blog.ts";
 
 interface Props {
-  blogs: Blog[];
+  posts: Post[];
 }
 
-const { blogs }: Props = Astro.props;
+const { posts }: Props = Astro.props;
 ---
 
 {
-  blogs.length > 0 ? (
+  posts.length > 0 ? (
     <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-      {blogs.map((blog) => (
+      {posts.map(({ id, data }) => (
         <a
-          href={`/blog/${blog.id}`}
+          href={`/blog/${id}`}
           class="block border border-line p-4 hover:border-accent transition no-underline"
         >
-          <figure>
-            <img
-              src={
-                blog.thumbnail?.url
-                  ? `${blog.thumbnail.url}?q=60&w=400`
-                  : "/assets/images/noimg.png"
-              }
-              alt={blog.title}
-              class="w-full h-48 object-cover mb-4"
-            />
-          </figure>
-          <h3 class="text-xl font-medium mb-1 text-ink">{blog.title}</h3>
+          <div
+            class="mb-4 flex h-32 items-center justify-center bg-gray-50 text-5xl dark:bg-gray-900"
+            aria-hidden="true"
+          >
+            {data.icon}
+          </div>
+          <h3 class="text-xl font-medium mb-1 text-ink">{data.title}</h3>
           <p class="mb-2">
-            <Date date={blog.publishedAt || blog.createdAt} />
+            <Date date={data.publishedAt} />
           </p>
-          {blog.description && <p class="text-sm text-muted">{blog.description}</p>}
+          <p class="text-sm text-muted">{data.description}</p>
         </a>
       ))}
     </div>

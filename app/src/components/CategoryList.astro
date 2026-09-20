@@ -1,11 +1,6 @@
 ---
 // src/components/CategoryList.astro
-import type { Category } from "@libs/microcms.ts";
-
-interface Props {
-  categories: Category[];
-}
-const { categories } = Astro.props;
+import { categories } from "@libs/blog.ts";
 ---
 
 <div class="border border-line">
@@ -16,21 +11,17 @@ const { categories } = Astro.props;
   </div>
   <ul class="space-y-2 p-6">
     {
-      categories.length === 0 ? (
-        <li class="text-sm text-muted">カテゴリがありません</li>
-      ) : (
-        categories.map((category) => (
-          <li>
-            <a
-              href={`/category/${category.id}`}
-              class="flex items-center gap-2 text-sm text-ink hover:text-accent no-underline transition"
-            >
-              <span class="w-2 h-2 bg-accent shrink-0" aria-hidden="true" />
-              {category.name}
-            </a>
-          </li>
-        ))
-      )
+      categories.map((category) => (
+        <li>
+          <a
+            href={`/category/${category.slug}`}
+            class="flex items-center gap-2 text-sm text-ink hover:text-accent no-underline transition"
+          >
+            <span class="w-2 h-2 bg-accent shrink-0" aria-hidden="true" />
+            {category.name}
+          </a>
+        </li>
+      ))
     }
   </ul>
 </div>

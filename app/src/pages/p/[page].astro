@@ -1,31 +1,24 @@
 ---
-import { getBlogList, getCategoryList } from "@libs/microcms.ts";
+import { getPosts, paginate, totalPages } from "@libs/blog.ts";
 import Layout from "@layouts/Layout.astro";
 import BlogList from "@components/BlogList.astro";
 import Pagination from "@components/Pagination.astro";
 import CategoryList from "@components/CategoryList.astro";
 import Breadcrumbs from "@components/Breadcrumbs.astro";
-import { LIMIT } from "@constants/index.ts";
 export const prerender = true;
 
 export async function getStaticPaths() {
-  const { totalCount } = await getBlogList({ limit: 1 });
-  const totalPages = Math.ceil(totalCount / LIMIT);
+  const posts = await getPosts();
 
-  return Array.from({ length: totalPages }).map((_, i) => ({
+  return Array.from({ length: totalPages(posts.length) }).map((_, i) => ({
     params: { page: (i + 1).toString() },
+    props: { posts: paginate(posts, i + 1), totalCount: posts.length },
   }));
 }
 
 const { page } = Astro.params;
-const currentPage = Number(page) || 1;
-
-const { contents: blogs, totalCount } = await getBlogList({
-  limit: LIMIT,
-  offset: (currentPage - 1) * LIMIT,
-});
-
-const { contents: categories } = await getCategoryList();
+const { posts, totalCount } = Astro.props;
+const currentPage = Number(page);
 
 const Meta = {
   title: `Page ${currentPage}`,
@@ -35,11 +28,11 @@ const Meta = {
 <Layout Meta={Meta}>
   <Breadcrumbs slot="breadcrumbs" items={[{ label: `Page ${currentPage}` }]} />
   <div class="space-y-8">
-    <BlogList blogs={blogs} />
+    <BlogList posts={posts} />
     <Pagination totalCount={totalCount} current={currentPage} />
   </div>
 
   <div class="space-y-8">
-    <CategoryList categories={categories} />
+    <CategoryList />
   </div>
 </Layout>

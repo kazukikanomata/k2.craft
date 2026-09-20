@@ -24,10 +24,12 @@
     "astro": "^6.0.6",
     "dayjs": "^1.11.13",
     "microcms-js-sdk": "^3.2.0",
-    "microcms-rich-editor-handler": "^1.0.1",
+    "rehype-autolink-headings": "^7.1.0",
+    "rehype-pretty-code": "^0.14.5",
+    "rehype-slug": "^6.0.0",
+    "remark-github-blockquote-alert": "^2.1.0",
     "shiki": "^1.29.2",
-    "tailwindcss": "^4.2.2",
-    "turndown": "^7.2.4"
+    "tailwindcss": "^4.2.2"
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.10",
@@ -38,6 +40,7 @@
     "globals": "^17.12.0",
     "prettier": "^3.5.3",
     "prettier-plugin-astro": "^0.14.1",
+    "turndown": "^7.2.4",
     "typescript": "^5.9.3",
     "typescript-eslint": "^8.70.0",
     "wrangler": "^4.118.0"
