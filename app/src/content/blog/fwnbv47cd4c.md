@@ -1,6 +1,6 @@
 ---
 title: "【AWS 初学者】2分でEC2を理解する"
-description: "はじめに AWSの主力サービスのうち1つにEC2が挙げられます。このEC2というものがどういうものか？どんな設定ができるのか？を見ていきます。 対象読者 EC2とはなにか Amazon EC2（Elastic Compu"
+description: "AWSのEC2を初学者向けに解説。仮想サーバーの仕組み、インスタンスタイプ、起動方法、AWSリソースへのアクセスとSDKを説明する。"
 category: ["IT tech"]
 icon: "💻"
 publishedAt: "2024-07-22T11:20:28.000Z"

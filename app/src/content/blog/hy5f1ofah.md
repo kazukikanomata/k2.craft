@@ -1,6 +1,6 @@
 ---
 title: "【AWS初学者】AWS IAM（Identity and Access Management）の入門"
-description: "はじめに 実務でAWSを活用しており、今後AWSの資格を取得することを目指して、勉強に励んでいきたいと思っている。 これからAWSを勉強する人、もしくは今後資格を取得したり、AWSを活用する人の支えになってくれればいいと"
+description: "AWS IAMの入門。IAMユーザー・ポリシー・ロール・グループの役割を整理し、おまけとしてSTS(Security Token Service)の仕組みも紹介する。"
 category: ["IT tech"]
 icon: "🔒"
 publishedAt: "2024-06-24T00:02:32.000Z"
