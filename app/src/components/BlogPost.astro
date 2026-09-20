@@ -13,12 +13,6 @@ import ShareButton from "@components/ShareButton.astro";
 
 const { blog } = Astro.props;
 
-type TocItem = {
-  id: string;
-  text: string;
-  level: number;
-};
-
 let html = "";
 let toc: TocItem[] = [];
 
@@ -52,7 +46,7 @@ if (blog.content) {
 blog.content = html;
 ---
 
-<article class="prose max-w-none">
+<article class="prose dark:prose-invert max-w-none">
   {
     blog.thumbnail?.url && (
       <img
@@ -83,17 +77,7 @@ blog.content = html;
     }
   </div>
 
-  {
-    toc.length > 0 && (
-      <aside class="mb-8 p-4 border border-line bg-gray-50">
-        <h2 class="text-lg font-semibold text-gray-700 mb-2 mt-0">目次</h2>
-        <ul class="space-y-1 text-sm text-gray-600 mb-0 pl-0">
-          {toc.map((item) => {
-            const levelClass =
-              {
-                2: "ml-3",
-                3: "ml-6",
-              }[item.level] ?? "";
+  {toc.length > 0 && <TableOfContents items={toc} variant="mobile" />}
 
             return (
               <li
@@ -119,3 +103,69 @@ blog.content = html;
     <ShareButton title={blog.title} />
   </div>
 </article>
+
+<script>
+  const copyIcon = `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" class="h-4 w-4"><path stroke-linecap="round" stroke-linejoin="round" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" /></svg>`;
+  const checkIcon = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="h-4 w-4"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>`;
+
+  document.querySelectorAll<HTMLPreElement>(".entry-content pre").forEach((block) => {
+    const button = document.createElement("button");
+    button.type = "button";
+    button.className = "code-copy-button";
+    button.innerHTML = copyIcon;
+    button.setAttribute("aria-label", "コードをコピー");
+
+    const popup = document.createElement("div");
+    popup.className = "code-copy-popup";
+    popup.textContent = "コピーしました";
+
+    button.addEventListener("click", () => {
+      const text = block.querySelector("code")?.textContent ?? "";
+      navigator.clipboard.writeText(text);
+
+      button.innerHTML = checkIcon;
+      popup.classList.add("is-visible");
+
+      setTimeout(() => {
+        popup.classList.remove("is-visible");
+        button.innerHTML = copyIcon;
+      }, 1500);
+    });
+
+    // pre自身をposition:relativeにしているため、絶対配置の基準にするには
+    // pre自身の子要素として追加する必要がある(afterendで兄弟にすると、
+    // preのrelativeが効かず祖先を辿ってページ全体を基準に配置されてしまう)。
+    block.appendChild(button);
+    block.appendChild(popup);
+  });
+
+  // 本文中の画像(リンク内画像を除く)をクリックすると拡大表示する
+  const images = Array.from(document.querySelectorAll<HTMLImageElement>(".entry-content img")).filter(
+    (image) => !image.closest("a")
+  );
+
+  const openImageZoom = (image: HTMLImageElement) => {
+    const dialog = document.createElement("dialog");
+    dialog.className = "image-zoom-dialog";
+    dialog.open = true;
+
+    const copy = image.cloneNode() as HTMLImageElement;
+    dialog.appendChild(copy);
+
+    const close = () => {
+      dialog.remove();
+      document.removeEventListener("keydown", onKeydown);
+    };
+    const onKeydown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") close();
+    };
+
+    dialog.addEventListener("click", close);
+    document.addEventListener("keydown", onKeydown);
+    document.body.appendChild(dialog);
+  };
+
+  images.forEach((image) => {
+    image.addEventListener("click", () => openImageZoom(image));
+  });
+</script>

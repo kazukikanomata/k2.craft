@@ -24,6 +24,24 @@ const ogType = Meta.ogType ? Meta.ogType : "blog";
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
+    <script is:inline>
+      (function () {
+        const stored = localStorage.getItem("theme");
+        const prefersDark = window.matchMedia(
+          "(prefers-color-scheme: dark)"
+        ).matches;
+        if (stored === "dark" || (stored !== "light" && prefersDark)) {
+          document.documentElement.classList.add("dark");
+        }
+        window
+          .matchMedia("(prefers-color-scheme: dark)")
+          .addEventListener("change", (e) => {
+            if (!localStorage.getItem("theme")) {
+              document.documentElement.classList.toggle("dark", e.matches);
+            }
+          });
+      })();
+    </script>
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
     <title>{pageTitle}</title>
