@@ -3,10 +3,7 @@ import { render } from "astro:content";
 import { getPosts, getRelatedPosts } from "@libs/blog.ts";
 import Layout from "@layouts/Layout.astro";
 import BlogPost from "@components/BlogPost.astro";
-import TableOfContents from "@components/TableOfContents.astro";
-import Breadcrumbs from "@components/Breadcrumbs.astro";
 import RelatedArticles from "@components/RelatedArticles.astro";
-import { CATEGORIES } from "@constants/index.ts";
 export const prerender = true;
 
 export async function getStaticPaths() {
@@ -23,8 +20,7 @@ const toc = headings
 
 const relatedPosts = await getRelatedPosts(post);
 
-const { title, description, category } = post.data;
-const [firstCategory] = category;
+const { title, description } = post.data;
 
 const Meta = {
   title,
@@ -35,22 +31,13 @@ const Meta = {
 ---
 
 <Layout Meta={Meta}>
-  <Breadcrumbs
-    slot="breadcrumbs"
-    items={
-      firstCategory
-        ? [{ label: firstCategory, href: `/category/${CATEGORIES[firstCategory]}` }, { label: title }]
-        : [{ label: title }]
-    }
-  />
-  <div class="space-y-8">
+  <div class="md:col-span-2">
     <BlogPost post={post} toc={toc}>
       <Content />
     </BlogPost>
-    <RelatedArticles posts={relatedPosts} />
-  </div>
 
-  <div>
-    {toc.length > 0 && <TableOfContents items={toc} variant="desktop" />}
+    <div class="mx-auto mt-16 max-w-6xl">
+      <RelatedArticles posts={relatedPosts} />
+    </div>
   </div>
 </Layout>

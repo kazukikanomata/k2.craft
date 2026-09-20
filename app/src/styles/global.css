@@ -411,12 +411,16 @@ body {
   margin: 0 auto 24px;
 }
 
-/* 目次(TOC): mobileは本文上に表示、md以上はdesktop版を右サイドバーにstickyで表示する(Layoutのmainグリッドが2カラムになる幅) */
+/* 目次(TOC): 1024px未満は記事ヘッダー内にmobile版、以上は本文の右にdesktop版をstickyで表示する */
+.toc-mobile {
+  @apply mt-6;
+}
+
 .toc-desktop {
   display: none;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 1024px) {
   .toc-mobile {
     display: none;
   }
@@ -425,6 +429,9 @@ body {
     display: block;
     position: sticky;
     top: 1.5rem;
+    align-self: start;
+    max-height: calc(100vh - 3rem);
+    overflow-y: auto;
   }
 }
 
