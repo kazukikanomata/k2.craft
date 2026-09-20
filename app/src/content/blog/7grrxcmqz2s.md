@@ -1,6 +1,6 @@
 ---
 title: "Laravel forge deploy × AWS  ver.1"
-description: "ソース Page Not Foundforge.laravel.com Laravel forgeとは何ぞや PHPのフレームワークであるLaravelをメンテナンスしているLaravelLLCが運営するサービスが運営す"
+description: "Laravel ForgeでAWSのEC2にLaravelアプリをデプロイするシリーズの第1回。Forgeの機能と料金、作業手順の全体像をまとめた。"
 category: ["IT tech"]
 icon: "🚀"
 publishedAt: "2022-10-25T07:22:26.000Z"

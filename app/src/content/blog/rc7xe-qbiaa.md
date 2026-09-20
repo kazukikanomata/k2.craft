@@ -1,6 +1,6 @@
 ---
 title: "【AWS】AWSのSecrets Managerを使用してみる"
-description: "はじめに AWSを使用してて、データベースの接続情報や機密情報をちゃんと安全に格納したい。codecommitで直書きしたくない！ そんな時に、便利なのがこのSecrets Managerというサービスです。 では、Se"
+description: "AWS Secrets Managerの使い方。パスワードやAPIキーを安全に管理する方法と、類似サービスのParameter Storeとの違いを比較した。"
 category: ["IT tech"]
 icon: "🔐"
 publishedAt: "2024-10-20T05:23:30.000Z"

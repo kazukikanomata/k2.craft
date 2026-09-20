@@ -1,6 +1,6 @@
 ---
 title: "Treasure-summerインターンに行ってきた"
-description: "Who are you? こんにちは。24卒で就活している。大学3年生（2度目）です。私事ながら、現在エンジニアを主軸とした就職活動を行っています。 What you want to do ? 2ヶ月ほど前になります"
+description: "CARTAのエンジニア向けサマーインターン「Treasure」の参加レポート。データモデリングやチーム開発の内容と、参加して感じたことを書いた。"
 category: ["IT tech"]
 icon: "💎"
 publishedAt: "2022-10-16T10:10:29.000Z"

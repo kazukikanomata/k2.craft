@@ -1,6 +1,6 @@
 ---
 title: "CI/CDパイプライン"
-description: "これって何？ CIとは CIとは「Continuous Integration」の略で、「継続的インテグレーション」と訳されています。「インテグレーション」には「統合」の意味があります。ソフトウェア開発の場合、「統合」の"
+description: "CI/CD(継続的インテグレーション/デリバリー)とは何か、なぜ便利かを整理し、Jenkins・CircleCI・Heroku CIといったツールを紹介する。"
 category: ["IT tech"]
 icon: "🔁"
 publishedAt: "2022-10-23T11:35:21.000Z"

@@ -1,6 +1,6 @@
 ---
 title: "【AWS初学者】Lambda入門"
-description: "はじめに 前回の、AWS IAMに引き続き今回は、「Lambda」について解説します。 この記事を読むと 参考 こちらの本より引用しています Lambdaとは 必要なときに必要な分だけアプリケーションを実行できる。サーバ"
+description: "AWS Lambdaの入門。サーバーレスの考え方とランタイム・レイヤーなどの用語、ウォームスタートとコールドスタートを解説する。"
 category: ["IT tech"]
 icon: "⚡"
 publishedAt: "2024-07-04T00:22:28.000Z"

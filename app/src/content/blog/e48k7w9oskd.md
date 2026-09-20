@@ -1,6 +1,6 @@
 ---
 title: "Laravel forge deploy × AWS ver.3"
-description: "必要なものをインストールする ssh接続後 プロジェクトに入ったあと、Laravelで必要なものをインストールしていきます。 composerをinstallする PHPのライブラリ管理ツールである。composerをイ"
+description: "Laravel Forge×AWSの第3回。SSH接続後に、composerとnpmのインストール、APP_KEYの生成、.env編集、マイグレーションを行う手順を解説する。"
 category: ["IT tech"]
 icon: "📦"
 publishedAt: "2022-10-27T14:58:32.000Z"

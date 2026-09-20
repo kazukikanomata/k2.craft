@@ -1,6 +1,6 @@
 ---
 title: "No.1：WebAPI Good Parts"
-description: "本の目的 WebAPIをどのように設計・運用すればより効果的なのかを、ありがちな罠・落とし穴を避けるにはどうすべきかを考えていく本。 インターンの延長上でAPIの理解を深めていきたいと思った。 WebAPIなんぞや UR"
+description: "『WebAPI Good Parts』の読書メモ。WebAPIとは何か、なぜ重要かをおさえ、使いやすく美しいAPI設計の考え方をまとめた。"
 category: ["IT tech"]
 icon: "🔌"
 publishedAt: "2022-11-06T10:19:41.000Z"

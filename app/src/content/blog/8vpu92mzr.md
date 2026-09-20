@@ -1,6 +1,6 @@
 ---
 title: "LaravelとDockerでの学び"
-description: "Dockerとは 軽量なコンテナ型アプリケーション実行環境のことをさしています。クジラのロゴが印象的ですよね Dockerを使うメリットってなんぞや？ メリットとしては以下 軽量でかつ高速なマシン 環境が共通している 柔"
+description: "Dockerの基本とメリット、LaravelをDocker上で動かすLaravel Sailの仕組みを、コンテナ作成の流れとあわせて整理した学習メモ。"
 category: ["IT tech"]
 icon: "🐳"
 publishedAt: "2022-10-17T07:44:11.000Z"
