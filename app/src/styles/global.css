@@ -4,12 +4,58 @@
   --font-body: "Noto Sans JP", sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
   --font-dot: "DotGothic16", "JetBrains Mono", monospace;
+  --color-bg: #ffffff;
   --color-ink: #171717;
   --color-muted: #6b7280;
   --color-line: #e5e7eb;
   --color-line-strong: #9ca3af;
   --color-accent: #2563eb;
   --color-accent-hover: #1d4ed8;
+
+  /*
+   * 未使用のカラーパレットを無効化する(DESIGN.md「カラーパレットの制約」参照)。
+   * `gray` はトークンでカバーできない濃淡の逃げ先として許容し、
+   * それ以外の無彩色・彩度パレットはユーティリティクラス自体を生成しない。
+   */
+  --color-slate-*: initial;
+  --color-zinc-*: initial;
+  --color-neutral-*: initial;
+  --color-stone-*: initial;
+  --color-red-*: initial;
+  --color-orange-*: initial;
+  --color-amber-*: initial;
+  --color-yellow-*: initial;
+  --color-lime-*: initial;
+  --color-green-*: initial;
+  --color-emerald-*: initial;
+  --color-teal-*: initial;
+  --color-cyan-*: initial;
+  --color-sky-*: initial;
+  --color-blue-*: initial;
+  --color-indigo-*: initial;
+  --color-violet-*: initial;
+  --color-purple-*: initial;
+  --color-fuchsia-*: initial;
+  --color-pink-*: initial;
+  --color-rose-*: initial;
+}
+
+/*
+ * ダークモード(DESIGN.md「ダークモード」参照)。
+ * `dark`クラスをclass戦略で駆動する(既定のprefers-color-scheme駆動から変更)。
+ * トークン(bg/ink/muted/line/line-strong)を.dark配下で上書きするだけで、
+ * 各コンポーネントは dark: バリアントを個別に書かなくても自動で追従する。
+ * アクセントカラーは背景が十分暗いためコントラストを保てると確認済みで、
+ * 変数を増やさないためライト/ダーク共通のままにする。
+ */
+@variant dark (&:where(.dark, .dark *));
+
+.dark {
+  --color-bg: #111111;
+  --color-ink: #f2f2f2;
+  --color-muted: #a3a3a3;
+  --color-line: #333333;
+  --color-line-strong: #545454;
 }
 
 @plugin "@tailwindcss/typography";
@@ -63,8 +109,58 @@
 }
 
 body {
-  @apply font-body;
+  @apply font-body bg-bg text-ink transition-colors;
   text-underline-offset: 0.3em;
+}
+
+/*
+ * 日本語組版の細部(DESIGN.md「日本語組版の細部」参照)。
+ * 本文はベタ組みのまま、装飾的な字詰め・改行制御は見出しのみに適用する。
+ */
+:where(:root) {
+  overflow-wrap: anywhere;
+  line-break: strict;
+  text-autospace: normal;
+  text-spacing-trim: trim-start;
+}
+
+:where(
+  pre,
+  time,
+  input:not([type="button" i], [type="submit" i], [type="reset" i]),
+  textarea,
+  [contenteditable]
+) {
+  text-autospace: no-autospace;
+}
+
+:where(pre) {
+  text-spacing-trim: space-all;
+}
+
+:where(:lang(ja)) {
+  font-kerning: none;
+}
+
+:where(:lang(en)) {
+  font-kerning: normal;
+}
+
+:where(h1, h2, h3, h4, h5, h6) {
+  font-kerning: normal;
+
+  &:lang(ja) {
+    font-feature-settings: "palt";
+
+    @supports (word-break: auto-phrase) {
+      word-break: auto-phrase;
+      text-wrap: balance;
+    }
+  }
+
+  &:lang(en) {
+    text-wrap: balance;
+  }
 }
 
 /* 段落 */
@@ -89,7 +185,7 @@ body {
 }
 
 .link-card-thumb {
-  @apply w-28 sm:w-40 shrink-0 bg-gray-100 overflow-hidden;
+  @apply w-28 sm:w-40 shrink-0 bg-gray-100 dark:bg-gray-800 overflow-hidden;
 }
 
 .link-card-thumb img {
@@ -122,12 +218,12 @@ body {
 }
 
 .entry-content figure figcaption {
-  @apply leading-relaxed text-sm text-black/50 italic pt-0;
+  @apply leading-relaxed text-sm text-black/50 dark:text-white/50 italic pt-0;
 }
 
 /* 見出し（h1〜h5） */
 .entry-content h1 {
-  @apply text-3xl font-bold mt-8 mb-4 pt-2 text-gray-900;
+  @apply text-3xl font-bold mt-8 mb-4 pt-2 text-gray-900 dark:text-gray-100;
 }
 
 .entry-content h2 {
@@ -135,30 +231,30 @@ body {
 }
 
 .entry-content h3 {
-  @apply text-xl font-medium mt-5 mb-2 pt-2 text-gray-700;
+  @apply text-xl font-medium mt-5 mb-2 pt-2 text-gray-700 dark:text-gray-300;
 }
 
 .entry-content h4 {
-  @apply text-lg font-semibold mt-4 mb-2 pt-2 text-gray-700;
+  @apply text-lg font-semibold mt-4 mb-2 pt-2 text-gray-700 dark:text-gray-300;
 }
 
 .entry-content h5 {
-  @apply text-base font-medium mt-3 mb-2 pt-2 text-gray-600;
+  @apply text-base font-medium mt-3 mb-2 pt-2 text-gray-600 dark:text-gray-400;
 }
 
 /* 区切り線（hr） */
 .entry-content hr {
-  @apply border-t border-gray-300 my-6;
+  @apply border-t border-gray-300 dark:border-gray-700 my-6;
 }
 
 /* 引用（blockquote） */
 .entry-content blockquote {
-  @apply border-l-4 border-gray-400 pl-4 italic text-gray-600 my-4;
+  @apply border-l-4 border-gray-400 dark:border-gray-600 pl-4 italic text-gray-600 dark:text-gray-400 my-4;
 }
 
 /* テーブル */
 .entry-content table {
-  @apply w-full border-collapse border border-gray-300 text-sm my-6;
+  @apply w-full border-collapse border border-gray-300 dark:border-gray-700 text-sm my-6;
 }
 
 .entry-content table p {
@@ -167,11 +263,11 @@ body {
 
 .entry-content th,
 .entry-content td {
-  @apply border border-gray-300 px-4 py-2;
+  @apply border border-gray-300 dark:border-gray-700 px-4 py-2;
 }
 
 .entry-content th {
-  @apply bg-gray-100 font-semibold text-gray-800;
+  @apply bg-gray-100 dark:bg-gray-800 font-semibold text-gray-800 dark:text-gray-200;
 }
 
 .entry-content th p,
@@ -198,15 +294,47 @@ body {
 }
 
 .entry-content pre {
-  @apply p-4 overflow-x-auto m-0;
+  @apply relative p-4 overflow-x-auto m-0;
 }
 
 .entry-content code {
-  @apply bg-gray-200 text-gray-800 px-1 py-0.5 text-sm font-mono;
+  @apply bg-gray-200 dark:bg-gray-800 text-gray-800 dark:text-gray-200 px-1 py-0.5 text-sm font-mono;
 }
 
 .entry-content pre code {
   @apply bg-transparent text-inherit p-0;
+}
+
+/* コードブロックのコピー ボタン(Phase 1: JSで挿入する) */
+.code-copy-button {
+  @apply absolute right-2 top-2 flex h-9 w-9 items-center justify-center border border-line-strong bg-bg text-muted opacity-80 transition-colors hover:border-accent hover:text-accent hover:opacity-100 focus-visible:opacity-100;
+}
+
+.code-copy-popup {
+  @apply pointer-events-none absolute right-12 top-2 border border-line bg-bg px-2 py-1 text-xs text-ink transition-opacity duration-300;
+  opacity: 0;
+}
+
+.code-copy-popup.is-visible {
+  opacity: 1;
+}
+
+/* 本文中の画像はクリックで拡大できることを示す */
+.entry-content img {
+  cursor: zoom-in;
+}
+
+.entry-content a img {
+  cursor: pointer;
+}
+
+/* 画像拡大モーダル */
+.image-zoom-dialog {
+  @apply fixed inset-0 z-50 flex h-screen w-screen cursor-zoom-out items-center justify-center border-none bg-black/80 p-4 backdrop-blur-xs;
+}
+
+.image-zoom-dialog img {
+  @apply max-h-full max-w-full cursor-zoom-out object-contain;
 }
 
 /* ヒーロー演出（トップページのみ） */
@@ -224,4 +352,51 @@ body {
   width: clamp(220px, 46vw, 320px);
   aspect-ratio: 1 / 1;
   margin: 0 auto 24px;
+}
+
+/* 目次(TOC): mobileは本文上に固定表示、lg以上はdesktop版を本文横にstickyで表示する */
+.toc-desktop {
+  display: none;
+}
+
+@media (min-width: 1024px) {
+  .toc-mobile {
+    display: none;
+  }
+
+  .toc-desktop {
+    display: block;
+  }
+
+  .toc-desktop .toc-wrapper {
+    position: sticky;
+    top: 1.5rem;
+  }
+}
+
+.toc-toggle {
+  @apply flex w-full items-center gap-2 border border-line px-3 py-2 text-muted transition-colors hover:border-accent hover:text-accent;
+}
+
+.toc-toggle-chevron.rotate-180 {
+  transform: rotate(180deg);
+}
+
+.toc-nav {
+  @apply mt-2 border-l-2 border-line;
+}
+
+.toc-list {
+  @apply m-0 list-none space-y-1 p-0;
+}
+
+.toc-link {
+  @apply block py-1 pr-3 pl-3 text-sm leading-relaxed text-muted no-underline transition-colors hover:text-ink;
+}
+
+.toc-link--active {
+  @apply border-l-2 font-medium text-accent;
+  border-left-color: var(--color-accent);
+  margin-left: -2px;
+  background-color: color-mix(in oklch, var(--color-accent) 8%, transparent);
 }

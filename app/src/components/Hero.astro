@@ -1,5 +1,7 @@
 ---
 // src/components/Hero.astro
+import ThemeToggle from "@components/ThemeToggle.astro";
+
 interface Props {
   title: string;
 }
@@ -7,7 +9,10 @@ interface Props {
 const { title }: Props = Astro.props;
 ---
 
-<section class="hero">
+<section class="hero relative">
+  <div class="absolute right-4 top-4">
+    <ThemeToggle />
+  </div>
   <canvas id="hero-cube" class="hero-cube" aria-hidden="true"></canvas>
   <h1 class="hero-title">{title}</h1>
 </section>
@@ -126,7 +131,6 @@ const { title }: Props = Astro.props;
           const z2 = p.y * sinT + z1 * cosT;
 
           // 法線も同じ回転を適用し、カメラを向いていない面（裏面）は描画しない
-          const nx1 = p.nx * cosA - p.nz * sinA;
           const nz1 = p.nx * sinA + p.nz * cosA;
           const nz2 = p.ny * sinT + nz1 * cosT;
           if (nz2 >= -0.02) return null;

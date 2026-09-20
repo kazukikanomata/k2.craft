@@ -57,7 +57,7 @@ export const getSettings = async (): Promise<Settings> => {
   try {
     const data = await client.get({ endpoint: "settings" });
     return data as Settings;
-  } catch (error: any) {
+  } catch {
     return DEFAULT_SETTINGS;
   }
 };
