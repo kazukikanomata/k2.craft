@@ -20,7 +20,7 @@ pnpm dev   # http://localhost:4321 で確認する。下書きも表示される
 | 項目 | 必須 | 内容 |
 | --- | --- | --- |
 | `title` | ○ | 記事タイトル |
-| `description` | ○ | 概要。120文字以内。一覧のカードと`<meta description>`に使う |
+| `description` | ○ | 概要。120文字以内。一覧のカード・記事ヘッダー・`<meta description>`に使う。Claude Codeの`summarize-article`スキルで記事の内容から作れる |
 | `category` | | カテゴリ名の配列。下記の一覧にある名前のみ使える(それ以外はビルドエラー) |
 | `icon` | ○ | 絵文字。一覧のカードと記事の最上部に表示する |
 | `publishedAt` | ○ | 公開日(`2026-09-20`のように書く)。一覧はこの日付の新しい順に並ぶ |
