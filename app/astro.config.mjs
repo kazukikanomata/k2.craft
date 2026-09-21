@@ -5,6 +5,7 @@ import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import rehypePrettyCode from "rehype-pretty-code";
 import rehypeSlug from "rehype-slug";
 import { remarkAlert } from "remark-github-blockquote-alert";
+import { remarkAlertTitle } from "./src/libs/remarkAlertTitle.ts";
 import { remarkLinkCard } from "./src/libs/remarkLinkCard.ts";
 
 export default defineConfig({
@@ -16,7 +17,7 @@ export default defineConfig({
   markdown: {
     // GFM(テーブル・打ち消し線・タスクリスト・URL自動リンク)はAstroの既定で有効
     syntaxHighlight: false,
-    remarkPlugins: [remarkAlert, remarkLinkCard],
+    remarkPlugins: [remarkAlert, remarkAlertTitle, remarkLinkCard],
     rehypePlugins: [
       rehypeSlug,
       [
