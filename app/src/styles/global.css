@@ -16,22 +16,20 @@
    * 未使用のカラーパレットを無効化する(DESIGN.md「カラーパレットの制約」参照)。
    * `gray` はトークンでカバーできない濃淡の逃げ先として許容し、
    * それ以外の無彩色・彩度パレットはユーティリティクラス自体を生成しない。
+   * `red`/`yellow`/`green`/`blue`はアラート(下記`.markdown-alert-*`)専用で有効にしている。
+   * コンポーネントでの使用はESLintで禁止している。
    */
   --color-slate-*: initial;
   --color-zinc-*: initial;
   --color-neutral-*: initial;
   --color-stone-*: initial;
-  --color-red-*: initial;
   --color-orange-*: initial;
   --color-amber-*: initial;
-  --color-yellow-*: initial;
   --color-lime-*: initial;
-  --color-green-*: initial;
   --color-emerald-*: initial;
   --color-teal-*: initial;
   --color-cyan-*: initial;
   --color-sky-*: initial;
-  --color-blue-*: initial;
   --color-indigo-*: initial;
   --color-violet-*: initial;
   --color-purple-*: initial;
@@ -341,9 +339,26 @@ body {
   @apply opacity-100;
 }
 
-/* アラート(remark-github-blockquote-alert)。DESIGN.mdの無彩色方針に従い、種類はタイトルで区別する */
+/* アラート(remark-github-blockquote-alert)。種類ごとに背景・左ボーダー・タイトルの色を変える(DESIGN.md「カラーパレットの制約」参照) */
 .entry-content .markdown-alert {
-  @apply my-6 border border-line border-l-4 border-l-line-strong px-4 py-3;
+  @apply my-6 border-l-4 px-4 py-3;
+}
+
+.entry-content .markdown-alert-note,
+.entry-content .markdown-alert-important {
+  @apply border-l-blue-600 bg-blue-50 dark:border-l-blue-400 dark:bg-blue-950;
+}
+
+.entry-content .markdown-alert-tip {
+  @apply border-l-green-700 bg-green-50 dark:border-l-green-400 dark:bg-green-900;
+}
+
+.entry-content .markdown-alert-warning {
+  @apply border-l-yellow-700 bg-yellow-50 dark:border-l-yellow-500 dark:bg-yellow-900;
+}
+
+.entry-content .markdown-alert-caution {
+  @apply border-l-red-700 bg-red-50 dark:border-l-red-400 dark:bg-red-950;
 }
 
 .entry-content .markdown-alert > :first-child {
@@ -355,11 +370,27 @@ body {
 }
 
 .entry-content .markdown-alert-title {
-  @apply mb-2 flex items-center gap-2 font-mono text-sm font-bold text-ink;
+  @apply mb-2 flex items-center gap-2 font-mono text-sm font-bold;
 }
 
 .entry-content .markdown-alert-title svg {
   @apply fill-current;
+}
+
+.entry-content :is(.markdown-alert-note, .markdown-alert-important) .markdown-alert-title {
+  @apply text-blue-600 dark:text-blue-400;
+}
+
+.entry-content .markdown-alert-tip .markdown-alert-title {
+  @apply text-green-700 dark:text-green-400;
+}
+
+.entry-content .markdown-alert-warning .markdown-alert-title {
+  @apply text-yellow-700 dark:text-yellow-500;
+}
+
+.entry-content .markdown-alert-caution .markdown-alert-title {
+  @apply text-red-700 dark:text-red-400;
 }
 
 /* コードブロックのコピー ボタン(Phase 1: JSで挿入する) */
