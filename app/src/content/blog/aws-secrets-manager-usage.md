@@ -20,7 +20,7 @@ AWSを使用してて、データベースの接続情報や機密情報をち�
 
 また、secrets Mangerは管理するだけではなく更新や監視などもしてくれるサービスです。
 
-![中の人](../../assets/blog/rc7xe-qbiaa/1.png)
+![中の人](../../assets/blog/aws-secrets-manager-usage/1.png)
 
 中の人
 
@@ -30,7 +30,7 @@ AWSを使用してて、データベースの接続情報や機密情報をち�
 
 AWSのコンソールからSecrets Managerと検索します。
 
-![](../../assets/blog/rc7xe-qbiaa/2.png)
+![](../../assets/blog/aws-secrets-manager-usage/2.png)
 
 ページが飛んだら、新しいシークレットを保存するを選択
 

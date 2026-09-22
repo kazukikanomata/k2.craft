@@ -10,7 +10,7 @@ publishedAt: "2024-09-21T11:18:09.000Z"
 
 ビジネス書ランキングや新社会人おすすめ本ランキングで上位に登場するのがこの本。なぜ評価されているかが気になり本を手に取りました。
 
-[![](../../assets/blog/t47k5btq3/1.jpg)](https://hb.afl.rakuten.co.jp/hgc/g00q072f.y9yjc91d.g00q072f.y9yjde4d/Rinker_i_20240921201713?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fbook%2F12862174%2F&m=http%3A%2F%2Fm.rakuten.co.jp%2Fbook%2Fi%2F17038618%2F&rafcid=wsc_i_is_1000955137366842184)
+[![](../../assets/blog/consulting-first-year-book-review/1.jpg)](https://hb.afl.rakuten.co.jp/hgc/g00q072f.y9yjc91d.g00q072f.y9yjde4d/Rinker_i_20240921201713?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fbook%2F12862174%2F&m=http%3A%2F%2Fm.rakuten.co.jp%2Fbook%2Fi%2F17038618%2F&rafcid=wsc_i_is_1000955137366842184)
 
 [コンサル一年目が学ぶこと \[ 大石 哲之 \]](https://hb.afl.rakuten.co.jp/hgc/g00q072f.y9yjc91d.g00q072f.y9yjde4d/Rinker_t_20240921201713?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fbook%2F12862174%2F&m=http%3A%2F%2Fm.rakuten.co.jp%2Fbook%2Fi%2F17038618%2F&rafcid=wsc_i_is_1000955137366842184)
 
@@ -37,7 +37,7 @@ created by [Rinker](https://oyakosodate.com/rinker/)
 3.  クオリティ
 4.  優先順位・緊急度
 
-![ケイ](../../assets/blog/t47k5btq3/2.png)
+![ケイ](../../assets/blog/consulting-first-year-book-review/2.png)
 
 ケイ
 
@@ -62,7 +62,7 @@ created by [Rinker](https://oyakosodate.com/rinker/)
 
 全体像がみえていたら、仕事の緩急もつくし、こいらんわの取捨選択もできますよね。
 
-![ケイ](../../assets/blog/t47k5btq3/2.png)
+![ケイ](../../assets/blog/consulting-first-year-book-review/2.png)
 
 ケイ
 
@@ -78,7 +78,7 @@ created by [Rinker](https://oyakosodate.com/rinker/)
 -   解釈：雨降りそう
 -   アクション：傘もっていこ
 
-![ケイ](../../assets/blog/t47k5btq3/2.png)
+![ケイ](../../assets/blog/consulting-first-year-book-review/2.png)
 
 ケイ
 
@@ -93,7 +93,7 @@ created by [Rinker](https://oyakosodate.com/rinker/)
 -   決まらなかったこと（次にもちこすこと）
 -   次回にむけて（誰がいつまで）
 
-![ケイ](../../assets/blog/t47k5btq3/2.png)
+![ケイ](../../assets/blog/consulting-first-year-book-review/2.png)
 
 ケイ
 
@@ -107,7 +107,7 @@ created by [Rinker](https://oyakosodate.com/rinker/)
 
 本にかかれた内容をそのままもってきました。個人的にもすごく納得いく内容で、本当に社会人1年目は誰の下につくかで今後の働き方が変わってくると思っています。
 
-![ケイ](../../assets/blog/t47k5btq3/2.png)
+![ケイ](../../assets/blog/consulting-first-year-book-review/2.png)
 
 ケイ
 
@@ -119,7 +119,7 @@ created by [Rinker](https://oyakosodate.com/rinker/)
 -   破：師匠と違ったやり方を覚え、幅を広げる
 -   離：師匠のやり方を超え、独自の技を生み出す
 
-![ケイ](../../assets/blog/t47k5btq3/2.png)
+![ケイ](../../assets/blog/consulting-first-year-book-review/2.png)
 
 ケイ
 

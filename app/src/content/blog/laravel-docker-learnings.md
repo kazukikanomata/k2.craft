@@ -32,7 +32,7 @@ https://readouble.com/laravel/9.x/ja/sail.html
 
 ### 仕組み
 
-![](../../assets/blog/8vpu92mzr/1.png)
+![](../../assets/blog/laravel-docker-learnings/1.png)
 
 自分なりにですが整理してみました。
 

@@ -14,7 +14,7 @@ publishedAt: "2022-10-20T12:34:49.000Z"
 
 カリキュラム内容はとても難しく、C言語を中心にPythonやフレームワークを中心に学んでいった。
 
-![](../../assets/blog/5m-c3jg938z2/1.png)
+![](../../assets/blog/codegym-bootcamp-days/1.png)
 
 これを17週間、毎週土曜日やっていった。
 

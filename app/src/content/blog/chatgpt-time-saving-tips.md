@@ -83,7 +83,7 @@ publishedAt: "2024-04-10T09:54:05.000Z"
 
 例えば、以下のようなテンプレートを作ることも可能です。
 
-![](../../assets/blog/p3fk-ukc8tm/1.png)
+![](../../assets/blog/chatgpt-time-saving-tips/1.png)
 
 ## テクニック2：見出しやキャッチコピーを生成する
 

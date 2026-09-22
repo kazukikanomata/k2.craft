@@ -12,7 +12,7 @@ publishedAt: "2022-10-30T04:32:30.000Z"
 
 ## 著者
 
-[![](../../assets/blog/ehda-u0r0/1.jpg)](https://hb.afl.rakuten.co.jp/hgc/g00q072f.y9yjc91d.g00q072f.y9yjde4d/Rinker_i_20240219230537?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fbook%2F14309462%2F&m=http%3A%2F%2Fm.rakuten.co.jp%2Fbook%2Fi%2F18081180%2F&rafcid=wsc_i_is_1000955137366842184)
+[![](../../assets/blog/words-are-weapons-book-review/1.jpg)](https://hb.afl.rakuten.co.jp/hgc/g00q072f.y9yjc91d.g00q072f.y9yjde4d/Rinker_i_20240219230537?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fbook%2F14309462%2F&m=http%3A%2F%2Fm.rakuten.co.jp%2Fbook%2Fi%2F18081180%2F&rafcid=wsc_i_is_1000955137366842184)
 
 [「言葉にできる」は武器になる。 \[ 梅田 悟司 \]](https://hb.afl.rakuten.co.jp/hgc/g00q072f.y9yjc91d.g00q072f.y9yjde4d/Rinker_t_20240219230537?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fbook%2F14309462%2F&m=http%3A%2F%2Fm.rakuten.co.jp%2Fbook%2Fi%2F18081180%2F&rafcid=wsc_i_is_1000955137366842184)
 
@@ -30,7 +30,7 @@ created by [Rinker](https://oyakosodate.com/rinker/)
 
 「内なる言葉」は物事を考えたり・感じたりするとき、無意識のうちに頭の中で発している言葉のことを指す。
 
-![](../../assets/blog/ehda-u0r0/2.jpg)
+![](../../assets/blog/words-are-weapons-book-review/2.jpg)
 
 世の中的には、”スキル”や”表現方法”に目がいきがちであるが、内なる言葉こそ大事というスタートは個人的にいいなと思う。  
   
@@ -59,7 +59,7 @@ created by [Rinker](https://oyakosodate.com/rinker/)
 
 最近みたSAO WoUのリズの演説で思いが炸裂していたシーンを思い出しました。
 
-![](../../assets/blog/ehda-u0r0/3.png)
+![](../../assets/blog/words-are-weapons-book-review/3.png)
 
 *https://akananime.com/archives/18187*
 
@@ -73,7 +73,7 @@ created by [Rinker](https://oyakosodate.com/rinker/)
 
 内なる言葉を中央に書き出し、左側に本当に?（再起する）・右側にそれで（進行）・下側にWhy?で考をふかめていく。
 
-![](../../assets/blog/ehda-u0r0/4.jpg)
+![](../../assets/blog/words-are-weapons-book-review/4.jpg)
 
 これなにでも応用がききそうなのが魅力的
 

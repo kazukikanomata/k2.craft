@@ -26,7 +26,7 @@ publishedAt: "2024-04-07T04:26:59.000Z"
 
 そのために必要なものとして何か考えたところ、早めに行動するだと思ったんですよね。
 
-![](../../assets/blog/bari7qn2xbz/1.png)
+![](../../assets/blog/new-grad-engineer-internship-gap/1.png)
 
 4月スタートで、これから仕事を始めるぞという感じだと不安も多く。事実、新人＝使えないやつと認識されるのが嫌だったのもあります。
 
@@ -44,9 +44,9 @@ publishedAt: "2024-04-07T04:26:59.000Z"
 
 しょーだいさんのマインドがすごくて、これそのまんま真似しちゃおうって思いました笑
 
-![](../../assets/blog/bari7qn2xbz/2.png)
+![](../../assets/blog/new-grad-engineer-internship-gap/2.png)
 
-![しょーだいさん](../../assets/blog/bari7qn2xbz/3.png)
+![しょーだいさん](../../assets/blog/new-grad-engineer-internship-gap/3.png)
 
 しょーだいさん
 
@@ -72,7 +72,7 @@ publishedAt: "2024-04-07T04:26:59.000Z"
 
 一方で正社員さんは基本、リモートで作業しているんですよね。
 
-![](../../assets/blog/bari7qn2xbz/1.png)
+![](../../assets/blog/new-grad-engineer-internship-gap/1.png)
 
 出社するメリットって、横について誰かに教えてもらえることだと思ったのですが、それが一歳なかったので、出社する意味ってなに？？ってなってました笑
 

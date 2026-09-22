@@ -12,7 +12,7 @@ PHPでオブジェクト指向を理解しようという本です。
 
 設計入門と記述されているため初学者向けだと思いましたが、密度が濃い印象がありました。
 
-[![](../../assets/blog/mnhbgs3om_3/1.jpg)](https://hb.afl.rakuten.co.jp/hgc/g00rd1df.y9yjc1d7.g00rd1df.y9yjdf33/Rinker_i_20240217231359?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fbooxstore%2Fbk-4297132346%2F&m=http%3A%2F%2Fm.rakuten.co.jp%2Fbooxstore%2Fi%2F13036621%2F&rafcid=wsc_i_is_1000955137366842184)
+[![](../../assets/blog/chouzetsu-software-design-book-review/1.jpg)](https://hb.afl.rakuten.co.jp/hgc/g00rd1df.y9yjc1d7.g00rd1df.y9yjdf33/Rinker_i_20240217231359?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fbooxstore%2Fbk-4297132346%2F&m=http%3A%2F%2Fm.rakuten.co.jp%2Fbooxstore%2Fi%2F13036621%2F&rafcid=wsc_i_is_1000955137366842184)
 
 [ちょうぜつソフトウェア設計入門 PHPで理解するオブジェクト指向の活用／田中ひさてる【3000円以上送料無料】](https://hb.afl.rakuten.co.jp/hgc/g00rd1df.y9yjc1d7.g00rd1df.y9yjdf33/Rinker_t_20240217231359?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fbooxstore%2Fbk-4297132346%2F&m=http%3A%2F%2Fm.rakuten.co.jp%2Fbooxstore%2Fi%2F13036621%2F&rafcid=wsc_i_is_1000955137366842184)
 
@@ -50,9 +50,9 @@ etc…
 
 何を持ってしてクリーンと言われるかと言う部分がすごく腑に落ちました。
 
-![](../../assets/blog/mnhbgs3om_3/2.jpg)
+![](../../assets/blog/chouzetsu-software-design-book-review/2.jpg)
 
-![](../../assets/blog/mnhbgs3om_3/3.png)
+![](../../assets/blog/chouzetsu-software-design-book-review/3.png)
 
 実際、何度もこの表を見るのですが、理解できなかったんですよね〜
 
@@ -68,7 +68,7 @@ etc…
 
 テストを意識しながら実装する。
 
-![](../../assets/blog/mnhbgs3om_3/4.png)
+![](../../assets/blog/chouzetsu-software-design-book-review/4.png)
 
 これを意識して実装すれば、後でテストを書く必要性がないなと思いました。
 

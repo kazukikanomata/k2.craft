@@ -28,7 +28,7 @@ publishedAt: "2025-01-17T04:27:02.000Z"
 
 いくつかポイントをピックアップする。
 
-![中の人](../../assets/blog/5bu7593vm4ix/1.jpg)
+![中の人](../../assets/blog/pro-web-engineer-book-review/1.jpg)
 
 中の人
 
@@ -36,7 +36,7 @@ publishedAt: "2025-01-17T04:27:02.000Z"
 
 ## 自分がポイントだと思ったところ
 
-![](../../assets/blog/5bu7593vm4ix/2.jpg)
+![](../../assets/blog/pro-web-engineer-book-review/2.jpg)
 
 ### CSSがうまれた理由
 
@@ -60,13 +60,13 @@ Webシステムは3つの要素から成立している。**クライアント**
 
 JavaScriptで記述されたプログラムが解釈をして、ダイナミックに動作が進行する。
 
-![はじめてちゃん](../../assets/blog/5bu7593vm4ix/3.jpeg)
+![はじめてちゃん](../../assets/blog/pro-web-engineer-book-review/3.jpeg)
 
 はじめてちゃん
 
 シンプルにクライアントの構造が理解できました。
 
-![中の人](../../assets/blog/5bu7593vm4ix/1.jpg)
+![中の人](../../assets/blog/pro-web-engineer-book-review/1.jpg)
 
 中の人
 
@@ -109,13 +109,13 @@ Webアプリケーションを実行する方式は5つ存在する。
     -   代表例：Apach Tomcatなど
     -   近年では、減少傾向。仮想的なコンピュータをかず多く利用させることが一般的になったため。一体型独立プロセス方式が多く用いられている。
 
-![はじめてちゃん](../../assets/blog/5bu7593vm4ix/3.jpeg)
+![はじめてちゃん](../../assets/blog/pro-web-engineer-book-review/3.jpeg)
 
 はじめてちゃん
 
 こんなに起動方式があるんだ
 
-![](../../assets/blog/5bu7593vm4ix/1.jpg)
+![](../../assets/blog/pro-web-engineer-book-review/1.jpg)
 
 そうそう。実際に使う場面は少ないと思うけど、しっておくといいかもしれないよね。
 
@@ -189,7 +189,7 @@ HTMLとXMLには似たようなものですが、それぞれ異なる目的で�
 <book/>
 ```
 
-![](../../assets/blog/5bu7593vm4ix/1.jpg)
+![](../../assets/blog/pro-web-engineer-book-review/1.jpg)
 
 それぞれに目的が存在したのですね
 
@@ -209,7 +209,7 @@ TODOアプリケーションで複数の人が同時に利用することを考�
 -   状態をもつ。FTPではステートフルなものとして扱われる。
 -   例：電話
 
-![](../../assets/blog/5bu7593vm4ix/1.jpg)
+![](../../assets/blog/pro-web-engineer-book-review/1.jpg)
 
 これまで話したことの状態を覚えてくれていてほしいものです。
 
@@ -221,7 +221,7 @@ HTTPにはこのセッションの考え方がない。Webアプリケーショ�
 
 そこで利用されるのが**HTTP Cookie（HTTPクッキー）**と呼ばれます。
 
-![](../../assets/blog/5bu7593vm4ix/4.jpg)
+![](../../assets/blog/pro-web-engineer-book-review/4.jpg)
 
 クッキーは発行元のサーバーと同じサーバにアクセスした時に、送信されます。
 
@@ -239,7 +239,7 @@ Webアプリケーションとして、複数の利用者が同時に利用す�
 
 毎回つくるのが大変だというところでさまざまな処理や複雑さを肩代わりしてくれる存在がWebアプリケーションフレームワークとなります。
 
-![](../../assets/blog/5bu7593vm4ix/1.jpg)
+![](../../assets/blog/pro-web-engineer-book-review/1.jpg)
 
 フレームワークが便利すぎてこの偉大さを感じにくいですよね笑
 
@@ -260,13 +260,13 @@ Webアプリケーションとして、複数の利用者が同時に利用す�
 
 この8つの機能を提供しています。
 
-![はじめてちゃん](../../assets/blog/5bu7593vm4ix/3.jpeg)
+![はじめてちゃん](../../assets/blog/pro-web-engineer-book-review/3.jpeg)
 
 はじめてちゃん
 
 ええ。こんなにも機能を提供しているんですね
 
-![](../../assets/blog/5bu7593vm4ix/1.jpg)
+![](../../assets/blog/pro-web-engineer-book-review/1.jpg)
 
 技術選定の際にフレームワークを使う話がでてくるのはこの前提があってこそかもしれませんね。もちろん裏側の仕組みをしることも大事ですよね
 
@@ -281,13 +281,13 @@ Webアプリケーションの普及していくゆえに課題がでてきま�
 
 Webアプリケーションの画面はHTMLで表現され、ブラウザで表示される。HTMLを生成するのはサーバの責務であった。変更内容が一部でも、全画面をサーバが生成してHTMLを描画しなおす手順が発生。
 
-![はじめてちゃん](../../assets/blog/5bu7593vm4ix/3.jpeg)
+![はじめてちゃん](../../assets/blog/pro-web-engineer-book-review/3.jpeg)
 
 はじめてちゃん
 
 そういうことか〜
 
-![](../../assets/blog/5bu7593vm4ix/1.jpg)
+![](../../assets/blog/pro-web-engineer-book-review/1.jpg)
 
 そうそう。1箇所の変更ですべての処理が走るのはだるいよね。競プロとかしている人には計算量とかで算出できそう笑
 
@@ -333,13 +333,13 @@ function dbFetch(){
 
 コールバック地獄問題（非同期が連鎖するようなケース）というものが発生し、コードの可読性が損なわれてしまったことがあげられます。
 
-![はじめてちゃん](../../assets/blog/5bu7593vm4ix/3.jpeg)
+![はじめてちゃん](../../assets/blog/pro-web-engineer-book-review/3.jpeg)
 
 はじめてちゃん
 
 サーバーにリクエストを送信→レスポンスを受け取るというところは変わってないけど、何がちがうの？
 
-![](../../assets/blog/5bu7593vm4ix/1.jpg)
+![](../../assets/blog/pro-web-engineer-book-review/1.jpg)
 
 おしゃる通りやっている内容は同じで、どのように処理が進行するのかが変更した点です。
 
@@ -360,13 +360,13 @@ XMLを利用するとしたが、XMLをパース（プログラム上で扱え�
 
 JSONの強みは、JavaScriptの文法をそのまま使ってデータを表現できている点にある。
 
-![はじめてちゃん](../../assets/blog/5bu7593vm4ix/3.jpeg)
+![はじめてちゃん](../../assets/blog/pro-web-engineer-book-review/3.jpeg)
 
 はじめてちゃん
 
 え、めちゃ楽やん
 
-![](../../assets/blog/5bu7593vm4ix/1.jpg)
+![](../../assets/blog/pro-web-engineer-book-review/1.jpg)
 
 プログラミング言語だと、データ構造を定義する際に値を宣言して箱を用意しなくてはいけないけど、それをしなくてもデータを記述できるのはいいよね。
 
@@ -389,13 +389,13 @@ SPAが普及するにつれて以下の問題が発生しました。
 
 しかし、SPAでは、HTMLの中身が空っぽ。JavaScriptが実行されないとHTMLを解析できない。
 
-![はじめてちゃん](../../assets/blog/5bu7593vm4ix/3.jpeg)
+![はじめてちゃん](../../assets/blog/pro-web-engineer-book-review/3.jpeg)
 
 はじめてちゃん
 
 ああ、そっかー。JavaScriptを実行しないと描画されないですもんね
 
-![](../../assets/blog/5bu7593vm4ix/1.jpg)
+![](../../assets/blog/pro-web-engineer-book-review/1.jpg)
 
 SPAで構築されたサイトはSEO対策の観点で不利になるよね。
 
@@ -418,11 +418,11 @@ SPAを実装するには多くのコードを記述する必要があります�
 
 サーバ側でHTMLを生成して返却することで、SPAで表示を行っていたものを初期表示のみサーバサイドで行う役割に戻しました。
 
-![](../../assets/blog/5bu7593vm4ix/1.jpg)
+![](../../assets/blog/pro-web-engineer-book-review/1.jpg)
 
 いわゆるSSRとかいうやつ。
 
-![はじめてちゃん](../../assets/blog/5bu7593vm4ix/3.jpeg)
+![はじめてちゃん](../../assets/blog/pro-web-engineer-book-review/3.jpeg)
 
 はじめてちゃん
 
@@ -430,13 +430,13 @@ SPAを実装するには多くのコードを記述する必要があります�
 
 SSRではクライアントとサーバサイドが比較的に密に連携するために、フレームワークの支援なしに実現するのは難しいです。ReactとVueをベースとしてSSRにも対応したフレームワークNext.jsやNuxt.jsも有名です。
 
-![はじめてちゃん](../../assets/blog/5bu7593vm4ix/3.jpeg)
+![はじめてちゃん](../../assets/blog/pro-web-engineer-book-review/3.jpeg)
 
 はじめてちゃん
 
 すごい進化の歴史ですね
 
-![](../../assets/blog/5bu7593vm4ix/1.jpg)
+![](../../assets/blog/pro-web-engineer-book-review/1.jpg)
 
 確かに。自分が書いているコードがクライアントなのか、サーバサイドなのかのどちらかを理解しないといけないね。
 

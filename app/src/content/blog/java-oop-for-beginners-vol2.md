@@ -35,7 +35,7 @@ main(){
 }
 ```
 
-![](../../assets/blog/ao9_sgi70v/1.png)
+![](../../assets/blog/java-oop-for-beginners-vol2/1.png)
 
 同じ名前のメソッドがほしいときに、setData2()とかしなくていいのはいいですよね
 
@@ -72,7 +72,7 @@ main(){
 }
 ```
 
-![](../../assets/blog/ao9_sgi70v/1.png)
+![](../../assets/blog/java-oop-for-beginners-vol2/1.png)
 
 いちいち、newしてメソッドを呼びださなくていいのは楽ですよね
 

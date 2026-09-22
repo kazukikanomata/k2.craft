@@ -73,6 +73,6 @@ TypeScriptに触れるいいきっかけなのかもしれないなと思って�
 
 ### 引用
 
-[![](../../assets/blog/orki1tutbv/1.png)](https://typescriptbook.jp/overview/static-type#:~:text=%E5%8B%95%E7%9A%84%E5%9E%8B%E4%BB%98%E3%81%91%E8%A8%80%E8%AA%9E%3A%20%E5%AE%9F%E8%A1%8C,%E3%81%AA%E3%81%8F%E3%81%A6%E3%82%82%E7%99%BA%E8%A6%8B%E3%81%A7%E3%81%8D%E3%82%8B%E3%80%82)
+[![](../../assets/blog/static-vs-dynamic-typing/1.png)](https://typescriptbook.jp/overview/static-type#:~:text=%E5%8B%95%E7%9A%84%E5%9E%8B%E4%BB%98%E3%81%91%E8%A8%80%E8%AA%9E%3A%20%E5%AE%9F%E8%A1%8C,%E3%81%AA%E3%81%8F%E3%81%A6%E3%82%82%E7%99%BA%E8%A6%8B%E3%81%A7%E3%81%8D%E3%82%8B%E3%80%82)
 
-[![](../../assets/blog/orki1tutbv/2.png)](https://note.com/tasting/n/na6152e3aac51)
+[![](../../assets/blog/static-vs-dynamic-typing/2.png)](https://note.com/tasting/n/na6152e3aac51)

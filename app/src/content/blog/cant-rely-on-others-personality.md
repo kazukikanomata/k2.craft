@@ -20,7 +20,7 @@ publishedAt: "2022-10-23T12:00:07.000Z"
 
 そのときは、インターンであり勉強会的な系統のインターンだったのでなんでも聞いてオッケイの環境でした。だから聞けたのはあると今では思っています。
 
-![](../../assets/blog/txsbb-xed84/1.jpg)
+![](../../assets/blog/cant-rely-on-others-personality/1.jpg)
 
 ## これがどう影響してくるんだろうか
 
@@ -50,4 +50,4 @@ publishedAt: "2022-10-23T12:00:07.000Z"
 
 できれば外資いきたい笑
 
-![](../../assets/blog/txsbb-xed84/2.jpg)
+![](../../assets/blog/cant-rely-on-others-personality/2.jpg)

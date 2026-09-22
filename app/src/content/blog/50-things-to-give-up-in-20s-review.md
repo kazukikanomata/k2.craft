@@ -14,7 +14,7 @@ publishedAt: "2024-07-28T10:31:27.000Z"
 
 超感動したので、紹介します。
 
-[![](../../assets/blog/xwzwyc5y_zl/1.png)](https://daisukeyosumi.com/about)
+[![](../../assets/blog/50-things-to-give-up-in-20s-review/1.png)](https://daisukeyosumi.com/about)
 
 ## 感想「いかに減らすか」
 
@@ -28,7 +28,7 @@ publishedAt: "2024-07-28T10:31:27.000Z"
 
 ※この記事では一部の内容だけを扱います
 
-[![](../../assets/blog/xwzwyc5y_zl/2.jpg)](https://hb.afl.rakuten.co.jp/hgc/g00q072f.y9yjc91d.g00q072f.y9yjde4d/Rinker_i_20240728192648?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fbook%2F17812641%2F&m=http%3A%2F%2Fm.rakuten.co.jp%2Fbook%2Fi%2F21213108%2F&rafcid=wsc_i_is_1000955137366842184)
+[![](../../assets/blog/50-things-to-give-up-in-20s-review/2.jpg)](https://hb.afl.rakuten.co.jp/hgc/g00q072f.y9yjc91d.g00q072f.y9yjde4d/Rinker_i_20240728192648?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fbook%2F17812641%2F&m=http%3A%2F%2Fm.rakuten.co.jp%2Fbook%2Fi%2F21213108%2F&rafcid=wsc_i_is_1000955137366842184)
 
 [自由であり続けるために 20代で捨てるべき50のこと　文庫版 \[ 四角 大輔 \]](https://hb.afl.rakuten.co.jp/hgc/g00q072f.y9yjc91d.g00q072f.y9yjde4d/Rinker_t_20240728192648?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fbook%2F17812641%2F&m=http%3A%2F%2Fm.rakuten.co.jp%2Fbook%2Fi%2F21213108%2F&rafcid=wsc_i_is_1000955137366842184)
 
@@ -38,7 +38,7 @@ created by [Rinker](https://oyakosodate.com/rinker/)
 
 ## 【ワークスタイル】本当に自分がやるべきことか？
 
-![](../../assets/blog/xwzwyc5y_zl/3.png)
+![](../../assets/blog/50-things-to-give-up-in-20s-review/3.png)
 
 > 忙しいときに、TODOリストが溜まっていることはないだろうか？TODOを減らしていく行為は快感だが、心から直結していることなのだろうか？
 > 
@@ -52,7 +52,7 @@ created by [Rinker](https://oyakosodate.com/rinker/)
 
 やりたいことは自分の内側から湧いてくるというのが非常に共感。ふとしたときにポロッとでちゃうんだよね笑
 
-![ケイ](../../assets/blog/xwzwyc5y_zl/4.png)
+![ケイ](../../assets/blog/50-things-to-give-up-in-20s-review/4.png)
 
 ケイ
 
@@ -64,7 +64,7 @@ created by [Rinker](https://oyakosodate.com/rinker/)
 
 ## 【ワークスタイル】いけると思ったら、突っ走れ
 
-![](../../assets/blog/xwzwyc5y_zl/5.png)
+![](../../assets/blog/50-things-to-give-up-in-20s-review/5.png)
 
 > あなたが新商品の開発を会社のみんなでするとして、全員の意見を組んだらどうだろうか？全員のニーズは一通り揃うだろう。
 > 
@@ -84,7 +84,7 @@ created by [Rinker](https://oyakosodate.com/rinker/)
 
 受けるべき対象がある、注ぐべき情熱を一点に絞ることでとんでもないパワーがでるんじゃないのかなと思っている。
 
-![ケイ](../../assets/blog/xwzwyc5y_zl/4.png)
+![ケイ](../../assets/blog/50-things-to-give-up-in-20s-review/4.png)
 
 ケイ
 
@@ -96,7 +96,7 @@ created by [Rinker](https://oyakosodate.com/rinker/)
 
 ## 【メンテナンス】頂上にたどり着くだけではなく、道のりをすべてを楽しみたい
 
-![](../../assets/blog/xwzwyc5y_zl/6.png)
+![](../../assets/blog/50-things-to-give-up-in-20s-review/6.png)
 
 > 社会人になると、いつも短期的な成果を求められ、気づかないうちに限界以上の仕事を背負わされる状態になる。
 > 
@@ -108,7 +108,7 @@ created by [Rinker](https://oyakosodate.com/rinker/)
 
 四角さんは、登山家でもある。登頂するというのはどんなに過酷なことか身に沁みているそう。異変を感じたらケアをするのは必須だよな。
 
-![ケイ](../../assets/blog/xwzwyc5y_zl/4.png)
+![ケイ](../../assets/blog/50-things-to-give-up-in-20s-review/4.png)
 
 ケイ
 
@@ -120,7 +120,7 @@ created by [Rinker](https://oyakosodate.com/rinker/)
 
 ## 【ライフスタイル】ライフラインをいくつか用意する
 
-![](../../assets/blog/xwzwyc5y_zl/7.png)
+![](../../assets/blog/50-things-to-give-up-in-20s-review/7.png)
 
 > あなたがもし営業担当で、得意先が1つしかなければ、そこにしがみつくしかない。相手の言いなりにならざるをえず、革新的でクリエイティブな提案はできなくなる。
 > 
@@ -132,7 +132,7 @@ created by [Rinker](https://oyakosodate.com/rinker/)
 
 現実的に、残業をしても給与所得が伸びて税金がとられちゃう。であれば、事業所得で稼ぐ柱を増やすのがメインではないかと思いますね笑
 
-![ケイ](../../assets/blog/xwzwyc5y_zl/4.png)
+![ケイ](../../assets/blog/50-things-to-give-up-in-20s-review/4.png)
 
 ケイ
 
@@ -144,7 +144,7 @@ created by [Rinker](https://oyakosodate.com/rinker/)
 
 ## 【ライフスタイル】小さな望みをいくつも開放する
 
-![](../../assets/blog/xwzwyc5y_zl/8.png)
+![](../../assets/blog/50-things-to-give-up-in-20s-review/8.png)
 
 > 本当にやりたいことは、みたことも、聞いたこともないところには存在しない
 > 
@@ -163,7 +163,7 @@ created by [Rinker](https://oyakosodate.com/rinker/)
 
 どんな望み先に望みがまた生まれて最終的に自分ってこれやりたいんだ〜とか。こういう価値観だったって気づくんですよね〜。
 
-![ケイ](../../assets/blog/xwzwyc5y_zl/4.png)
+![ケイ](../../assets/blog/50-things-to-give-up-in-20s-review/4.png)
 
 ケイ
 
@@ -175,7 +175,7 @@ created by [Rinker](https://oyakosodate.com/rinker/)
 
 ## 【ライフスタイル】実績をだしてから次をめざせ
 
-![](../../assets/blog/xwzwyc5y_zl/9.png)
+![](../../assets/blog/50-things-to-give-up-in-20s-review/9.png)
 
 > 自分には夢があり、やりたいことからがある。と言って、なんの準備もせずに会社もやめれば、きっと後悔する。
 > 
@@ -191,7 +191,7 @@ created by [Rinker](https://oyakosodate.com/rinker/)
 
 急に収入がいつもの、1/10になったら不安になりますよね。できるだけ生活レベルを下げずに死守したいです。
 
-![ケイ](../../assets/blog/xwzwyc5y_zl/4.png)
+![ケイ](../../assets/blog/50-things-to-give-up-in-20s-review/4.png)
 
 ケイ
 
