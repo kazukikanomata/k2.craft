@@ -219,4 +219,105 @@ terraform {
 > 1. s3バケットとDynamoDBテーブルを作成するterraformコードを記術、ローカルバックエンドを使用してコードをデプロイ
 > 2. 新しく作成されたs3バケット・DynamoDBテーブルを使用するようTerraformバックエンドにbackend設定を追加、ローカルのステートファイルをs3にコピーするために`terraform init`を実行
 
+### 各環境別ごとにバックエンドをどう分けるのか？（Partial Configurtion）
+
+リモート管理ができるようになってきた反面、1つ問題がある。
+Terraformの `backend` ブロック内では **変数（`var.xxx` や `local.xxx`）が使えない** という制約があります。
+
+そのため、`dev` や `prod` など環境ごとにStateファイルの保存先を分ける際、コード内に値を直接書いていると環境ごとにフォルダやファイルを複製して書き換える必要が出てきてしまいます。
+
+そこで役立つのが **Partial Configuration（部分構成）** という仕組みです。
+
+```tf
+# backend.tf
+# backend定義を最小限にし、別ファイルで切り出す
+
+terraform {
+    backend "s3" {
+        #バケット名やキーは記載せずに空欄
+    }
+}
+```
+
+環境ごとにパラメータだけを記述した`.hcl`ファイルを作成する。
+
+```.tf
+# env/dev/backend.hcl
+
+bucket = "my-app-tfstate-dev"
+key = "dev/terraform.tfstate"
+region = "us-east-2"
+dynamodb_table = "my-app-tfstate-locks-dev"
+encrypt = "true"
+```
+
+```.tf
+# env/prod/backend.hcl
+
+bucket = "my-app-tfstate-prod"
+key = "prod/terraform.tfstate"
+region = "us-east-2"
+dynamodb_table = "my-app-tfstate-locks-prod"
+encrypt = "true"
+```
+
+### init時に`-backend-config`で読み込む
+
+`terraform init`を実行する際に、対象環境の`.hcl`ファイルを渡すことで動的にバックエンドを切り替えることができます。
+
+```bash
+# dev環境初期化
+$ terraform init -backend-config=envs/dev/backend.hcl
+
+# 同じディレクトリでキャッシュするときは -reconfigureオプションをつかう
+
+# prod環境初期化
+$ terraform init -reconfigure -backend-config=envs/prod/backend.hcl
+```
+
+## ステートファイルを環境ごとにわける
+
+全環境を一つのterraformせっていで書くのは、危険。それぞれの環境を別のterraform設定で定義することが大事になってくる。
+
+> [!Note]
+> ステートファイルを分離するには2つのやり方がある。
+>
+> 1. ワークスペースによる分離
+>
+> - 全てのワークスペースがのステートファイルが同じバックエンドに保存されるが、同じ認証とアクセス権限を使用する必要があるのがデメリット
+>
+> - インフラをわかりやすく管理することが困難になる可能性が高い。
+>
+> **2. 【推奨】ファイルレイアウトによる分離**
+>
+> - 著者は環境ごと、環境ごとのコンポーネント（VPC、サービス、DB）ごとにリソースを策することを推奨している
+> - ただ、コピペが増えたり、環境感の依存関係が難しくなる
+
+```
+.
+├── stage/
+│   ├── vpc/
+│   ├── services/       # この環境で動かす各アプリケーション
+│   │   ├── frontend-app/
+│   │   └── backend-app/
+│   │       ├── variables.tf
+│   │       ├── outputs.tf
+│   │       └── main.tf
+│   └── data-storage/   # データストアを管理するフォルダが存在
+│       ├── mysql/
+│       └── redis/
+├── prod/
+│   ├── vpc/
+│   ├── services/
+│   │   ├── frontend-app/
+│   │   └── backend-app/
+│   │       ├── variables.tf
+│   │       ├── outputs.tf
+│   │       └── main.tf
+│   └── data-storage/
+└── global/             # 全環境を跨いで使用するリソース（S3やIAM）
+    ├── iam/
+    └── s3/
+```
+
 ## 参考
