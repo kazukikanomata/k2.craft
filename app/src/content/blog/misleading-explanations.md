@@ -39,7 +39,7 @@ by:Photo by [Hannah Wei](https://unsplash.com/@herlifeinpixels?utm_source=unspla
 →バイトの身なので、社員言うことは絶対なのだと思ってしまいました。  
 難しい…
 
-![](../../assets/blog/aza-k5ht4t0/1.jpg)
+![](../../assets/blog/misleading-explanations/1.jpg)
 
   
 **私がもし連絡をした社員さんだったら**  

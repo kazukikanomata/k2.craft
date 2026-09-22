@@ -48,7 +48,7 @@ ORMはそれぞれのプログラミング言語ごとに存在しています�
 -   Python：SQL Alchemy
 -   Go：Gen
 
-![中の人](../../assets/blog/fkdv45ari/1.png)
+![中の人](../../assets/blog/sql-vs-orm-differences/1.png)
 
 中の人
 
@@ -90,7 +90,7 @@ ORMが優位だと思います。長いSQLを書くことなく、可読性を�
 $user = User::where('email', 'example@example.com')->first();
 ```
 
-![中の人](../../assets/blog/fkdv45ari/1.png)
+![中の人](../../assets/blog/sql-vs-orm-differences/1.png)
 
 中の人
 
@@ -120,7 +120,7 @@ LEFT JOIN profiles ON users.id = profiles.user_id
    }
 ```
 
-![中の人](../../assets/blog/fkdv45ari/1.png)
+![中の人](../../assets/blog/sql-vs-orm-differences/1.png)
 
 中の人
 
@@ -138,9 +138,9 @@ LEFT JOIN profiles ON users.id = profiles.user_id
 
 N+1問題はデータベースからデータを取り出す際に、大量のSQLが実行されて動作が重くなるという問題です。
 
-[![](../../assets/blog/fkdv45ari/2.png)](https://pikawaka.com/rails/n1)
+[![](../../assets/blog/sql-vs-orm-differences/2.png)](https://pikawaka.com/rails/n1)
 
-![中の人](../../assets/blog/fkdv45ari/1.png)
+![中の人](../../assets/blog/sql-vs-orm-differences/1.png)
 
 中の人
 
@@ -154,7 +154,7 @@ N+1問題はデータベースからデータを取り出す際に、大量のSQ
 
 SQLインジェクションとは、Webアプリケーションの脆弱性を利用して、データベースに不正なSQL文を注入し、情報を不正に取得、改ざん、削除する攻撃手法のことです。
 
-![中の人](../../assets/blog/fkdv45ari/1.png)
+![中の人](../../assets/blog/sql-vs-orm-differences/1.png)
 
 中の人
 

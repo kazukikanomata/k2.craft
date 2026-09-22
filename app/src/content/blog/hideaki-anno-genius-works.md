@@ -20,7 +20,7 @@ publishedAt: "2023-04-09T07:58:00.000Z"
 
 日本と海外の対比は、高校の国語の先生の思想が強く根付いていると思っている。
 
-![](../../assets/blog/0lm9hbiktkoi/1.jpg)
+![](../../assets/blog/hideaki-anno-genius-works/1.jpg)
 
 この映画は特に自由なスタイルで実写撮影をしており、答えを演者に託している。それぐらい信頼を寄せていると思ったが、実際はそういう捉え方というよりは、むしろ庵野さん自身の中で答えは存在していて、それを映画というコンテンツで集約する。
 
@@ -50,7 +50,7 @@ publishedAt: "2023-04-09T07:58:00.000Z"
 
 また作品のこだわりが強い庵野監督なので、何回もリテイクをしたとのこと。自己マネジメントって本当に重要だなと気づく。
 
-![](../../assets/blog/0lm9hbiktkoi/2.jpeg)
+![](../../assets/blog/hideaki-anno-genius-works/2.jpeg)
 
 引用：NHKBSプレミアム　ドキュメント「シン・仮面ライダー」より
 
@@ -62,7 +62,7 @@ publishedAt: "2023-04-09T07:58:00.000Z"
 
 なんの予習をすることもなく、平日に夕方の1回目の映画をみた。元々エヴァンゲリヲンが好きなので、庵野ワールドよろしくお願いしまーす。
 
-![](../../assets/blog/0lm9hbiktkoi/3.jpeg)
+![](../../assets/blog/hideaki-anno-genius-works/3.jpeg)
 
 ## 感想
 
@@ -94,7 +94,7 @@ publishedAt: "2023-04-09T07:58:00.000Z"
 
 ※　子供用に貼っておく
 
-![](../../assets/blog/0lm9hbiktkoi/4.webp)
+![](../../assets/blog/hideaki-anno-genius-works/4.webp)
 
 ## 空想の仮面ライダー
 
@@ -102,7 +102,7 @@ publishedAt: "2023-04-09T07:58:00.000Z"
 
 ただ仮面ライダー当事者にとっては、正義を貫く責務を持っており、誰かのためなら刺しても殴っても血がとんでも守らなくてはいけない。仮面ライダーは正義というものを形づくった虚構なんだと改めて気付かされた。
 
-![](../../assets/blog/0lm9hbiktkoi/5.jpg)
+![](../../assets/blog/hideaki-anno-genius-works/5.jpg)
 
 意外と盲点な部分は、仮面ライダーというのは元々怪人としての扱い。
 
@@ -118,7 +118,7 @@ publishedAt: "2023-04-09T07:58:00.000Z"
 -   最初のオープニング映像のカメラアングル
 -   情報機関の男たちの名前
 
-![](../../assets/blog/0lm9hbiktkoi/6.jpg)
+![](../../assets/blog/hideaki-anno-genius-works/6.jpg)
 
 これを見ただけでも、すごく原作リスペクトされている。当時の世代にはどハマりな作品といっても全てがそうではなく、役者の性格や才能を活かした作品でもあったと思う。
 
@@ -142,13 +142,13 @@ publishedAt: "2023-04-09T07:58:00.000Z"
 
 激萌え😍
 
-![](../../assets/blog/0lm9hbiktkoi/7.jpg)
+![](../../assets/blog/hideaki-anno-genius-works/7.jpg)
 
 ### ハチオーグめちゃくちゃ可愛い
 
 なーちゃん（西野七瀬）が演じていたことを鑑賞後に気づいて、驚いたのと、すごく順当に可愛い系のキャラクターでお芝居をやっていくのかなと思いきや。真逆のキャラクターが最高だった。
 
-![](../../assets/blog/0lm9hbiktkoi/8.jpeg)
+![](../../assets/blog/hideaki-anno-genius-works/8.jpeg)
 
 狂気的なヴィランキャラクターが出せるところがすごくて、色々な演技を見てみたいと思った。
 
@@ -164,7 +164,7 @@ publishedAt: "2023-04-09T07:58:00.000Z"
 
 映画をみる目的は色々あったが、舞台あいさつがあるというのを聞いて。（本当は生で見たかったけど抽選外れた泣）
 
-![](../../assets/blog/0lm9hbiktkoi/9.jpg)
+![](../../assets/blog/hideaki-anno-genius-works/9.jpg)
 
 庵野さんが司会進行をやるとは…
 

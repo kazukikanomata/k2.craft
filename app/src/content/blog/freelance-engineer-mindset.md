@@ -27,13 +27,13 @@ publishedAt: "2024-10-27T14:21:20.000Z"
 
 すごい経歴の持ち主ですね。とくに印象だったのは新卒のときのお話
 
-![Tさん](../../assets/blog/pxnmech87xh/1.jpg)
+![Tさん](../../assets/blog/freelance-engineer-mindset/1.jpg)
 
 Tさん
 
 3ヶ月半Javaの研修をやっていたが、そのあとなにもコードをかく体験がなかった。
 
-![Tさん](../../assets/blog/pxnmech87xh/1.jpg)
+![Tさん](../../assets/blog/freelance-engineer-mindset/1.jpg)
 
 Tさん
 
@@ -43,7 +43,7 @@ Tさん
 
 会社にずっといると、どうしても狭い視野に追いやられてそれが絶対だよなとなってしまう傾向がある中でこれに気づけたのは素晴らしいですね。
 
-![中の人](../../assets/blog/pxnmech87xh/2.png)
+![中の人](../../assets/blog/freelance-engineer-mindset/2.png)
 
 中の人
 
@@ -57,19 +57,19 @@ Tさん
 
 この方が、フリーランスになったきっかけは給与に低さに注目したそうです。
 
-![Tさん](../../assets/blog/pxnmech87xh/1.jpg)
+![Tさん](../../assets/blog/freelance-engineer-mindset/1.jpg)
 
 Tさん
 
 現場で働いていない人が評価をするのに納得がいかない
 
-![Tさん](../../assets/blog/pxnmech87xh/1.jpg)
+![Tさん](../../assets/blog/freelance-engineer-mindset/1.jpg)
 
 Tさん
 
 自分がプロジェクトのリーダーとして入ったのにもかかわらず他の人の方が給与を多くもらっている。
 
-![Tさん](../../assets/blog/pxnmech87xh/1.jpg)
+![Tさん](../../assets/blog/freelance-engineer-mindset/1.jpg)
 
 Tさん
 
@@ -90,7 +90,7 @@ Tさん
 
 こういう行動をとっているようです。
 
-![中の人](../../assets/blog/pxnmech87xh/2.png)
+![中の人](../../assets/blog/freelance-engineer-mindset/2.png)
 
 中の人
 
@@ -110,19 +110,19 @@ Tさん
 
 そのために何をするのか？
 
-![Tさん](../../assets/blog/pxnmech87xh/1.jpg)
+![Tさん](../../assets/blog/freelance-engineer-mindset/1.jpg)
 
 Tさん
 
 Slackでやりとりをしている会社ならこの人はこういう言動をするんだな〜ってチェックします
 
-![ Tさん](../../assets/blog/pxnmech87xh/1.jpg)
+![ Tさん](../../assets/blog/freelance-engineer-mindset/1.jpg)
 
 Tさん
 
 入社までに、この人は仕事できる人なんだろなっというところをチェックします
 
-![Tさん](../../assets/blog/pxnmech87xh/1.jpg)
+![Tさん](../../assets/blog/freelance-engineer-mindset/1.jpg)
 
 Tさん
 
@@ -146,7 +146,7 @@ slackの履歴もみたり、Pull Requestで経緯を知ったりとかして、
 
 この方は、どうやって準備をしているのかです。
 
-![Tさん](../../assets/blog/pxnmech87xh/1.jpg)
+![Tさん](../../assets/blog/freelance-engineer-mindset/1.jpg)
 
 Tさん
 
@@ -160,19 +160,19 @@ Tさん
 
 Tさんがおこなっている心構えです。
 
-![Tさん](../../assets/blog/pxnmech87xh/1.jpg)
+![Tさん](../../assets/blog/freelance-engineer-mindset/1.jpg)
 
 Tさん
 
 基本的に自分がやっている技術で問題なくできることを納得いく感じで人に説明できるようになっておくこと
 
-![Tさん](../../assets/blog/pxnmech87xh/1.jpg)
+![Tさん](../../assets/blog/freelance-engineer-mindset/1.jpg)
 
 Tさん
 
 面接の前にCRUDのAPIは構築できるようにしておく。他の人も応募してくる人がいるので、どうしても入りたいのならすぐに入れるようにしておく！
 
-![Tさん](../../assets/blog/pxnmech87xh/1.jpg)
+![Tさん](../../assets/blog/freelance-engineer-mindset/1.jpg)
 
 Tさん
 
@@ -190,7 +190,7 @@ Tさん
 
 最低限の努力を怠らないし、圧倒的量をこなしているんですよね。
 
-![中の人](../../assets/blog/pxnmech87xh/2.png)
+![中の人](../../assets/blog/freelance-engineer-mindset/2.png)
 
 中の人
 
@@ -202,7 +202,7 @@ Tさん
 
 「最初の1ヶ月で期待値を超える」
 
-![中の人](../../assets/blog/pxnmech87xh/2.png)
+![中の人](../../assets/blog/freelance-engineer-mindset/2.png)
 
 中の人
 

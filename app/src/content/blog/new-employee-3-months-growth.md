@@ -18,7 +18,7 @@ publishedAt: "2024-07-12T02:00:10.000Z"
 
 先輩はちょっと怖いし、聞きずらい。聞いても否定される感じが怖くて一歩踏み出せない。
 
-![ケイ](../../assets/blog/9dj6me517/1.png)
+![ケイ](../../assets/blog/new-employee-3-months-growth/1.png)
 
 ケイ
 
@@ -34,7 +34,7 @@ publishedAt: "2024-07-12T02:00:10.000Z"
 
 それは、**“業務フローを理解する”**ということです！
 
-![ケイ](../../assets/blog/9dj6me517/1.png)
+![ケイ](../../assets/blog/new-employee-3-months-growth/1.png)
 
 ケイ
 
@@ -59,13 +59,13 @@ publishedAt: "2024-07-12T02:00:10.000Z"
 
 **オフラインでは**
 
-![ド・レッダ](../../assets/blog/9dj6me517/2.jpg)
+![ド・レッダ](../../assets/blog/new-employee-3-months-growth/2.jpg)
 
 ド・レッダ
 
 あの先輩、いつも出社しているな。営業系の質問はあの先輩に聞けばよさそう。
 
-![レナ](../../assets/blog/9dj6me517/3.jpg)
+![レナ](../../assets/blog/new-employee-3-months-growth/3.jpg)
 
 レナ
 
@@ -73,7 +73,7 @@ publishedAt: "2024-07-12T02:00:10.000Z"
 
 **オンラインでは**
 
-![がーるえー](../../assets/blog/9dj6me517/4.jpg)
+![がーるえー](../../assets/blog/new-employee-3-months-growth/4.jpg)
 
 がーるえー
 
@@ -93,7 +93,7 @@ publishedAt: "2024-07-12T02:00:10.000Z"
 
 営業について詳しく知りたい方はこちらの記事をよんでみてください
 
-[![](../../assets/blog/9dj6me517/5.png)](https://www.voyage-to-the-new-world.com/%e3%80%90%e5%96%b6%e6%a5%ad%e9%9d%a9%e5%91%bd%e3%80%91%e3%82%a8%e3%83%b3%e3%82%b8%e3%83%8b%e3%82%a2%e5%bf%97%e6%9c%9b%e3%81%8c%e7%8f%be%e4%bb%a3%e3%81%ae%e5%96%b6%e6%a5%ad%e3%82%92%e3%81%bf%e3%81%a6)
+[![](../../assets/blog/new-employee-3-months-growth/5.png)](https://www.voyage-to-the-new-world.com/%e3%80%90%e5%96%b6%e6%a5%ad%e9%9d%a9%e5%91%bd%e3%80%91%e3%82%a8%e3%83%b3%e3%82%b8%e3%83%8b%e3%82%a2%e5%bf%97%e6%9c%9b%e3%81%8c%e7%8f%be%e4%bb%a3%e3%81%ae%e5%96%b6%e6%a5%ad%e3%82%92%e3%81%bf%e3%81%a6)
 
 #### IS（インサイドセールス）の例でいうと
 

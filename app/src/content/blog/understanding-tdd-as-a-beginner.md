@@ -10,7 +10,7 @@ publishedAt: "2024-05-03T00:54:18.000Z"
 
 ソフトウェアテストが大好きな24卒エンジニアです。先日読んだ以下の書籍
 
-[![](../../assets/blog/09e-f9alc26/1.jpg)](https://hb.afl.rakuten.co.jp/hgc/g00rd1df.y9yjc1d7.g00rd1df.y9yjdf33/Rinker_i_20240217231359?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fbooxstore%2Fbk-4297132346%2F&m=http%3A%2F%2Fm.rakuten.co.jp%2Fbooxstore%2Fi%2F13036621%2F&rafcid=wsc_i_is_1000955137366842184)
+[![](../../assets/blog/understanding-tdd-as-a-beginner/1.jpg)](https://hb.afl.rakuten.co.jp/hgc/g00rd1df.y9yjc1d7.g00rd1df.y9yjdf33/Rinker_i_20240217231359?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fbooxstore%2Fbk-4297132346%2F&m=http%3A%2F%2Fm.rakuten.co.jp%2Fbooxstore%2Fi%2F13036621%2F&rafcid=wsc_i_is_1000955137366842184)
 
 [ちょうぜつソフトウェア設計入門 PHPで理解するオブジェクト指向の活用／田中ひさてる【3000円以上送料無料】](https://hb.afl.rakuten.co.jp/hgc/g00rd1df.y9yjc1d7.g00rd1df.y9yjdf33/Rinker_t_20240217231359?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fbooxstore%2Fbk-4297132346%2F&m=http%3A%2F%2Fm.rakuten.co.jp%2Fbooxstore%2Fi%2F13036621%2F&rafcid=wsc_i_is_1000955137366842184)
 
@@ -193,7 +193,7 @@ class NumberConverter
 
 このサイクルを繰り返すのがテスト駆動開発の流れです。
 
-![kei](../../assets/blog/09e-f9alc26/2.png)
+![kei](../../assets/blog/understanding-tdd-as-a-beginner/2.png)
 
 kei
 
@@ -209,4 +209,4 @@ PHPを例に取り上げ、テスト駆動開発がどういうものかを見�
 
 #### 参考
 
-[![](../../assets/blog/09e-f9alc26/3.jpg)](https://it-trend.jp/development_tools/article/32-0036)
+[![](../../assets/blog/understanding-tdd-as-a-beginner/3.jpg)](https://it-trend.jp/development_tools/article/32-0036)

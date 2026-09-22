@@ -16,7 +16,7 @@ https://www.nikkei.com/article/DGXZQOUA0977U0Z00C21A9000000/?n_cid=SNSTW005
 
 タイトルにも書いた通り、今回は皇位継承問題をみていきたいと思います。
 
-[![](../../assets/blog/fh8ik9_vzsx/1.png)](https://www.nikkei.com/article/DGXMZO62965500U0A820C2PE8000/)
+[![](../../assets/blog/female-line-emperor-japan/1.png)](https://www.nikkei.com/article/DGXMZO62965500U0A820C2PE8000/)
 
 なぜ、こんな話をするのかというと、以前ある大臣が以上の発言をしたことから疑問に思ってました。
 
@@ -56,7 +56,7 @@ https://www.kantei.go.jp/jp/singi/kousitu/dai3/3siryou3.pdf
 では何が問題なのでしょうか。  
 具体例をもとに考えていきます。
 
-![](../../assets/blog/fh8ik9_vzsx/2.jpg)
+![](../../assets/blog/female-line-emperor-japan/2.jpg)
 
 例）愛子さまのお父様は天皇陛下で、お父さんだけをさかのぼれば初代天皇(神武天皇)につながります。  
 →愛子さまが天皇になれば、男系の天皇。

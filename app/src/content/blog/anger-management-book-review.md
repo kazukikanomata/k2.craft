@@ -14,7 +14,7 @@ publishedAt: "2024-06-15T02:17:36.000Z"
 
 本を通して、とても学びになったのでそれについて書いていこうと思います。
 
-[![](../../assets/blog/434h4ru62i_6/1.jpg)](https://hb.afl.rakuten.co.jp/hgc/g00q072f.y9yjc91d.g00q072f.y9yjde4d/Rinker_i_20240613095408?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fbook%2F14392361%2F&m=http%3A%2F%2Fm.rakuten.co.jp%2Fbook%2Fi%2F18138066%2F&rafcid=wsc_i_is_1000955137366842184)
+[![](../../assets/blog/anger-management-book-review/1.jpg)](https://hb.afl.rakuten.co.jp/hgc/g00q072f.y9yjc91d.g00q072f.y9yjde4d/Rinker_i_20240613095408?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fbook%2F14392361%2F&m=http%3A%2F%2Fm.rakuten.co.jp%2Fbook%2Fi%2F18138066%2F&rafcid=wsc_i_is_1000955137366842184)
 
 [アンガーマネジメント入門 （文庫） \[ 安藤俊介 \]](https://hb.afl.rakuten.co.jp/hgc/g00q072f.y9yjc91d.g00q072f.y9yjde4d/Rinker_t_20240613095408?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fbook%2F14392361%2F&m=http%3A%2F%2Fm.rakuten.co.jp%2Fbook%2Fi%2F18138066%2F&rafcid=wsc_i_is_1000955137366842184)
 
@@ -56,7 +56,7 @@ created by [Rinker](https://oyakosodate.com/rinker/)
 
 2つの事例をみて、肩がぶつかったのに別の感情をもっています。不思議ですね。同じ出来事でも置かれている状況が異なれば、人とまったく違う感情をもつということ。
 
-![ケイ](../../assets/blog/434h4ru62i_6/2.png)
+![ケイ](../../assets/blog/anger-management-book-review/2.png)
 
 ケイ
 
@@ -73,7 +73,7 @@ created by [Rinker](https://oyakosodate.com/rinker/)
 
 こういった状況になると思います。人間も動物と同じく怒りという機能は変わらないです。
 
-![ケイ](../../assets/blog/434h4ru62i_6/2.png)
+![ケイ](../../assets/blog/anger-management-book-review/2.png)
 
 ケイ
 
@@ -100,7 +100,7 @@ created by [Rinker](https://oyakosodate.com/rinker/)
 
 飯島さんは割り込みをしようとする車をみます。
 
-![飯島](../../assets/blog/434h4ru62i_6/3.jpg)
+![飯島](../../assets/blog/anger-management-book-review/3.jpg)
 
 飯島
 
@@ -158,7 +158,7 @@ created by [Rinker](https://oyakosodate.com/rinker/)
 
 対人関係で怒りが爆発しそうなとき
 
-![マッスル](../../assets/blog/434h4ru62i_6/3.jpg)
+![マッスル](../../assets/blog/anger-management-book-review/3.jpg)
 
 マッスル
 
@@ -174,7 +174,7 @@ created by [Rinker](https://oyakosodate.com/rinker/)
 
 たとえば、イライラしたとき、目の前にあるペンを持ってみて
 
-![マッスル](../../assets/blog/434h4ru62i_6/3.jpg)
+![マッスル](../../assets/blog/anger-management-book-review/3.jpg)
 
 マッスル
 
@@ -205,13 +205,13 @@ created by [Rinker](https://oyakosodate.com/rinker/)
 
 怒りの強さを数値で計測するということです。怒りを感じた時にこの表を思い出して、自分の怒りを測定してみましょう。
 
-![](../../assets/blog/434h4ru62i_6/4.jpg)
+![](../../assets/blog/anger-management-book-review/4.jpg)
 
 ### アンガーログ
 
 自分がものごとをどのように認識しているのか。どのような怒りを感じているのか、どのように行動したのかを記録していく方法です。怒りを「見える化」していきましょう。
 
-![](../../assets/blog/434h4ru62i_6/5.jpg)
+![](../../assets/blog/anger-management-book-review/5.jpg)
 
 -   日時…怒りを感じた日時を書きます
 -   出来事…怒りを感じた状況についてかきます

@@ -13,11 +13,11 @@ publishedAt: "2024-11-02T13:48:16.000Z"
 
 こんな状況だったので、何かそれに近づける手段として学べるものがありそうか。AIに尋ねてみました。
 
-![](../../assets/blog/v44g99q77/1.png)
+![](../../assets/blog/java-oop-for-beginners-vol1/1.png)
 
 クラウド技術を使って設計を学びたいです。どんな本やサイトがおすすめですか
 
-![AI](../../assets/blog/v44g99q77/1.png)
+![AI](../../assets/blog/java-oop-for-beginners-vol1/1.png)
 
 AI
 
@@ -63,7 +63,7 @@ class NonObject{
 
 そこで生まれたのが、この**オブジェクト指向**。オブジェクトを中心にしてプログラムを作る考え方です。
 
-![](../../assets/blog/v44g99q77/1.png)
+![](../../assets/blog/java-oop-for-beginners-vol1/1.png)
 
 情報を属性と操作に分けた人類の英知は素晴らしいなと思います笑
 
@@ -77,7 +77,7 @@ class NonObject{
 
 こんなメリットが存在します。
 
-![](../../assets/blog/v44g99q77/1.png)
+![](../../assets/blog/java-oop-for-beginners-vol1/1.png)
 
 mainのメソッドに直書きしていってもいいですが、効率わるいよな〜って思いますね
 
@@ -103,7 +103,7 @@ mainのメソッドに直書きしていってもいいですが、効率わる�
 
 クラスから作られる実体のことを指します。具体的には何かモノを指します。
 
-![](../../assets/blog/v44g99q77/1.png)
+![](../../assets/blog/java-oop-for-beginners-vol1/1.png)
 
 設計図があれば、いくつでもモノをつくることができますね
 
@@ -163,7 +163,7 @@ public class Car {
 }
 ```
 
-![](../../assets/blog/v44g99q77/1.png)
+![](../../assets/blog/java-oop-for-beginners-vol1/1.png)
 
 1つの実行用クラスから始めて、システムの要件に応じて複数の設計図クラスを追加していくのが一般的なアプローチみたいですね
 
@@ -186,7 +186,7 @@ stu1.name = “すがばら”;
 stu1.setScore(80,90);
 ```
 
-![](../../assets/blog/v44g99q77/1.png)
+![](../../assets/blog/java-oop-for-beginners-vol1/1.png)
 
 クラスから引っ張ってきてオブジェクトを生成する。このあたりはすっきりするのではないでしょうか。
 

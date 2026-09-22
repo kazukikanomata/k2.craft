@@ -10,7 +10,7 @@ publishedAt: "2024-07-25T12:24:29.000Z"
 
 前回はEC2についてとりあげました。
 
-[![](../../assets/blog/1vh5k__39d/1.png)](https://www.voyage-to-the-new-world.com/%e3%80%90aws-%e5%88%9d%e5%ad%a6%e8%80%85%e3%80%912%e5%88%86%e3%81%a7ec2%e3%82%92%e7%90%86%e8%a7%a3%e3%81%99%e3%82%8b/)
+[![](../../assets/blog/aws-ec2-auto-scaling-basics/1.png)](https://www.voyage-to-the-new-world.com/%e3%80%90aws-%e5%88%9d%e5%ad%a6%e8%80%85%e3%80%912%e5%88%86%e3%81%a7ec2%e3%82%92%e7%90%86%e8%a7%a3%e3%81%99%e3%82%8b/)
 
 EC2には、Auto Scalingというとても便利な機能が存在しています。その機能はどんなことができるのかみていきましょう。
 
@@ -35,7 +35,7 @@ Auto Scalingは、2つ存在します。
     -   可用性…システムやサービスが、どれだけ継続して使えるかということ
     -   異常なインスタンスを発見すると切り離して新しいものに交換してくれます
 
-![ケイ](../../assets/blog/1vh5k__39d/2.png)
+![ケイ](../../assets/blog/aws-ec2-auto-scaling-basics/2.png)
 
 ケイ
 
@@ -63,7 +63,7 @@ Auto Scaling Groupに組み込まれたインスタンスは、必ず何らか�
 
 その状態遷移図は以下のとおりです。
 
-![](../../assets/blog/1vh5k__39d/3.png)
+![](../../assets/blog/aws-ec2-auto-scaling-basics/3.png)
 
 このインタスタンスのステータスが変化することで、どんなイベントが起きるのか押さえておきましょう。
 

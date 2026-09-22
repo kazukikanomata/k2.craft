@@ -6,7 +6,7 @@ icon: "🔌"
 publishedAt: "2022-11-06T10:19:41.000Z"
 ---
 
-[![](../../assets/blog/0itt68x6jc8/1.jpg)](https://www.amazon.co.jp/Web-API-Parts-%E6%B0%B4%E9%87%8E-%E8%B2%B4%E6%98%8E/dp/4873116864)
+[![](../../assets/blog/web-api-good-parts-review/1.jpg)](https://www.amazon.co.jp/Web-API-Parts-%E6%B0%B4%E9%87%8E-%E8%B2%B4%E6%98%8E/dp/4873116864)
 
 *https://www.amazon.co.jp/Web-API-Parts-%E6%B0%B4%E9%87%8E-%E8%B2%B4%E6%98%8E/dp/4873116864*
 

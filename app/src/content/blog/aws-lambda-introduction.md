@@ -20,7 +20,7 @@ publishedAt: "2024-07-04T00:22:28.000Z"
 
 こちらの本より引用しています
 
-[![](../../assets/blog/uqw2buky4kv4/1.jpg)](https://hb.afl.rakuten.co.jp/hgc/g00rd1df.y9yjc1d7.g00rd1df.y9yjdf33/Rinker_i_20240702200207?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fbooxstore%2Fbk-4815607850%2F&m=http%3A%2F%2Fm.rakuten.co.jp%2Fbooxstore%2Fi%2F12998884%2F&rafcid=wsc_i_is_1000955137366842184)
+[![](../../assets/blog/aws-lambda-introduction/1.jpg)](https://hb.afl.rakuten.co.jp/hgc/g00rd1df.y9yjc1d7.g00rd1df.y9yjdf33/Rinker_i_20240702200207?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fbooxstore%2Fbk-4815607850%2F&m=http%3A%2F%2Fm.rakuten.co.jp%2Fbooxstore%2Fi%2F12998884%2F&rafcid=wsc_i_is_1000955137366842184)
 
 [AWSの基本・仕組み・重要用語が全部わかる教科書 見るだけ図解／川畑光平／菊地貴彰／真中俊輝【3000円以上送料無料】](https://hb.afl.rakuten.co.jp/hgc/g00rd1df.y9yjc1d7.g00rd1df.y9yjdf33/Rinker_t_20240702200207?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fbooxstore%2Fbk-4815607850%2F&m=http%3A%2F%2Fm.rakuten.co.jp%2Fbooxstore%2Fi%2F12998884%2F&rafcid=wsc_i_is_1000955137366842184)
 
@@ -32,7 +32,7 @@ created by [Rinker](https://oyakosodate.com/rinker/)
 
 必要なときに必要な分だけアプリケーションを実行できる。サーバーレスなサービスです。AWSのサービスを動かすインフラ（実行環境やサーバー構築など）といったことを考えずに、実行できます。
 
-![　ケイ](../../assets/blog/uqw2buky4kv4/2.png)
+![　ケイ](../../assets/blog/aws-lambda-introduction/2.png)
 
 　ケイ
 
@@ -48,31 +48,31 @@ created by [Rinker](https://oyakosodate.com/rinker/)
 
 以下のような画面がでてくると思います。
 
-![](../../assets/blog/uqw2buky4kv4/3.png)
+![](../../assets/blog/aws-lambda-introduction/3.png)
 
 ### 関数の概要
 
 以下の枠をみてみてください  
 左側の画面には、helloWorldと書かれておりフレームで囲まれています。
 
-![](../../assets/blog/uqw2buky4kv4/4.png)
+![](../../assets/blog/aws-lambda-introduction/4.png)
 
 トリガーを追加（左側にある）からは呼び出し元の情報が追加できます。  
 API Gateway、EventBridge….などなどを選択できます。
 
-![](../../assets/blog/uqw2buky4kv4/5.png)
+![](../../assets/blog/aws-lambda-introduction/5.png)
 
 一方で画面右側からは、送信先の情報を選択することができます。送信先タイプなどを選択。
 
-![](../../assets/blog/uqw2buky4kv4/6.png)
+![](../../assets/blog/aws-lambda-introduction/6.png)
 
 下にスクロールしてみると、ソースコードが記述されていますね。今回は、ランタイムNode.jsを選択し、作成しています。
 
-![](../../assets/blog/uqw2buky4kv4/7.png)
+![](../../assets/blog/aws-lambda-introduction/7.png)
 
 その下をみてみると、コードのプロパティやランタイム設定やレイヤー情報などが追記できます。
 
-![](../../assets/blog/uqw2buky4kv4/8.png)
+![](../../assets/blog/aws-lambda-introduction/8.png)
 
 したがって、Lambdaを作成したあとのコンソール画面では、下記のような情報が設定できます。
 
@@ -149,7 +149,7 @@ https://docs.aws.amazon.com/ja_jp/lambda/latest/dg/with-s3.html
     -   標準のランタイムでサポートされていないバージョン
     -   その他の言語のランタイムを作成して実行できます
 
-![　ケイ](../../assets/blog/uqw2buky4kv4/2.png)
+![　ケイ](../../assets/blog/aws-lambda-introduction/2.png)
 
 　ケイ
 
@@ -163,7 +163,7 @@ https://docs.aws.amazon.com/ja_jp/lambda/latest/dg/lambda-runtimes.html
 
 複数のLambda関数が共通で利用するライブラリ、カスタムランタイム、依存関係をZIPファイルで切り出して共有する機能のことです。
 
-![　ケイ](../../assets/blog/uqw2buky4kv4/2.png)
+![　ケイ](../../assets/blog/aws-lambda-introduction/2.png)
 
 　ケイ
 
@@ -173,7 +173,7 @@ https://docs.aws.amazon.com/ja_jp/lambda/latest/dg/lambda-runtimes.html
 
 例えば、あるレイヤーには鉛筆がたくさん入っていて、別のレイヤーには消しゴムがたくさん入っています。Lambdaが動くとき、必要な道具が入ったレイヤーを簡単に使うことができるんです。
 
-![](../../assets/blog/uqw2buky4kv4/9.png)
+![](../../assets/blog/aws-lambda-introduction/9.png)
 
 LambdaのLayersを使うことで、何度も同じ道具を準備しなくても一度だけレイヤーに入れておけば、いつでもその道具を使えるようになります。
 
@@ -181,7 +181,7 @@ LambdaのLayersを使うことで、何度も同じ道具を準備しなくて�
 
 Layersを利用したLambdaの拡張機能です。モニタリングやセキュリティなど、組織の所有者が利用できるようにするLambdaを拡張できます。
 
-![　ケイ](../../assets/blog/uqw2buky4kv4/2.png)
+![　ケイ](../../assets/blog/aws-lambda-introduction/2.png)
 
 　ケイ
 
@@ -207,9 +207,9 @@ Layersを利用したLambdaの拡張機能です。モニタリングやセキ�
 
 Lambdaの一連の流れは次のようになっています。
 
-![](../../assets/blog/uqw2buky4kv4/10.jpg)
+![](../../assets/blog/aws-lambda-introduction/10.jpg)
 
-[![](../../assets/blog/uqw2buky4kv4/11.jpg)](https://toumasblog.org/aws-lambda)
+[![](../../assets/blog/aws-lambda-introduction/11.jpg)](https://toumasblog.org/aws-lambda)
 
 つまり
 
@@ -236,7 +236,7 @@ Lambda関数に対してリクエストが継続するときに、コンテナ�
 
 そんなときには、「Provisioned Concurrency」というものを利用して、Lambda関数を事前にセットアップ（インフラを構築）しておくことがよいとされます。
 
-![　ケイ](../../assets/blog/uqw2buky4kv4/2.png)
+![　ケイ](../../assets/blog/aws-lambda-introduction/2.png)
 
 　ケイ
 

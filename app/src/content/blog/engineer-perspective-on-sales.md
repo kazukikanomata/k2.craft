@@ -16,7 +16,7 @@ publishedAt: "2024-06-02T10:58:06.000Z"
 
 見込み顧客に対して電話やメールなどを利用して非対面で行う営業活動のことを示します。
 
-![](../../assets/blog/ifuutemgm/1.webp)
+![](../../assets/blog/engineer-perspective-on-sales/1.webp)
 
 マーケティング部門と対面の営業部門との間に入って活動を行います。業務内容は様々です。
 
@@ -51,7 +51,7 @@ publishedAt: "2024-06-02T10:58:06.000Z"
 
 といわれて買って実際にいくつか読んでみました。
 
-[![](../../assets/blog/ifuutemgm/2.jpg)](https://hb.afl.rakuten.co.jp/hgc/g00q072f.y9yjc91d.g00q072f.y9yjde4d/Rinker_i_20240602185517?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fbook%2F15763607%2F&m=http%3A%2F%2Fm.rakuten.co.jp%2Fbook%2Fi%2F19446888%2F&rafcid=wsc_i_is_1000955137366842184)
+[![](../../assets/blog/engineer-perspective-on-sales/2.jpg)](https://hb.afl.rakuten.co.jp/hgc/g00q072f.y9yjc91d.g00q072f.y9yjde4d/Rinker_i_20240602185517?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fbook%2F15763607%2F&m=http%3A%2F%2Fm.rakuten.co.jp%2Fbook%2Fi%2F19446888%2F&rafcid=wsc_i_is_1000955137366842184)
 
 [THE MODEL（MarkeZine BOOKS） マーケティング・インサイドセールス・営業・カスタマーサクセスの共業プロセス \[ 福田 康隆 \]](https://hb.afl.rakuten.co.jp/hgc/g00q072f.y9yjc91d.g00q072f.y9yjde4d/Rinker_t_20240602185517?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fbook%2F15763607%2F&m=http%3A%2F%2Fm.rakuten.co.jp%2Fbook%2Fi%2F19446888%2F&rafcid=wsc_i_is_1000955137366842184)
 
@@ -63,7 +63,7 @@ created by [Rinker](https://oyakosodate.com/rinker/)
 
 営業ってこんな変わっているんだ！と気づきました〜。
 
-![ケイ](../../assets/blog/ifuutemgm/3.png)
+![ケイ](../../assets/blog/engineer-perspective-on-sales/3.png)
 
 ケイ
 
@@ -73,13 +73,13 @@ created by [Rinker](https://oyakosodate.com/rinker/)
 
 顧客リストを作成して、電話などのアプローチをし、提案して案件を獲得。その後のサポートも実施する。これがかつての営業の流れです
 
-![ケイ](../../assets/blog/ifuutemgm/3.png)
+![ケイ](../../assets/blog/engineer-perspective-on-sales/3.png)
 
 ケイ
 
 営業、向いてないのイメージは全部のステップを実施するところにあるのかなと思います。
 
-![](../../assets/blog/ifuutemgm/4.png)
+![](../../assets/blog/engineer-perspective-on-sales/4.png)
 
 ### 現在の営業
 
@@ -92,7 +92,7 @@ created by [Rinker](https://oyakosodate.com/rinker/)
 
 こういったように部門ごとにわかれています。
 
-![](../../assets/blog/ifuutemgm/5.png)
+![](../../assets/blog/engineer-perspective-on-sales/5.png)
 
 営業部門の範囲って本当に限られるんですよね。だいぶ営業フローがクリアになりました。
 
@@ -104,7 +104,7 @@ created by [Rinker](https://oyakosodate.com/rinker/)
 
 SFA（**Sales Force Automation**）やMA（**Marketing Automation**）といったITツールがいかに大事か実感しました。
 
-![ケイ](../../assets/blog/ifuutemgm/3.png)
+![ケイ](../../assets/blog/engineer-perspective-on-sales/3.png)
 
 ケイ
 
@@ -116,7 +116,7 @@ SFA（**Sales Force Automation**）やMA（**Marketing Automation**）といっ�
 
 それぞれかける会社の目的も違えば温度感もちがう。なので、ここは要チェックだと思いました。
 
-![ケイ](../../assets/blog/ifuutemgm/3.png)
+![ケイ](../../assets/blog/engineer-perspective-on-sales/3.png)
 
 ケイ
 

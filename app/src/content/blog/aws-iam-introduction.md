@@ -29,7 +29,7 @@ AWSアカウント内で作成できるユーザーのこと。各種リソー�
 
 IAMユーザーは、「**アクセスキー**」と呼ばれる、アクセスキーIDとシークレットキーという項目を含んだ文字列の組み合わせを生成できます。
 
-![氷の女王](../../assets/blog/hy5f1ofah/1.jpg)
+![氷の女王](../../assets/blog/aws-iam-introduction/1.jpg)
 
 氷の女王
 
@@ -53,7 +53,7 @@ IAMにおけるアクセスキーは何につかうんでしょうか？
 -   TerraformやJenkinsなどのインフラツールやCI/CDツールにアクセスするキーを設定することで、これらのツールを通じてAWSリソース管理やデプロイを自動化できます。  
     
 
-![ケイ](../../assets/blog/hy5f1ofah/2.png)
+![ケイ](../../assets/blog/aws-iam-introduction/2.png)
 
 ケイ
 
@@ -94,7 +94,7 @@ AWSリソースに紐付けられる**役割**のことです。もっとわか�
 
 IAMロールは各リソースに対して、1つ割り当てられます。
 
-![ケイ](../../assets/blog/hy5f1ofah/2.png)
+![ケイ](../../assets/blog/aws-iam-introduction/2.png)
 
 ケイ
 
@@ -111,7 +111,7 @@ IAMユーザーをグループ分けする機能です。それぞれのIAMユ�
 
 という方法が推奨されています。
 
-![](../../assets/blog/hy5f1ofah/3.png)
+![](../../assets/blog/aws-iam-introduction/3.png)
 
 参考：[https://iselegant.hatenablog.com/entry/2020/05/24/215808](https://iselegant.hatenablog.com/entry/2020/05/24/215808)
 
@@ -119,7 +119,7 @@ IAMユーザーをグループ分けする機能です。それぞれのIAMユ�
 
 AWSリソースや、IAMユーザーをもっていないユーザーやアプリケーションに対して、一時的に認証情報を付与する機能です。一時的認証情報を請求する操作を「**Assume Role**」といいます。
 
-![ケイ](../../assets/blog/hy5f1ofah/2.png)
+![ケイ](../../assets/blog/aws-iam-introduction/2.png)
 
 ケイ
 
@@ -129,7 +129,7 @@ STSを使うことで、IAMユーザーをつくる必要がなくなり、結�
 
 **▼AWS Security Token Service（STS）による権限管理**
 
-![](../../assets/blog/hy5f1ofah/4.png)
+![](../../assets/blog/aws-iam-introduction/4.png)
 
 ## おわりに
 
@@ -137,7 +137,7 @@ AWSのIAMを学習していきました。IAMはわかりにくいところで�
 
 ## 参考
 
-[![](../../assets/blog/hy5f1ofah/5.jpg)](https://hb.afl.rakuten.co.jp/hgc/g00rd1df.y9yjc1d7.g00rd1df.y9yjdf33/Rinker_i_20240702200207?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fbooxstore%2Fbk-4815607850%2F&m=http%3A%2F%2Fm.rakuten.co.jp%2Fbooxstore%2Fi%2F12998884%2F&rafcid=wsc_i_is_1000955137366842184)
+[![](../../assets/blog/aws-iam-introduction/5.jpg)](https://hb.afl.rakuten.co.jp/hgc/g00rd1df.y9yjc1d7.g00rd1df.y9yjdf33/Rinker_i_20240702200207?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fbooxstore%2Fbk-4815607850%2F&m=http%3A%2F%2Fm.rakuten.co.jp%2Fbooxstore%2Fi%2F12998884%2F&rafcid=wsc_i_is_1000955137366842184)
 
 [AWSの基本・仕組み・重要用語が全部わかる教科書 見るだけ図解／川畑光平／菊地貴彰／真中俊輝【3000円以上送料無料】](https://hb.afl.rakuten.co.jp/hgc/g00rd1df.y9yjc1d7.g00rd1df.y9yjdf33/Rinker_t_20240702200207?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fbooxstore%2Fbk-4815607850%2F&m=http%3A%2F%2Fm.rakuten.co.jp%2Fbooxstore%2Fi%2F12998884%2F&rafcid=wsc_i_is_1000955137366842184)
 

@@ -30,9 +30,9 @@ Web系企業のエンジニア職として、内定をして1年無事、大学�
 
 レストランのメニューの構成で考えてみましょう。
 
-![](../../assets/blog/5tuqvs55l0w/1.png)
+![](../../assets/blog/2024-new-grad-training-week1/1.png)
 
-![kei](../../assets/blog/5tuqvs55l0w/2.png)
+![kei](../../assets/blog/2024-new-grad-training-week1/2.png)
 
 kei
 
@@ -64,7 +64,7 @@ kei
 
 お店側は在庫の管理やオーダー管理等が難しくなってしまうんですね。
 
-![kei](../../assets/blog/5tuqvs55l0w/2.png)
+![kei](../../assets/blog/2024-new-grad-training-week1/2.png)
 
 kei
 
@@ -121,7 +121,7 @@ MECEって意識してないけど非常に大事な考え方なんだと実感�
 
 これをピラミッドストラクチャーで書いてみます。
 
-![](../../assets/blog/5tuqvs55l0w/3.png)
+![](../../assets/blog/2024-new-grad-training-week1/3.png)
 
 こんな感じになるわけです。めちゃくちゃスッキリしているなぁと思いました笑
 
