@@ -348,6 +348,21 @@ body {
   color: var(--shiki-dark);
 }
 
+/* 行番号(rehype-pretty-codeが各行を<span data-line>で囲むので、CSSカウンターで行番号を表示する) */
+.entry-content [data-rehype-pretty-code-figure] code {
+  counter-reset: line;
+}
+
+.entry-content [data-rehype-pretty-code-figure] code > [data-line]::before {
+  content: counter(line);
+  counter-increment: line;
+  display: inline-block;
+  width: 1.75rem;
+  margin-right: 1rem;
+  text-align: right;
+  @apply text-muted;
+}
+
 .entry-content [data-rehype-pretty-code-title] {
   @apply border border-b-0 border-line bg-gray-100 dark:bg-gray-800 text-ink text-xs px-3 py-1 font-mono;
 }
