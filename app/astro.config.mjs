@@ -5,6 +5,7 @@ import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import rehypePrettyCode from "rehype-pretty-code";
 import rehypeSlug from "rehype-slug";
 import { remarkAlert } from "remark-github-blockquote-alert";
+import { rehypeHeadingSpan } from "./src/libs/rehypeHeadingSpan.ts";
 import { remarkAlertTitle } from "./src/libs/remarkAlertTitle.ts";
 import { remarkLinkCard } from "./src/libs/remarkLinkCard.ts";
 
@@ -20,6 +21,7 @@ export default defineConfig({
     remarkPlugins: [remarkAlert, remarkAlertTitle, remarkLinkCard],
     rehypePlugins: [
       rehypeSlug,
+      rehypeHeadingSpan,
       [
         rehypeAutolinkHeadings,
         {

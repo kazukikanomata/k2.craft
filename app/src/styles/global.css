@@ -161,6 +161,17 @@ body {
   }
 }
 
+/* 本文の基準サイズ。見出し・コード・表・キャプションはこれに対するem指定で追従する */
+.entry-content {
+  font-size: 1rem;
+}
+
+@media (min-width: 48rem) {
+  .entry-content {
+    font-size: 1.0625rem;
+  }
+}
+
 /* 段落 */
 .entry-content p {
   @apply mb-4 leading-relaxed;
@@ -216,28 +227,44 @@ body {
 }
 
 .entry-content figure figcaption {
-  @apply leading-relaxed text-sm text-black/50 dark:text-white/50 italic pt-0;
+  font-size: 0.8889em;
+  @apply leading-relaxed text-black/50 dark:text-white/50 italic pt-0;
 }
 
 /* 見出し（h1〜h5） */
 .entry-content h1 {
-  @apply text-3xl font-bold mt-8 mb-4 pt-2 text-gray-900 dark:text-gray-100;
+  font-size: 2.6667em;
+  @apply font-bold mt-8 mb-4 pt-2 text-gray-900 dark:text-gray-100;
 }
 
 .entry-content h2 {
-  @apply text-2xl font-semibold mt-8 mb-4 py-1 pl-4 text-ink border-l-4 border-accent;
+  font-size: 1.6667em;
+  @apply font-semibold mt-8 mb-4 py-1 pl-4 text-ink border-l-4 border-accent;
 }
 
+/* h3: 全幅の薄いボーダー+文字幅だけのアクセント下線。<span>はrehypeHeadingSpanで付与する */
 .entry-content h3 {
-  @apply text-xl font-medium mt-5 mb-2 pt-2 text-gray-700 dark:text-gray-300;
+  font-size: 1.3333em;
+  @apply font-medium mt-6 mb-3 pt-2 text-ink border-b-[3px] border-line;
+}
+
+.entry-content h3 > span {
+  @apply relative inline-block px-[0.4em] pb-[0.2em];
+}
+
+.entry-content h3 > span::before {
+  @apply absolute -bottom-[3px] left-0 h-[3px] w-full bg-accent;
+  content: "";
 }
 
 .entry-content h4 {
-  @apply text-lg font-semibold mt-4 mb-2 pt-2 text-gray-700 dark:text-gray-300;
+  font-size: 1em;
+  @apply font-semibold mt-4 mb-2 pt-2 text-gray-700 dark:text-gray-300;
 }
 
 .entry-content h5 {
-  @apply text-base font-medium mt-3 mb-2 pt-2 text-gray-600 dark:text-gray-400;
+  font-size: 1em;
+  @apply font-medium mt-3 mb-2 pt-2 text-gray-600 dark:text-gray-400;
 }
 
 /* 区切り線（hr） */
@@ -252,7 +279,8 @@ body {
 
 /* テーブル */
 .entry-content table {
-  @apply w-full border-collapse border border-gray-300 dark:border-gray-700 text-sm my-6;
+  font-size: 0.8889em;
+  @apply w-full border-collapse border border-gray-300 dark:border-gray-700 my-6;
 }
 
 .entry-content table p {
@@ -287,15 +315,19 @@ body {
 }
 
 /* コードブロック（pre, code） */
+/* コードブロックは画面幅によらず17px固定(sapper-blogに合わせる) */
 .entry-content pre {
+  font-size: 17px;
   @apply relative p-4 overflow-x-auto m-0;
 }
 
 .entry-content code {
-  @apply bg-gray-200 dark:bg-gray-800 text-gray-800 dark:text-gray-200 px-1 py-0.5 text-sm font-mono;
+  font-size: 0.8889em;
+  @apply bg-gray-200 dark:bg-gray-800 text-gray-800 dark:text-gray-200 px-1 py-0.5 font-mono;
 }
 
 .entry-content pre code {
+  font-size: inherit;
   @apply bg-transparent text-inherit p-0;
 }
 
