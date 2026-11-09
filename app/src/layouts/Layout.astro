@@ -14,6 +14,10 @@ const ogImage = Meta.image
   ? Meta.image
   : new URL("/assets/images/og.png", Astro.site);
 const ogType = Meta.ogType ? Meta.ogType : "blog";
+// 開発環境のアクセスが混ざらないよう、本番ビルドかつ測定IDがあるときだけGA4を読み込む
+const gaMeasurementId = import.meta.env.PROD
+  ? import.meta.env.PUBLIC_GA_MEASUREMENT_ID
+  : undefined;
 ---
 
 <!doctype html>
@@ -39,6 +43,27 @@ const ogType = Meta.ogType ? Meta.ogType : "blog";
           });
       })();
     </script>
+    {
+      gaMeasurementId && (
+        <>
+          <script
+            is:inline
+            async
+            src={`https://www.googletagmanager.com/gtag/js?id=${gaMeasurementId}`}
+          />
+          <script is:inline define:vars={{ gaMeasurementId }}>
+            window.dataLayer = window.dataLayer || [];
+            function gtag() {
+              // gtag.jsはargumentsオブジェクトを前提にしているため、rest引数に置き換えない
+              // eslint-disable-next-line prefer-rest-params
+              dataLayer.push(arguments);
+            }
+            gtag("js", new Date());
+            gtag("config", gaMeasurementId);
+          </script>
+        </>
+      )
+    }
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
     <title>{pageTitle}</title>
