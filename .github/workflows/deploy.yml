@@ -8,6 +8,11 @@ concurrency:
   group: deploy-prod
   cancel-in-progress: false
 
+# GitHubのリリース配布が不安定なときにterraform initが失敗しないよう、
+# プロバイダーをキャッシュから使う(キーは.terraform.lock.hclのハッシュ)
+env:
+  TF_PLUGIN_CACHE_DIR: ${{ github.workspace }}/.terraform.d/plugin-cache
+
 jobs:
   plan:
     runs-on: ubuntu-latest
@@ -72,9 +77,17 @@ jobs:
           compatibility_date           = "${COMPATIBILITY_DATE}"
           EOF
 
+      - name: Cache Terraform providers
+        uses: actions/cache@v4
+        with:
+          path: ${{ env.TF_PLUGIN_CACHE_DIR }}
+          key: terraform-providers-${{ runner.os }}-${{ hashFiles('infra/prod/.terraform.lock.hcl') }}
+
       - name: Terraform init
         working-directory: infra/prod
-        run: terraform init -backend-config=backend.hcl
+        run: |
+          mkdir -p "$TF_PLUGIN_CACHE_DIR"
+          terraform init -backend-config=backend.hcl
 
       # cloudflare_workers_scriptのassetsはapply時にAPIから都度センシティブな値(jwt)を
       # 取得するため、ここで-outで保存したplanファイルをジョブをまたいで読み込み直すと
@@ -137,9 +150,17 @@ jobs:
           compatibility_date           = "${COMPATIBILITY_DATE}"
           EOF
 
+      - name: Cache Terraform providers
+        uses: actions/cache@v4
+        with:
+          path: ${{ env.TF_PLUGIN_CACHE_DIR }}
+          key: terraform-providers-${{ runner.os }}-${{ hashFiles('infra/prod/.terraform.lock.hcl') }}
+
       - name: Terraform init
         working-directory: infra/prod
-        run: terraform init -backend-config=backend.hcl
+        run: |
+          mkdir -p "$TF_PLUGIN_CACHE_DIR"
+          terraform init -backend-config=backend.hcl
 
       - name: Terraform apply
         working-directory: infra/prod
